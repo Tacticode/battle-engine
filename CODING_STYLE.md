@@ -2,6 +2,8 @@
 
 This coding style document aim to offer a basis for the consistency of the project. We are not particularly looking for performances, but more for a way to write a readable code. Therefore most of the keywords such as `inline` or `constexpr` are eluded since there are very few reason for us to use them, at least intensively.
 
+If anything is not documented or seems obscure, please open an issue on Gitlab or simply tell us on Slack. The best reference you can find is [the C++ Core Guidelines](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines).
+
 ## Header Files
 
 Every *.cpp* has an equivalent *.hpp* header file.
