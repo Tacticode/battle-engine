@@ -15,10 +15,6 @@ namespace tacticode
 		{
 		public:
 			virtual ~AEffect() = default;
-			AEffect(const AEffect&) = default;
-			AEffect(AEffect&&) = default;
-			AEffect& operator=(const AEffect&) = default;
-			AEffect& operator=(AEffect&&) = default;
 
 			virtual void apply(engine::Character& character);
 			virtual const std::string& getName() const;

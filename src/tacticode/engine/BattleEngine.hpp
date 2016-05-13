@@ -21,7 +21,7 @@ namespace tacticode
 			std::vector<std::shared_ptr<Character>> characters;
 
 		public:
-			BattleEngine();
+			explicit BattleEngine();
 
 			void loadJson(file::IValue& json);
 			void readOnStdin(); //TODO: read the JSON on standard input

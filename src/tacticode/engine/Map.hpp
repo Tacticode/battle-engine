@@ -7,7 +7,7 @@ namespace tacticode
 		class Map
 		{
 		public:
-			Map();
+			explicit Map();
 		};
 	}
 }
