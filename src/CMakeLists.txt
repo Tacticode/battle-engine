@@ -1,0 +1,2 @@
+include_relative_list(tacticode)
+include_relative_list(jsoncpp)
