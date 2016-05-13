@@ -4,11 +4,6 @@
 
 namespace tacticode
 {
-	namespace engine
-	{
-		class Character;
-	}
-
 	namespace spell
 	{
 		class ASpell : public ISpell
@@ -20,7 +15,6 @@ namespace tacticode
 			ASpell& operator=(const ASpell&) = default;
 			ASpell& operator=(ASpell&&) = default;
 
-			virtual void apply(engine::Character& character);
 			virtual const std::string& getName() const;
 		};
 	}
