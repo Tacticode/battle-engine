@@ -35,7 +35,7 @@ namespace tacticode
 			m_script = script;
 		}
 
-		std::string Character::getScript() const
+		const std::string& Character::getScript() const
 		{
 			return m_script;
 		}

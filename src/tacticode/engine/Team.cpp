@@ -15,12 +15,12 @@ namespace tacticode
 		{
 		}
 
-		std::list<std::shared_ptr<Character>> Team::getCharacters()
+		std::list<std::shared_ptr<Character>>& Team::getCharacters()
 		{
 			return m_characters;
 		}
 
-		std::list<std::shared_ptr<Character>> Team::getCharacters() const
+		const std::list<std::shared_ptr<Character>>& Team::getCharacters() const
 		{
 			return m_characters;
 		}

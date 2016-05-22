@@ -45,7 +45,7 @@ namespace tacticode
 			void executeScript(); // TODO
 
 			void setScript(const std::string & script);
-			std::string getScript() const;
+			const std::string& getScript() const;
 			void addEffect(std::shared_ptr<effect::IEffect> effect);
 		};
 

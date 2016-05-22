@@ -19,8 +19,8 @@ namespace tacticode
 
 		public:
 			explicit Team(file::IValue& json);
-			std::list<std::shared_ptr<Character>> getCharacters();
-			std::list<std::shared_ptr<Character>> getCharacters() const;
+			const std::list<std::shared_ptr<Character>>& getCharacters() const;
+			std::list<std::shared_ptr<Character>>& getCharacters();
 		};
 	}
 }
