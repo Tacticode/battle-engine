@@ -1,7 +1,9 @@
 #include "tacticode\file\IValue.hpp"
 
 #include "BattleEngine.hpp"
+#include "Team.hpp"
 #include "Character.hpp"
+#include "Map.hpp"
 
 namespace tacticode
 {
@@ -11,9 +13,17 @@ namespace tacticode
 		{
 		}
 
-		void BattleEngine::loadJson(file::IValue& json)
+		void BattleEngine::deserialize(file::IValue& json)
 		{
-
+			// TODO
+			// map = std::make_shared<Map>(/* jMap */);
+			for (auto & t : m_teams)
+			{
+				for (auto & c : t->getCharacters())
+				{
+					m_characters.push_back(c);
+				}
+			}
 		}
 
 		void BattleEngine::readOnStdin()
@@ -29,7 +39,7 @@ namespace tacticode
 
 		bool BattleEngine::round()
 		{
-			for (auto character : characters)
+			for (auto& character : m_characters)
 			{
 				character->play();
 				if (gameOver())

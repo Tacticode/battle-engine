@@ -5,4 +5,8 @@ set_target_sources(BattleEngine
 	Character.hpp
 	Map.cpp
 	Map.hpp
+	Team.cpp
+	Team.hpp
+	Cell.cpp
+	Cell.hpp
 	)

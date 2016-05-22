@@ -26,6 +26,7 @@ namespace tacticode
 				size_t       resilience;
 				size_t       luck;
 				size_t       health;
+				size_t       speed;
 			};
 
 		private:
@@ -39,11 +40,12 @@ namespace tacticode
 		public:
 			explicit Character(Attributes& baseAttributes);
 
-			void applyEffects();
+			void applyEffects(); // TODO
 			void play();
-			void executeScript();
+			void executeScript(); // TODO
 
 			void setScript(const std::string & script);
+			std::string getScript() const;
 			void addEffect(std::shared_ptr<effect::IEffect> effect);
 		};
 

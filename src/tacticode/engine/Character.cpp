@@ -27,10 +27,17 @@ namespace tacticode
 
 		void Character::executeScript()
 		{
+			// TODO
 		}
 
 		void Character::setScript(const std::string & script)
 		{
+			m_script = script;
+		}
+
+		std::string Character::getScript() const
+		{
+			return m_script;
 		}
 
 		void Character::addEffect(std::shared_ptr<effect::IEffect> effect)

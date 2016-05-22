@@ -13,17 +13,21 @@ namespace tacticode
 	namespace engine
 	{
 		class Character;
+		class Map;
+		class Team;
 
 		class BattleEngine
 		{
 		private:
-			bool isGameOver;
-			std::vector<std::shared_ptr<Character>> characters;
+			bool m_isGameOver;
+			std::vector<std::shared_ptr<Team>>      m_teams;
+			std::vector<std::shared_ptr<Character>> m_characters;
+			std::shared_ptr<Map>                    m_map;
 
 		public:
 			explicit BattleEngine();
 
-			void loadJson(file::IValue& json);
+			void deserialize(file::IValue& json);
 			void readOnStdin(); //TODO: read the JSON on standard input
 			bool isReady(); //TODO: is engine ready to start a game?
 			void game();
