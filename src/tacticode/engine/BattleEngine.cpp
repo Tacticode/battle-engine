@@ -14,7 +14,7 @@ namespace tacticode
 		{
 		}
 
-		void BattleEngine::deserialize(file::IValue& json)
+		void BattleEngine::deserialize(const file::IValue& json)
 		{
 			// TODO
 			if (!json.hasField("map"))

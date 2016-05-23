@@ -27,7 +27,7 @@ namespace tacticode
 		public:
 			explicit BattleEngine();
 
-			void deserialize(file::IValue& json);
+			void deserialize(const file::IValue& json);
 			void readOnStdin(); //TODO: read the JSON on standard input
 			bool isReady(); //TODO: is engine ready to start a game?
 			void game();

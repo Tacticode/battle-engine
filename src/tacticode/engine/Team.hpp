@@ -13,12 +13,14 @@ namespace tacticode
 		class Team
 		{
 			size_t m_id;
+			std::string m_name;
 			std::list<std::shared_ptr<Character>> m_characters;
 
-			void deserialize(file::IValue& json);
+			void deserialize(const file::IValue& json);
 
 		public:
-			explicit Team(file::IValue& json);
+			explicit Team(const file::IValue& json);
+
 			const std::list<std::shared_ptr<Character>>& getCharacters() const;
 			std::list<std::shared_ptr<Character>>& getCharacters();
 		};

@@ -6,8 +6,12 @@ namespace tacticode
 {
 	namespace engine
 	{
-		Character::Character(Attributes & baseAttributes)
-			: m_baseAttributes(baseAttributes)
+		Character::Character(const file::IValue& json)
+		{
+			deserialize(json);
+		}
+
+		void Character::deserialize(const file::IValue& json)
 		{
 		}
 
@@ -38,6 +42,11 @@ namespace tacticode
 		const std::string& Character::getScript() const
 		{
 			return m_script;
+		}
+
+		size_t Character::getTeamId() const
+		{
+			return m_teamId;
 		}
 
 		void Character::addEffect(std::shared_ptr<effect::IEffect> effect)
