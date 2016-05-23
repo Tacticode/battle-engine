@@ -3,6 +3,8 @@
 #include <vector>
 #include <memory>
 
+#include "Cell.hpp"
+
 namespace tacticode
 {
 	namespace file
@@ -12,8 +14,6 @@ namespace tacticode
 
 	namespace engine
 	{
-		class Cell;
-
 		class Map
 		{
 			using Row = std::vector<Cell>;

@@ -1,4 +1,5 @@
-#include "tacticode\file\IValue.hpp"
+#include "tacticode/file/IValue.hpp"
+#include "tacticode/file/error/InvalidConfiguration.hpp"
 
 #include "BattleEngine.hpp"
 #include "Team.hpp"
@@ -16,7 +17,25 @@ namespace tacticode
 		void BattleEngine::deserialize(file::IValue& json)
 		{
 			// TODO
-			// map = std::make_shared<Map>(/* jMap */);
+			if (!json.hasField("map"))
+			{
+				throw file::error::InvalidConfiguration("root", "No map field");
+			}
+			m_map = std::make_shared<Map>(*json["map"]);
+			if (!json.hasField("teams"))
+			{
+				throw file::error::InvalidConfiguration("root", "No teams field");
+			}
+			if (!json["teams"]->isArray())
+			{
+				throw file::error::InvalidConfiguration("root", "teams field is not an array");
+			}
+			auto & teams = *json["teams"];
+			for (size_t i = 0; i < teams.size(); ++i) // no std::array :(
+			{
+				m_teams.push_back(std::make_shared<Team>(*teams[i]));
+			}
+
 			for (auto & t : m_teams)
 			{
 				for (auto & c : t->getCharacters())

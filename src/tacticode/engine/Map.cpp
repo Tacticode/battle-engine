@@ -1,5 +1,6 @@
 #include "tacticode/file/IValue.hpp"
 #include "tacticode/file/JsonLoader.hpp"
+#include "tacticode/file/error/InvalidConfiguration.hpp"
 #include "Map.hpp"
 #include "Cell.hpp"
 
@@ -9,8 +10,36 @@ namespace tacticode
 	{
 		void Map::deserialize(file::IValue & json)
 		{
-			m_width = 10; // TODO
-			m_height = 10; // TODO
+			if (!json.isObject())
+			{
+				throw file::error::InvalidConfiguration("map", "map field is not an object");
+			}
+			if (!json["width"])
+			{
+				throw file::error::InvalidConfiguration("map", "Map has no width");
+			}
+			if (!json["height"])
+			{
+				throw file::error::InvalidConfiguration("map", "Map has no height");
+			}
+			if (!json["width"]->isNumeric())
+			{
+				throw file::error::InvalidConfiguration("map", "width is not a number");
+			}
+			if (!json["height"]->isNumeric())
+			{
+				throw file::error::InvalidConfiguration("map", "height is not a number");
+			}
+			if (!json["width"]->asInt() <= 0)
+			{
+				throw file::error::InvalidConfiguration("map", "width is not greater than 0");
+			}
+			if (!json["height"]->asInt() <= 0)
+			{
+				throw file::error::InvalidConfiguration("map", "height is not greater than 0");
+			}
+			m_width = json["width"]->asInt();
+			m_height = json["height"]->asInt();
 			for (size_t y = 0; y < m_height; ++y)
 			{
 				m_cells.push_back(Row());
