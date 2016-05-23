@@ -8,7 +8,7 @@ namespace tacticode
 {
 	namespace engine
 	{
-		void Map::deserialize(file::IValue & json)
+		void Map::deserialize(const file::IValue & json)
 		{
 			if (!json.isObject())
 			{
@@ -30,11 +30,11 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("map", "height is not a number");
 			}
-			if (!json["width"]->asInt() <= 0)
+			if (json["width"]->asInt() <= 0)
 			{
 				throw file::error::InvalidConfiguration("map", "width is not greater than 0");
 			}
-			if (!json["height"]->asInt() <= 0)
+			if (json["height"]->asInt() <= 0)
 			{
 				throw file::error::InvalidConfiguration("map", "height is not greater than 0");
 			}
@@ -50,7 +50,7 @@ namespace tacticode
 			}
 		}
 
-		Map::Map(file::IValue& json)
+		Map::Map(const file::IValue& json)
 		{
 			deserialize(json);
 		}

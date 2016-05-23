@@ -22,10 +22,10 @@ namespace tacticode
 			size_t m_width;
 			size_t m_height;
 
-			void deserialize(file::IValue& json);
+			void deserialize(const file::IValue& json);
 
 		public:
-			explicit Map(file::IValue& json);
+			explicit Map(const file::IValue& json);
 
 		};
 	}
