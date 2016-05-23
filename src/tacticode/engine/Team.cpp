@@ -32,6 +32,20 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("teams", "id field is not a positive number");
 			}
 			m_id = json["id"]->asInt();
+			if (!json["characters"])
+			{
+				throw file::error::InvalidConfiguration("teams", "team has no characters");
+			}
+			if (!json["characters"]->isArray())
+			{
+				throw file::error::InvalidConfiguration("teams", "characters field is not an array");
+			}
+			auto & characters = *json["characters"];
+			for (size_t i = 0; i < characters.size(); ++i)
+			{
+				auto & character = *characters[i];
+				m_characters.push_back(std::make_shared<Character>(character));
+			}
 		}
 
 		Team::Team(const file::IValue& json)

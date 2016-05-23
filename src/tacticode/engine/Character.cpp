@@ -1,6 +1,7 @@
 #include "Character.hpp"
 #include "tacticode/effect/IEffect.hpp"
 #include "tacticode/spell/ISpell.hpp"
+#include "tacticode/file/error/InvalidConfiguration.hpp"
 
 namespace tacticode
 {
@@ -13,6 +14,10 @@ namespace tacticode
 
 		void Character::deserialize(const file::IValue& json)
 		{
+			if (!json.isObject())
+			{
+				throw file::error::InvalidConfiguration("character", "item of characters field is not an object");
+			}
 		}
 
 		void Character::applyEffects()
