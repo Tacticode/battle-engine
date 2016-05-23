@@ -14,7 +14,7 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("teams", "array child is not an object");
 			}
-			if (!json["name"])
+			if (!json.hasField("name"))
 			{
 				throw file::error::InvalidConfiguration("teams", "team has no name");
 			}
@@ -23,7 +23,7 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("teams", "name field is not a string");
 			}
 			m_name = json["name"]->asString();
-			if (!json["id"])
+			if (!json.hasField("id"))
 			{
 				throw file::error::InvalidConfiguration("teams", "team has no id");
 			}
@@ -32,7 +32,7 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("teams", "id field is not a positive number");
 			}
 			m_id = json["id"]->asInt();
-			if (!json["characters"])
+			if (!json.hasField("characters"))
 			{
 				throw file::error::InvalidConfiguration("teams", "team has no characters");
 			}

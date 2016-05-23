@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include <array>
 
 #include "tacticode/file/IValue.hpp"
 
@@ -21,7 +22,8 @@ namespace tacticode
 		class Character
 		{
 		public:
-			struct Attributes {
+			struct Attributes
+			{
 				size_t attack;
 				size_t power;
 				size_t defense;
@@ -29,9 +31,21 @@ namespace tacticode
 				size_t luck;
 				size_t health;
 				size_t speed;
-			    };
+			};
+
+			enum Breed
+			{
+				elf     = 0,
+				gobelin = 1,
+				human   = 2,
+				orc     = 3
+			};
+
+			static const std::array<std::string, 4> validBreeds;
 
 		private:
+			std::string      m_name;
+			Breed            m_breed;
 			size_t           m_currentHealth;
 			const Attributes m_baseAttributes;    // Those attributes can be used by buff to make calculations
 			Attributes       m_currentAttributes; // Those attributes are used in combat
@@ -47,6 +61,9 @@ namespace tacticode
 			void applyEffects(); // TODO
 			void play();
 			void executeScript(); // TODO
+
+			bool isValidBreed(const std::string & breed);
+			Breed stringToBreed(const std::string & breed);
 
 			void setScript(const std::string & script);
 			const std::string& getScript() const;
