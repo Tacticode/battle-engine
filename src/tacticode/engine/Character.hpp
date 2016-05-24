@@ -24,13 +24,18 @@ namespace tacticode
 		public:
 			struct Attributes
 			{
+				size_t health;
 				size_t attack;
 				size_t power;
 				size_t defense;
 				size_t resilience;
 				size_t luck;
-				size_t health;
+				size_t movement;
 				size_t speed;
+				Attributes(
+					size_t health_, size_t attack_, size_t power_,
+					size_t defense_, size_t resilience_, size_t luck_,
+					size_t movement_, size_t speed_);
 			};
 
 			enum Breed
@@ -42,14 +47,16 @@ namespace tacticode
 			};
 
 			static const std::array<std::string, 4> validBreeds;
+			static const std::array<std::string, 8> validAttributes;
 
 		private:
-			std::string      m_name;
-			Breed            m_breed;
-			size_t           m_currentHealth;
-			const Attributes m_baseAttributes;    // Those attributes can be used by buff to make calculations
-			Attributes       m_currentAttributes; // Those attributes are used in combat
-			size_t           m_teamId;
+			std::string                       m_name;
+			Breed                             m_breed;
+			size_t                            m_currentHealth;
+			std::unique_ptr<const Attributes> m_baseAttributes;    // Those attributes can be used by buff to make calculations
+			std::unique_ptr<Attributes>       m_currentAttributes; // Those attributes are used in combat
+			size_t                            m_teamId;
+
 			std::vector<std::shared_ptr<effect::IEffect>> m_effects;
 			std::vector<std::shared_ptr<spell::ISpell>>   m_spells;
 			std::string m_script;
@@ -57,7 +64,10 @@ namespace tacticode
 		public:
 			explicit Character(const file::IValue& json);
 
-			void deserialize(const file::IValue& json); // TODO
+			void deserialize(const file::IValue& json);
+			void deserializeAttributes(const file::IValue& json);
+			void assertAttributeDeserialize(const file::IValue& json, std::string attribute);
+
 			void applyEffects(); // TODO
 			void play();
 			void executeScript(); // TODO
