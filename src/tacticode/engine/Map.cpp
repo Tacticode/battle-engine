@@ -14,11 +14,20 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("map", "map field is not an object");
 			}
-			if (!json["width"])
+			if (!json.hasField("name"))
+			{
+				throw file::error::InvalidConfiguration("map", "map has no name");
+			}
+			if (!json["name"]->isString())
+			{
+				throw file::error::InvalidConfiguration("map", "name field is not a string");
+			}
+			m_name = json["name"]->asString();
+			if (!json.hasField("width"))
 			{
 				throw file::error::InvalidConfiguration("map", "Map has no width");
 			}
-			if (!json["height"])
+			if (!json.hasField("height"))
 			{
 				throw file::error::InvalidConfiguration("map", "Map has no height");
 			}
@@ -40,13 +49,38 @@ namespace tacticode
 			}
 			m_width = json["width"]->asInt();
 			m_height = json["height"]->asInt();
+			if (!json.hasField("cells"))
+			{
+				throw file::error::InvalidConfiguration("map", "Map has no cells");
+			}
+			if (!json["cells"]->isArray())
+			{
+				throw file::error::InvalidConfiguration("map", "cells is not an array");
+			}
+			// initializing the Map before allow us to read an unordered "cells" array
 			for (size_t y = 0; y < m_height; ++y)
 			{
 				m_cells.push_back(Row());
 				for (size_t x = 0; x < m_width; ++x)
 				{
-					m_cells[y].push_back({x, y, 0}); // TODO: height instead of 0
+					m_cells[y].push_back(nullptr);
 				}
+			}
+			const auto & cells = *json["cells"];
+			for (size_t i = 0; i < cells.size(); ++i)
+			{
+				std::unique_ptr<Cell> ptr = std::make_unique<Cell>(*cells[i]);
+				if (ptr->getX() >= m_width || ptr->getY() >= m_height)
+				{
+					throw file::error::InvalidConfiguration("map",
+						"cell is out of bound: [" + std::to_string(ptr->getX()) + "," + std::to_string(ptr->getY()) + "]");
+				}
+				if (m_cells[ptr->getY()][ptr->getX()] != nullptr)
+				{
+					throw file::error::InvalidConfiguration("map",
+						"the same cell is defined twice: [" + std::to_string(ptr->getX()) + "," + std::to_string(ptr->getY()) + "]");
+				}
+				m_cells[ptr->getY()][ptr->getX()] = std::move(ptr);
 			}
 		}
 

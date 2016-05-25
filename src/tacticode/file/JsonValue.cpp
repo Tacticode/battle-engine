@@ -43,6 +43,11 @@ namespace tacticode
 			return _value.isObject();
 		}
 
+		bool JsonValue::isBool() const
+		{
+			return _value.isBool();
+		}
+
 		bool JsonValue::isNumeric() const
 		{
 			return _value.isNumeric();

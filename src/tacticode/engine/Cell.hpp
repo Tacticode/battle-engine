@@ -1,17 +1,28 @@
 #pragma once
 
+#include "tacticode/file/IValue.hpp"
+
 namespace tacticode
 {
 	namespace engine
 	{
 		class Cell
 		{
-		public:
-			const size_t x;
-			const size_t y;
-			const size_t height;
+			size_t m_x;
+			size_t m_y;
+			size_t m_height;
+			bool   m_accessible;
+			bool   m_lineOfSight;
 
-			Cell(size_t x_, size_t y_, size_t height_); // implicit
+		public:
+			Cell(const file::IValue& json);
+			
+			size_t getX          () const;
+			size_t getY          () const;
+			size_t getHeight     () const;
+
+			bool   isAccessible  () const;
+			bool   hasLineOfSight() const;
 		};
 	}
 }

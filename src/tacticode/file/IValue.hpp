@@ -22,6 +22,7 @@ namespace tacticode
 
 			virtual bool isString() const = 0;
 			virtual bool isObject() const = 0;
+			virtual bool isBool() const = 0;
 			virtual bool isNumeric() const = 0;
 			virtual bool isArray() const = 0;
 

@@ -16,11 +16,13 @@ namespace tacticode
 	{
 		class Map
 		{
-			using Row = std::vector<Cell>;
+			using Row = std::vector<std::unique_ptr<Cell>>;
 			using Field = std::vector<Row>;
-			Field  m_cells;
-			size_t m_width;
-			size_t m_height;
+
+			Field       m_cells;
+			size_t      m_width;
+			size_t      m_height;
+			std::string m_name;
 
 			void deserialize(const file::IValue& json);
 
