@@ -99,9 +99,31 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("character", "breed (" + breed + ") is not a valid string");
 			}
 			m_breed = stringToBreed(breed);
+			if (!json.hasField("spells"))
+			{
+				throw file::error::InvalidConfiguration("character", "character has no spells field");
+			}
+			if (!json["spells"]->isArray())
+			{
+				throw file::error::InvalidConfiguration("character", "spells field is not an array");
+			}
+			const auto & spells = *json["spells"];
+			for (size_t i = 0; i < spells.size(); ++i)
+			{
+				if (!spells[i]->isString())
+				{
+					throw file::error::InvalidConfiguration("character", "item of spells is not a string");
+				}
+				addSpell(spells[i]->asString());
+			}
 			deserializeAttributes(json);
 		}
 
+		void Character::addSpell(const std::string & spellName) // TODO: Wilko
+		{
+			// this should throw an exception if the spellName does not exist: tacticode::spell::error::InvalidSpellName()
+			//std::unique_ptr<spell::ISpell> ptr = spellFactory().createSpell(spellName);
+		}
 
 		Character::Breed Character::stringToBreed(const std::string & breed)
 		{

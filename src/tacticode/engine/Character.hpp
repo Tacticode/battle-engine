@@ -57,8 +57,8 @@ namespace tacticode
 			std::unique_ptr<Attributes>       m_currentAttributes; // Those attributes are used in combat
 			size_t                            m_teamId;
 
-			std::vector<std::shared_ptr<effect::IEffect>> m_effects;
-			std::vector<std::shared_ptr<spell::ISpell>>   m_spells;
+			std::vector<std::unique_ptr<effect::IEffect>> m_effects;
+			std::vector<std::unique_ptr<spell::ISpell>>   m_spells;
 			std::string m_script;
 
 		public:
@@ -79,6 +79,7 @@ namespace tacticode
 			const std::string& getScript() const;
 			size_t getTeamId() const;
 
+			void addSpell(const std::string & spellName); // TODO: Wilko
 			void addEffect(std::shared_ptr<effect::IEffect> effect);
 		};
 
