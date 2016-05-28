@@ -5,16 +5,14 @@
 #include <array>
 
 #include "tacticode/file/IValue.hpp"
+#include "tacticode/spell/ISpell.hpp"
+#include "tacticode/effect/IEffect.hpp"
 
 namespace tacticode
 {
 	namespace effect
 	{
 		class IEffect; // buff, debuff, poison (cast a spell), heal (cast a spell) etc...
-	}
-	namespace spell
-	{
-		class ISpell;
 	}
 
 	namespace engine
