@@ -1,5 +1,10 @@
 set_target_sources(BattleEngine
 	ISpell.hpp
-	ASpell.hpp
-	ASpell.cpp
+	Spell.hpp
+	IEffect.hpp
+	DamageEffect.hpp
+	SpellFactory.hpp
+	SpellFactory.cpp
+	DamageEffect.cpp
+	Spell.cpp
 	)
