@@ -69,6 +69,8 @@ namespace tacticode
 			void assertAttributeDeserialize(const file::IValue& json, std::string attribute);
 
 			void applyEffects(); // TODO
+			void applyDamage(int damages);
+			void applyHeal(int heal);
 			void play();
 			void executeScript(); // TODO
 
