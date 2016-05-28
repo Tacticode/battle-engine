@@ -80,7 +80,7 @@ namespace tacticode
 			size_t getTeamId() const;
 
 			void addSpell(const std::string & spellName); // TODO: Wilko
-			void addEffect(std::shared_ptr<effect::IEffect> effect);
+			void addEffect(std::unique_ptr<effect::IEffect> effect);
 		};
 
 	}

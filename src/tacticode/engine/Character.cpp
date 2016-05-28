@@ -93,7 +93,7 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("character", "breed field is not a string");
 			}
-			std::string & breed = json["breed"]->asString();
+			const std::string & breed = json["breed"]->asString();
 			if (!isValidBreed(breed))
 			{
 				throw file::error::InvalidConfiguration("character", "breed (" + breed + ") is not a valid string");
@@ -151,7 +151,7 @@ namespace tacticode
 
 		void Character::applyEffects()
 		{
-			for (auto effect : m_effects)
+			for (auto & effect : m_effects)
 			{
 				effect->apply(*this);
 			}
@@ -183,9 +183,9 @@ namespace tacticode
 			return m_teamId;
 		}
 
-		void Character::addEffect(std::shared_ptr<effect::IEffect> effect)
+		void Character::addEffect(std::unique_ptr<effect::IEffect> effect)
 		{
-			m_effects.push_back(effect);
+			m_effects.push_back(std::move(effect));
 		}
 	}
 }
