@@ -27,9 +27,9 @@ namespace tacticode
 		{
 			return m_cooldown;
 		}
-		const size_t Spell::getIsActif() const
+		const size_t Spell::getIsActive() const
 		{
-			return m_isActif;
+			return m_isActive;
 		}
 		const size_t Spell::getLos() const
 		{

@@ -1,24 +1,26 @@
-#include "spell.hpp"
 #include <iostream>
+#include "SpellFactory.hpp"
 
-namespace tacticode {
-  namespace spell{
-    void SpellFactory::init() {
-      registerSpell("Fireball", std::make_shared<FireBall>());
-      std::cerr << "spell factory initialised" << std::endl;
-    }
+namespace tacticode
+{
+	namespace spell
+	{
+		void SpellFactory::init() {
+			registerSpell("Fireball", std::make_shared<Spell>());
+			std::cerr << "spell factory initialised" << std::endl;
+		}
 
-    void SpellFactory::registerSpell(
-				     std::string const& n,
-				     std::shared_ptr<ASpell> spell) {
-      _dictionary[n] = spell;
-    }
+		void SpellFactory::registerSpell(
+			std::string const& n,
+			std::shared_ptr<Spell> spell) {
+			_dictionary[n] = spell;
+		}
 
-    std::shared_ptr<ASpell> SpellFactory::get(std::string const& n) {
-      return Cast<ASpell>(_dictionary[n]->clone());
-    }
+		std::shared_ptr<Spell> SpellFactory::get(std::string const& n) {
+			return (_dictionary[n]);
+		}
 
-    SpellFactory::~SpellFactory() {		
-    }
-  }
+		SpellFactory::~SpellFactory() {
+		}
+	}
 }

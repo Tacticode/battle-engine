@@ -38,25 +38,25 @@ namespace tacticode
 
 			enum Breed
 			{
-				elf     = 0,
+				elf		= 0,
 				gobelin = 1,
-				human   = 2,
-				orc     = 3
+				human	= 2,
+				orc		= 3
 			};
 
 			static const std::array<std::string, 4> validBreeds;
 			static const std::array<std::string, 8> validAttributes;
 
 		private:
-			std::string                       m_name;
-			Breed                             m_breed;
-			size_t                            m_currentHealth;
-			std::unique_ptr<const Attributes> m_baseAttributes;    // Those attributes can be used by buff to make calculations
-			std::unique_ptr<Attributes>       m_currentAttributes; // Those attributes are used in combat
-			size_t                            m_teamId;
+			std::string						  m_name;
+			Breed							  m_breed;
+			size_t							  m_currentHealth;
+			std::unique_ptr<const Attributes> m_baseAttributes;	   // Those attributes can be used by buff to make calculations
+			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
+			size_t							  m_teamId;
 
 			std::vector<std::unique_ptr<effect::IEffect>> m_effects;
-			std::vector<std::unique_ptr<spell::ISpell>>   m_spells;
+			std::vector<std::unique_ptr<spell::ISpell>>	  m_spells;
 			std::string m_script;
 
 		public:
@@ -67,8 +67,8 @@ namespace tacticode
 			void assertAttributeDeserialize(const file::IValue& json, std::string attribute);
 
 			void applyEffects(); // TODO
-			void applyDamage(int damages);
-			void applyHeal(int heal);
+			void applyDamage(size_t damages);
+			void applyHeal(size_t heal);
 			void play();
 			void executeScript(); // TODO
 

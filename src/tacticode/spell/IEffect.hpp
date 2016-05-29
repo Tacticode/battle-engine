@@ -6,11 +6,10 @@ namespace tacticode
 {
 	namespace spell
 	{
-		class IEffect
-		{
+		class IEffect{
 		public:
 			virtual ~IEffect() = default;
-			virtual void applyEffect() const = 0;
+			virtual void applyEffect() = 0;
 		};
 	}
 }

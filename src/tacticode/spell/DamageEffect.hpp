@@ -10,6 +10,7 @@ namespace tacticode
 		class DamageEffect : public IEffect
 		{
 		public:
+			DamageEffect();
 			virtual ~DamageEffect() = default;
 			virtual void applyEffect();
 		};

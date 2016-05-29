@@ -187,15 +187,15 @@ namespace tacticode
 		{
 			m_effects.push_back(std::move(effect));
 		}
-	  
+
 		//todo : prevoir cas spéciaux si besoin
-		void Character::applyDamage(int damages)
+		void Character::applyDamage(size_t damages)
 		{
-		  m_health -= damages;
+			m_currentAttributes->health -= damages;
 		}
-		void Character::applyHeal(int heal)
+		void Character::applyHeal(size_t heal)
 		{
-		  m_health += heal;
+			m_currentAttributes->health += heal;
 		}
 	}
 }
