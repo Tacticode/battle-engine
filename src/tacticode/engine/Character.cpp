@@ -15,9 +15,9 @@ namespace tacticode
 
 		// no braces initialization with make_unique
 		Character::Attributes::Attributes(
-			size_t health_, size_t attack_, size_t power_,
-			size_t defense_, size_t resilience_, size_t luck_,
-			size_t movement_, size_t speed_)
+			int32_t health_, int32_t attack_, int32_t power_,
+			int32_t defense_, int32_t resilience_, int32_t luck_,
+			int32_t movement_, int32_t speed_)
 			:
 			health(health_), attack(attack_), power(power_),
 			defense(defense_), resilience(resilience_),
@@ -57,14 +57,14 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("character", "health must be greater than 0");
 			}
 			m_baseAttributes = std::make_unique<Attributes>(
-				static_cast<size_t>(json["health"]->asInt()),
-				static_cast<size_t>(json["attack"]->asInt()),
-				static_cast<size_t>(json["power"]->asInt()),
-				static_cast<size_t>(json["defense"]->asInt()),
-				static_cast<size_t>(json["resilience"]->asInt()),
-				static_cast<size_t>(json["luck"]->asInt()),
-				static_cast<size_t>(json["movement"]->asInt()),
-				static_cast<size_t>(json["speed"]->asInt())
+				static_cast<int32_t>(json["health"]->asInt()),
+				static_cast<int32_t>(json["attack"]->asInt()),
+				static_cast<int32_t>(json["power"]->asInt()),
+				static_cast<int32_t>(json["defense"]->asInt()),
+				static_cast<int32_t>(json["resilience"]->asInt()),
+				static_cast<int32_t>(json["luck"]->asInt()),
+				static_cast<int32_t>(json["movement"]->asInt()),
+				static_cast<int32_t>(json["speed"]->asInt())
 			);
 			m_currentAttributes = std::make_unique<Attributes>(*m_baseAttributes);
 			m_currentHealth = m_baseAttributes->health;
@@ -108,7 +108,7 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("character", "spells field is not an array");
 			}
 			const auto & spells = *json["spells"];
-			for (size_t i = 0; i < spells.size(); ++i)
+			for (int32_t i = 0; i < spells.size(); ++i)
 			{
 				if (!spells[i]->isString())
 				{
@@ -127,7 +127,7 @@ namespace tacticode
 
 		Character::Breed Character::stringToBreed(const std::string & breed)
 		{
-			for (size_t i = 0; i < validBreeds.size(); ++i)
+			for (int32_t i = 0; i < validBreeds.size(); ++i)
 			{
 				if (breed == validBreeds[i])
 				{
@@ -178,7 +178,7 @@ namespace tacticode
 			return m_script;
 		}
 
-		size_t Character::getTeamId() const
+		int32_t Character::getTeamId() const
 		{
 			return m_teamId;
 		}
@@ -189,11 +189,11 @@ namespace tacticode
 		}
 
 		//todo : prevoir cas spéciaux si besoin
-		void Character::applyDamage(size_t damages)
+		void Character::applyDamage(int32_t damages)
 		{
 			m_currentAttributes->health -= damages;
 		}
-		void Character::applyHeal(size_t heal)
+		void Character::applyHeal(int32_t heal)
 		{
 			m_currentAttributes->health += heal;
 		}

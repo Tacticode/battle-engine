@@ -22,18 +22,18 @@ namespace tacticode
 		public:
 			struct Attributes
 			{
-				size_t health;
-				size_t attack;
-				size_t power;
-				size_t defense;
-				size_t resilience;
-				size_t luck;
-				size_t movement;
-				size_t speed;
+				int32_t health;
+				int32_t attack;
+				int32_t power;
+				int32_t defense;
+				int32_t resilience;
+				int32_t luck;
+				int32_t movement;
+				int32_t speed;
 				Attributes(
-					size_t health_, size_t attack_, size_t power_,
-					size_t defense_, size_t resilience_, size_t luck_,
-					size_t movement_, size_t speed_);
+					int32_t health_, int32_t attack_, int32_t power_,
+					int32_t defense_, int32_t resilience_, int32_t luck_,
+					int32_t movement_, int32_t speed_);
 			};
 
 			enum Breed
@@ -50,10 +50,10 @@ namespace tacticode
 		private:
 			std::string						  m_name;
 			Breed							  m_breed;
-			size_t							  m_currentHealth;
+			int32_t							  m_currentHealth;
 			std::unique_ptr<const Attributes> m_baseAttributes;	   // Those attributes can be used by buff to make calculations
 			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
-			size_t							  m_teamId;
+			int32_t							  m_teamId;
 
 			std::vector<std::unique_ptr<effect::IEffect>> m_effects;
 			std::vector<std::unique_ptr<spell::ISpell>>	  m_spells;
@@ -67,8 +67,8 @@ namespace tacticode
 			void assertAttributeDeserialize(const file::IValue& json, std::string attribute);
 
 			void applyEffects(); // TODO
-			void applyDamage(size_t damages);
-			void applyHeal(size_t heal);
+			void applyDamage(int32_t damages);
+			void applyHeal(int32_t heal);
 			void play();
 			void executeScript(); // TODO
 
@@ -77,7 +77,7 @@ namespace tacticode
 
 			void setScript(const std::string & script);
 			const std::string& getScript() const;
-			size_t getTeamId() const;
+			int32_t getTeamId() const;
 
 			void addSpell(const std::string & spellName); // TODO: Wilko
 			void addEffect(std::unique_ptr<effect::IEffect> effect);
