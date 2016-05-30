@@ -166,6 +166,7 @@ namespace tacticode
 		void Character::executeScript()
 		{
 			// TODO
+			
 		}
 
 		void Character::setScript(const std::string & script)
