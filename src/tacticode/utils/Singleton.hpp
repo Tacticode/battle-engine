@@ -5,6 +5,9 @@
  * For external module, include this file directly prevent you from any problem
  * ******************************************************************/
 
+#include <iostream>
+#include <exception>
+
 namespace tacticode {
 namespace utils {
 

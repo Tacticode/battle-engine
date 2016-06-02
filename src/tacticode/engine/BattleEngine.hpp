@@ -20,8 +20,8 @@ namespace tacticode
 		{
 		private:
 			bool m_isGameOver;
-			std::vector<std::shared_ptr<Team>>      m_teams;
-			std::vector<std::shared_ptr<Character>> m_characters;
+			std::vector<std::shared_ptr<Team> >      m_teams;
+			std::vector<std::shared_ptr<Character> > m_characters;
 			std::shared_ptr<Map>                    m_map;
 
 		public:

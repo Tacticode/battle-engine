@@ -2,6 +2,9 @@
 #include "Team.hpp"
 #include "Character.hpp"
 
+#include <iostream>
+using std::cerr;
+using std::endl;
 namespace tacticode
 {
 	namespace engine
@@ -40,10 +43,12 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("teams", "characters field is not an array");
 			}
-			auto & characters = *json["characters"];
+			auto _characters = json["characters"];
+			auto & characters = *_characters;
 			for (size_t i = 0; i < characters.size(); ++i)
 			{
-				auto & character = *characters[i];
+				auto _characters_i = characters[i];
+				auto & character = *_characters_i;
 				m_characters.push_back(std::make_shared<Character>(character));
 			}
 		}

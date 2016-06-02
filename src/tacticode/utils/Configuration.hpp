@@ -14,9 +14,8 @@ class Configuration
 	std::shared_ptr<Json::Value> _value;
 
 public:
-	file::JsonValue value(){
-		return file::JsonValue(*_value);
-	}
+	Configuration();
+	file::JsonValue value();
 
 	template<typename T>
 	void set(std::string const& key, T const& v) {

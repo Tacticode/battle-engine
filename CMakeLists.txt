@@ -39,16 +39,36 @@ ENDIF(V8_FOUND)
 #find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 #find_package(GMock REQUIRED)
 
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
 
 if(UNIX)
 	include(CheckCXXCompilerFlag)
 	CHECK_CXX_COMPILER_FLAG("-std=c++14" COMPILER_SUPPORTS_CXX14)
 	if(COMPILER_SUPPORTS_CXX14)
 	    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
-	else()
+	else(COMPILER_SUPPORTS_CXX14)
 	    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++14 support. Please use a different C++ compiler.")
-	endif()
+	endif(COMPILER_SUPPORTS_CXX14)
 endif(UNIX)
 
+include_directories(3rdparty)
+include_directories(3rdparty/v8/include)
 add_executable(BattleEngine src/main.cpp)
+
+
+if (WIN32)
+	target_link_libraries(BattleEngine winmm)
+	file(COPY
+		${V8_ICUDATA_LIBRARY}
+		DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+	target_link_libraries (BattleEngine ${V8_LIBRARY} "pthread")
+ELSE (WIN32)
+	SET(LDFLAGS -Wl,--start-group ${V8_LIBRARY} ${V8_ICUDATA_LIBRARY} -Wl,--end-group -lrt -ldl -pthread)
+	target_link_libraries (BattleEngine ${LDFLAGS})
+ENDIF(WIN32)
+
+file(COPY
+    ${V8_BLOB}
+    DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+
 include_relative_list(src)

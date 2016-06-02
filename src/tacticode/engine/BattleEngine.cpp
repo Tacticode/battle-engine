@@ -1,4 +1,5 @@
 #include "tacticode/file/IValue.hpp"
+#include "tacticode/file/JsonLoader.hpp"
 #include "tacticode/file/error/InvalidConfiguration.hpp"
 
 #include "BattleEngine.hpp"
@@ -21,7 +22,8 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("root", "No map field");
 			}
-			m_map = std::make_shared<Map>(*json["map"]);
+			auto _map = json["map"];
+			m_map = std::make_shared<Map>(*_map);
 			if (!json.hasField("teams"))
 			{
 				throw file::error::InvalidConfiguration("root", "No teams field");
@@ -30,10 +32,12 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("root", "teams field is not an array");
 			}
-			auto & teams = *json["teams"];
+			auto _teams = json["teams"];
+			auto & teams = *_teams;
 			for (size_t i = 0; i < teams.size(); ++i) // no std::array :(
 			{
-				m_teams.push_back(std::make_shared<Team>(*teams[i]));
+				auto _teams_i = teams[i];
+				m_teams.push_back(std::make_shared<Team>(*_teams_i));
 			}
 
 			for (auto & t : m_teams)
@@ -47,13 +51,14 @@ namespace tacticode
 
 		void BattleEngine::readOnStdin()
 		{
-			// TODO: get json on stdin
-			//loadJson(json);
+			file::JsonLoader input(std::cin);
+
+			deserialize(input.value());
 		}
 
 		bool BattleEngine::isReady()
 		{
-			return false;
+			return true;
 		}
 
 		bool BattleEngine::round()
@@ -76,7 +81,9 @@ namespace tacticode
 
 		void BattleEngine::game()
 		{
-			while (round());
+			int i = 0;
+			while (round() && i < 10)
+				++i;
 			//TODO: use datas created by gameOver();
 		}
 	}

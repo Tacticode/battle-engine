@@ -7,6 +7,7 @@
 #include "tacticode/file/IValue.hpp"
 #include "tacticode/spell/ISpell.hpp"
 #include "tacticode/effect/IEffect.hpp"
+#include "ICharacterScript.hpp"
 
 namespace tacticode
 {
@@ -59,6 +60,7 @@ namespace tacticode
 			std::vector<std::unique_ptr<spell::ISpell>>	  m_spells;
 			std::string m_script;
 
+			std::shared_ptr<ICharacterScript> _script;
 		public:
 			explicit Character(const file::IValue& json);
 

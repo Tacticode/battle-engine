@@ -9,4 +9,5 @@ set_target_sources(BattleEngine
 	Team.hpp
 	Cell.cpp
 	Cell.hpp
+	ICharacterScript.hpp
 	)
