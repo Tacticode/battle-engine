@@ -3,8 +3,10 @@ set_target_sources(BattleEngine
 	Spell.hpp
 	IEffect.hpp
 	DamageEffect.hpp
+	HealEffect.hpp
 	SpellFactory.hpp
 	SpellFactory.cpp
 	DamageEffect.cpp
+	HealEffect.cpp
 	Spell.cpp
 	)

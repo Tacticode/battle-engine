@@ -14,7 +14,7 @@ namespace tacticode
 			int los = 1;
 			if (los == true)
 			{
-				std::shared_ptr<engine::Character> target = NULL; //==cell.getEntity()
+				std::shared_ptr<engine::Character> target = nullptr; //==cell.getEntity()
 				if (target)
 					target->applyDamage(spell.getPower() * caster->m_currentAttributes->power / target->m_currentAttributes->resilience);
 			}

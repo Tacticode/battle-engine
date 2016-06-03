@@ -8,6 +8,7 @@ namespace tacticode
 	{
 		void SpellFactory::init() {
 			registerSpell("Fireball", std::make_shared<Spell>(std::make_shared<DamageEffect>()));
+			registerSpell("Heal", std::make_shared<Spell>(std::make_shared<HealEffect>()));
 			std::cerr << "spell factory initialised" << std::endl;
 		}
 
