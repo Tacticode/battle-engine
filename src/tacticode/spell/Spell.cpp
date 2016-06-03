@@ -4,9 +4,18 @@ namespace tacticode
 {
 	namespace spell
 	{
-		Spell::Spell(){
-
+		Spell::Spell(std::shared_ptr<IEffect> effect){
+			m_effects.push_back(effect);
 		}
+
+		void Spell::castSpell()
+		{
+			for (std::list<std::shared_ptr<IEffect> >::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
+			{
+				//(*it)->applyEffect(context.caster, context.cell, this);
+			}
+		}
+
 		const std::string& Spell::getName() const
 		{
 			return m_name;

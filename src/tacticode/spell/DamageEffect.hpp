@@ -6,13 +6,12 @@ namespace tacticode
 {
 	namespace spell
 	{
-		class Spell{};
 		class DamageEffect : public IEffect
 		{
 		public:
 			DamageEffect();
 			virtual ~DamageEffect() = default;
-			virtual void applyEffect();
+			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, Spell spell);
 		};
 	}
 }

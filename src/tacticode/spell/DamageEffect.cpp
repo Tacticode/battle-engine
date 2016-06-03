@@ -9,14 +9,15 @@ namespace tacticode
 
 		}
 //add context as parameter
-		void	DamageEffect::applyEffect()
+		void	DamageEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, Spell spell)
 		{
-			/*	if (los == true)
-			Engine::Character target = NULL; //==cell.getEntity()
-			if (target)
+			int los = 1;
+			if (los == true)
 			{
-				target.applyDamages(spell.getPower() * caster.m_currentAttributes.power / target.m_currentAttributes.resilience);
-				}*/
+				std::shared_ptr<engine::Character> target = NULL; //==cell.getEntity()
+				if (target)
+					target->applyDamage(spell.getPower() * caster->m_currentAttributes->power / target->m_currentAttributes->resilience);
+			}
 		}
 	}
 }

@@ -5,7 +5,7 @@
 #include <array>
 
 #include "tacticode/file/IValue.hpp"
-#include "tacticode/spell/ISpell.hpp"
+#include "tacticode/spell/Spell.hpp"
 #include "tacticode/effect/IEffect.hpp"
 
 namespace tacticode
@@ -14,7 +14,10 @@ namespace tacticode
 	{
 		class IEffect; // buff, debuff, poison (cast a spell), heal (cast a spell) etc...
 	}
-
+	namespace spell
+	{
+		class ISpell;
+	}
 	namespace engine
 	{
 		class Character
@@ -46,13 +49,13 @@ namespace tacticode
 
 			static const std::array<std::string, 4> validBreeds;
 			static const std::array<std::string, 8> validAttributes;
-
+			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
 		private:
 			std::string						  m_name;
 			Breed							  m_breed;
 			int32_t							  m_currentHealth;
 			std::unique_ptr<const Attributes> m_baseAttributes;	   // Those attributes can be used by buff to make calculations
-			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
+
 			int32_t							  m_teamId;
 
 			std::vector<std::unique_ptr<effect::IEffect>> m_effects;

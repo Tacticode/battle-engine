@@ -1,12 +1,13 @@
 #include <iostream>
 #include "SpellFactory.hpp"
+#include "DamageEffect.hpp"
 
 namespace tacticode
 {
 	namespace spell
 	{
 		void SpellFactory::init() {
-			registerSpell("Fireball", std::make_shared<Spell>());
+			registerSpell("Fireball", std::make_shared<Spell>(std::make_shared<DamageEffect>()));
 			std::cerr << "spell factory initialised" << std::endl;
 		}
 
