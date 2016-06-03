@@ -66,10 +66,12 @@ namespace tacticode
 					m_cells[y].push_back(nullptr);
 				}
 			}
-			const auto & cells = *json["cells"];
+			auto _cells = json["cells"];
+			const auto & cells = *_cells;
 			for (size_t i = 0; i < cells.size(); ++i)
 			{
-				std::unique_ptr<Cell> ptr = std::make_unique<Cell>(*cells[i]);
+				auto _cells_i = cells[i];
+				std::unique_ptr<Cell> ptr = std::make_unique<Cell>(*_cells_i);
 				if (ptr->getX() >= m_width || ptr->getY() >= m_height)
 				{
 					throw file::error::InvalidConfiguration("map",

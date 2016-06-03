@@ -19,10 +19,10 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("cell", "Cell has no y");
 			}
-			if (!json.hasField("height"))
-			{
-				throw file::error::InvalidConfiguration("cell", "Cell has no height");
-			}
+			// if (!json.hasField("height"))
+			// {
+			// 	throw file::error::InvalidConfiguration("cell", "Cell has no height");
+			// }
 			if (!json["x"]->isNumeric())
 			{
 				throw file::error::InvalidConfiguration("cell", "x is not a number");
@@ -31,10 +31,10 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("cell", "y is not a number");
 			}
-			if (!json["height"]->isNumeric())
-			{
-				throw file::error::InvalidConfiguration("cell", "height is not a number");
-			}
+			// if (!json["height"]->isNumeric())
+			// {
+			// 	throw file::error::InvalidConfiguration("cell", "height is not a number");
+			// }
 			if (json["x"]->asInt() < 0)
 			{
 				throw file::error::InvalidConfiguration("cell", "x cannot be negative");
@@ -43,13 +43,13 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("cell", "y cannot be negative");
 			}
-			if (json["height"]->asInt() < 0)
-			{
-				throw file::error::InvalidConfiguration("cell", "height cannot be negative");
-			}
+			// if (json["height"]->asInt() < 0)
+			// {
+			// 	throw file::error::InvalidConfiguration("cell", "height cannot be negative");
+			// }
 			m_x      = json["x"]     ->asInt();
 			m_y      = json["y"]     ->asInt();
-			m_height = json["height"]->asInt();
+			m_height = json.getInt("height");
 
 			if (!json.hasField("accessible"))
 			{

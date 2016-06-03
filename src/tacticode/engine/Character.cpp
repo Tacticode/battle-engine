@@ -2,7 +2,9 @@
 #include "tacticode/effect/IEffect.hpp"
 #include "tacticode/spell/ISpell.hpp"
 #include "tacticode/file/error/InvalidConfiguration.hpp"
-
+#include "tacticode/utils/utils.hpp"
+#include "ICharacterScript.hpp"
+#include "tacticode/script/ScriptFactory.hpp"
 namespace tacticode
 {
 	namespace engine
@@ -27,6 +29,7 @@ namespace tacticode
 
 		Character::Character(const file::IValue& json)
 		{
+			_script = utils::Singleton<script::ScriptFactory>::GetInstance()->newCharacterScript();
 			deserialize(json);
 		}
 
@@ -93,7 +96,7 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("character", "breed field is not a string");
 			}
-			const std::string & breed = json["breed"]->asString();
+			std::string breed = json["breed"]->asString();
 			if (!isValidBreed(breed))
 			{
 				throw file::error::InvalidConfiguration("character", "breed (" + breed + ") is not a valid string");
@@ -107,7 +110,8 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("character", "spells field is not an array");
 			}
-			const auto & spells = *json["spells"];
+			auto _spells = json["spells"];
+			const auto & spells = *_spells;
 			for (int32_t i = 0; i < spells.size(); ++i)
 			{
 				if (!spells[i]->isString())
@@ -117,6 +121,7 @@ namespace tacticode
 				addSpell(spells[i]->asString());
 			}
 			deserializeAttributes(json);
+			setScript(json.getString("script", std::string("$log('unset") + __FILE__ + "': )"));
 		}
 
 		void Character::addSpell(const std::string & spellName) // TODO: Wilko
@@ -165,12 +170,13 @@ namespace tacticode
 
 		void Character::executeScript()
 		{
-			// TODO
+			// TODO			
+			_script->run();
 		}
 
 		void Character::setScript(const std::string & script)
 		{
-			m_script = script;
+			_script->setScript(script);
 		}
 
 		const std::string& Character::getScript() const

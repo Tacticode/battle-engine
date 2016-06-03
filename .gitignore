@@ -3,4 +3,6 @@
 #*#
 *.pdf
 bin/
-build/
+build/3rdparty/
+3rdparty/*
+build/*
