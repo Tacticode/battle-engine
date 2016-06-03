@@ -7,7 +7,7 @@ set_target_sources(BattleEngine
 	Context.cpp
 	v8String.hpp
 	v8String.cpp
-	Script.hpp
+	Script_.hpp
 	Script.cpp
 	CharacterScript.hpp
 	CharacterScript.cpp

@@ -11,6 +11,7 @@ namespace script{
 	}
 	Context& Context::operator=(Context const& c) {
 		_resource = c._resource;
+		return *this;
 	}
 
 

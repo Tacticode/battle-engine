@@ -7,7 +7,7 @@
 
 #include "wrapper.hpp"
 #include "Context.hpp"
-#include "Script.hpp"
+#include "Script_.hpp"
 #include "CharacterScript.hpp"
 #include "ScriptFactory.hpp"
 #include "v8String.hpp"

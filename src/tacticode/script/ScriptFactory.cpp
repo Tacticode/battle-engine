@@ -63,7 +63,7 @@ namespace script{
 		//DEBUG_LOG() << argv0 << std::endl;
 
 		v8::V8::InitializeICU();
-		v8::V8::InitializeExternalStartupData(argv0.c_str());
+		//v8::V8::InitializeExternalStartupData(argv0.c_str());
 		//Initialize platform
 		_platform = v8::platform::CreateDefaultPlatform();
 			v8::V8::InitializePlatform(_platform);

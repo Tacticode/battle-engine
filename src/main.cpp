@@ -8,12 +8,13 @@ using tacticode::utils::Singleton;
 using tacticode::utils::Configuration;
 using tacticode::script::ScriptFactory;
 #include "v8.h"
-
+#include <iostream>
 int main(int ac, char** av)
 {	
 	tacticode::engine::BattleEngine engine;
 
 	auto conf = Singleton<Configuration>::GetInstance();
+	std::cerr << av[0] << std::endl;
 	conf->set("startup_path", std::string(av[0]));
 	auto scFact = Singleton<ScriptFactory>::GetInstance();
 

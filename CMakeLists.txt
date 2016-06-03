@@ -61,7 +61,7 @@ if (WIN32)
 	file(COPY
 		${V8_ICUDATA_LIBRARY}
 		DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
-	target_link_libraries (BattleEngine ${V8_LIBRARY} "pthread")
+	target_link_libraries (BattleEngine ${V8_LIBRARY} )
 ELSE (WIN32)
 	SET(LDFLAGS -Wl,--start-group ${V8_LIBRARY} ${V8_ICUDATA_LIBRARY} -Wl,--end-group -lrt -ldl -pthread)
 	target_link_libraries (BattleEngine ${LDFLAGS})
