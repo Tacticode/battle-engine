@@ -1,8 +1,7 @@
 #include "Context.hpp"
-#include "Script_.hpp"
 
 #include "tacticode/utils/utils.hpp"
-#include "script.hpp"
+#include "script_intern.hpp"
 
 namespace tacticode{
 namespace script{

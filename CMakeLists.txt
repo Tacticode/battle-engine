@@ -5,6 +5,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 option (TODO 
   "Enable todo debugging" ON)
 include(cmake/Config.cmake)
+option (V8LINK 
+  "Enable v8 compiling" OFF)
 
 #TODO handle v8 dependency using cmake
 #include(CMakeLists-ExternalV8.txt)
@@ -16,13 +18,12 @@ include_directories("${PROJECT_SOURCE_DIR}/src")
 include_directories("${PROJECT_SOURCE_DIR}/src/jsoncpp")
 
 
+IF(V8LINK)
 #Find V8
 IF(NOT V8_DIR)
 	set(V8_DIR "${PROJECT_SOURCE_DIR}/3rdparty/v8")
 ENDIF (NOT V8_DIR)
-
 MESSAGE(STATUS "Looking for v8 in ${V8_DIR}")
-
 find_package(V8 REQUIRED)
 
 IF (V8_FOUND)
@@ -33,7 +34,7 @@ MESSAGE(STATUS "V8 library:  " ${V8_LIBRARY})
 ELSE (V8_FOUND)
 	MESSAGE( FATAL_ERROR "Please configure v8 to continue compile" )
 ENDIF(V8_FOUND)
-
+ENDIF(V8LINK)
 
 ## Find Boost Unit.test framework
 #find_package(Boost COMPONENTS unit_test_framework REQUIRED)
@@ -51,11 +52,12 @@ if(UNIX)
 	endif(COMPILER_SUPPORTS_CXX14)
 endif(UNIX)
 
-include_directories(3rdparty)
-include_directories(3rdparty/v8/include)
 add_executable(BattleEngine src/main.cpp)
 
-
+IF(V8LINK)
+add_definitions(-DV8LINK)
+include_directories(3rdparty)
+include_directories(3rdparty/v8/include)
 if (WIN32)
 	target_link_libraries(BattleEngine winmm)
 	file(COPY
@@ -70,5 +72,6 @@ ENDIF(WIN32)
 file(COPY
     ${V8_BLOB}
     DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+ENDIF(V8LINK)
 
 include_relative_list(src)

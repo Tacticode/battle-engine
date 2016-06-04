@@ -1,6 +1,6 @@
 #pragma once
 
-#include "wrapper.hpp"
+#include "Wrapper.hpp"
 #include "v8/include/v8.h"
 
 /* *******************************************************************

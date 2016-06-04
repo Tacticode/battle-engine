@@ -5,6 +5,7 @@
 #include "tacticode/utils/utils.hpp"
 #include "ICharacterScript.hpp"
 #include "tacticode/script/ScriptFactory.hpp"
+
 namespace tacticode
 {
 	namespace engine
@@ -29,7 +30,9 @@ namespace tacticode
 
 		Character::Character(const file::IValue& json)
 		{
+			#ifdef V8LINK
 			_script = utils::Singleton<script::ScriptFactory>::GetInstance()->newCharacterScript();
+			#endif
 			deserialize(json);
 		}
 
@@ -121,6 +124,7 @@ namespace tacticode
 				addSpell(spells[i]->asString());
 			}
 			deserializeAttributes(json);
+			if (_script != nullptr)
 			setScript(json.getString("script", std::string("$log('unset") + __FILE__ + "': )"));
 		}
 
@@ -171,6 +175,7 @@ namespace tacticode
 		void Character::executeScript()
 		{
 			// TODO			
+			if (_script != nullptr)
 			_script->run();
 		}
 

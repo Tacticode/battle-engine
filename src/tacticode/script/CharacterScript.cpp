@@ -1,6 +1,5 @@
 #include "tacticode/utils/utils.hpp"
-#include "script.hpp"
-#include "Script.hpp"
+#include "script_intern.hpp"
 #include <iostream>
 namespace tacticode{
 namespace script{

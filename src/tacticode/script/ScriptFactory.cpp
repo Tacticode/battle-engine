@@ -1,10 +1,8 @@
 #include "Context.hpp"
 #include "tacticode/script/ScriptFactory.hpp"
 
-#include "script.hpp"
-
+#include "script_intern.hpp"
 #include "v8/include/v8.h"
-
 #include "tacticode/utils/utils.hpp"
 
 #include <iostream>
@@ -63,7 +61,11 @@ namespace script{
 		//DEBUG_LOG() << argv0 << std::endl;
 
 		v8::V8::InitializeICU();
+		#if defined(WIN32)
 		//v8::V8::InitializeExternalStartupData(argv0.c_str());
+		#else
+		v8::V8::InitializeExternalStartupData(argv0.c_str());
+		#endif
 		//Initialize platform
 		_platform = v8::platform::CreateDefaultPlatform();
 			v8::V8::InitializePlatform(_platform);

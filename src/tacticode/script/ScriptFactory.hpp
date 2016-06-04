@@ -7,6 +7,7 @@
  * @example
  * using ScriptFactory = utils::Singleton<script::ScriptFactory>
  * ******************************************************************/
+#ifdef V8LINK
 #include "v8/include/v8.h"
 #include "libplatform/libplatform.h"
 
@@ -29,4 +30,14 @@ public:
 
 }//script
 }//tacticode
+#else
+namespace tacticode{
+namespace script{
 
+class Context;
+class ScriptFactory {
+};
+
+}//script
+}//tacticode
+#endif

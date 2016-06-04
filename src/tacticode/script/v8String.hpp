@@ -5,7 +5,7 @@
  * default encode utf-8
  * ******************************************************************/
 #include <string>
-#include "wrapper.hpp"
+#include "Wrapper.hpp"
 #include "v8/include/v8.h"
 
 namespace tacticode{

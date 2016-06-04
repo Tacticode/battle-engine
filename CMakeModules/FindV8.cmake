@@ -42,7 +42,7 @@ IF(WIN32)
 	)
 
 	FIND_LIBRARY(V8_SNAPSHOT_LIBRARY
-    NAMES v8_nosnapshotlibv8_external_snapshot
+    NAMES v8_nosnapshot libv8_external_snapshot
     PATHS
     ${V8_DIR}/
     ${V8_DIR}/lib
@@ -92,7 +92,8 @@ FIND_LIBRARY(V8_BASE_LIBRARY
     )
 	
 FIND_LIBRARY(V8_SNAPSHOT_LIBRARY
-    NAMES v8_external_snapshot libv8_external_snapshot
+    #NAMES v8_external_snapshot libv8_external_snapshot
+    NAMES v8_nosnapshot libv8_nosnapshot
     PATHS
     ${V8_DIR}/
     ${V8_DIR}/lib

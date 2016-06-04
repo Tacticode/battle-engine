@@ -1,5 +1,5 @@
 set_target_sources(BattleEngine
-	script.hpp
+	script_intern.hpp
 
 	ScriptFactory.cpp
 	ScriptFactory.hpp
@@ -7,9 +7,9 @@ set_target_sources(BattleEngine
 	Context.cpp
 	v8String.hpp
 	v8String.cpp
-	Script_.hpp
+	Script.hpp
 	Script.cpp
 	CharacterScript.hpp
 	CharacterScript.cpp
-	wrapper.hpp
+	Wrapper.hpp
 	)
