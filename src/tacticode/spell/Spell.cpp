@@ -4,7 +4,9 @@ namespace tacticode
 {
 	namespace spell
 	{
-		Spell::Spell(std::shared_ptr<IEffect> effect){
+		Spell::Spell(std::shared_ptr<IEffect> effect, std::string name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los)
+			: m_name(name), m_power(power), m_range(range), m_cooldown(cooldown), m_isActive(active), m_aoe(aoe), m_los(los)
+		{
 			m_effects.push_back(effect);
 		}
 
@@ -20,7 +22,7 @@ namespace tacticode
 		{
 			return m_name;
 		}
-		const size_t Spell::getPower() const
+		const float Spell::getPower() const
 		{
 			return m_power;
 		}

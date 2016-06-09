@@ -6,7 +6,6 @@ namespace tacticode
 	{
 		DamageEffect::DamageEffect()
 		{
-
 		}
 //add context as parameter
 		void	DamageEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, Spell spell)
