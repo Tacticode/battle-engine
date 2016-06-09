@@ -126,16 +126,17 @@ FIND_LIBRARY(V8_ICUDATA_LIBRARY
     ${V8_DIR}/out/x64.release/obj.target/src/
     )
 
+ENDIF (WIN32)
+
 FIND_LIBRARY(V8_SAMPLER_LIBRARY
     NAMES v8_libsampler libv8_libsampler
     PATHS
-    ${V8_DIR}/icu
+    ${V8_DIR}/
+    ${V8_DIR}/lib
     ${V8_DIR}/lib/icu
     ${V8_DIR}/out/x64.release/obj.target/third_party/icu/    
     ${V8_DIR}/out/x64.release/obj.target/src/
     )
-	
-ENDIF (WIN32)
 
 FIND_LIBRARY(V8_LIBBASE_LIBRARY
     NAMES v8_libbase libv8_libbase

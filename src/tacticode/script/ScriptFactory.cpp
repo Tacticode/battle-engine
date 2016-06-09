@@ -1,9 +1,11 @@
 #include "Context.hpp"
 #include "tacticode/script/ScriptFactory.hpp"
-
+#include "api/ApiCollection.hpp"
 #include "script_intern.hpp"
 #include "v8/include/v8.h"
 #include "tacticode/utils/utils.hpp"
+
+#include "tacticode/utils/Singleton.hpp"
 
 #include <iostream>
 #include <cstring>
@@ -24,26 +26,6 @@ namespace {
 	  virtual void Free(void* data, size_t) { free(data); }
 	  virtual ~ArrayBufferAllocator() {};
 	};
-
-	void injectBuiltin(v8::Isolate *isolate, std::shared_ptr<tacticode::script::Context> context) {		
-		auto global = context->get()->Global();
-		tacticode::script::v8String funcName("$log");
-
-		global->Set(funcName.get(),
-	      v8::Function::New(isolate, [](const v8::FunctionCallbackInfo<v8::Value>& args) {
-		      std::ostringstream stringStream;
-			    stringStream << "{\"type\":\"console\", \"data\":\"";
-			    if (args.Length() >= 1) {
-			    v8::HandleScope scope(args.GetIsolate());
-			    v8::Local<v8::Value> arg = args[0];
-			    v8::String::Utf8Value value(arg);
-
-			    stringStream << *value;
-			    }
-			    stringStream << "\"}";
-			    std::cerr << stringStream.str();
-	  }));
-	}
 }
 
 using tacticode::utils::Singleton;
@@ -95,7 +77,7 @@ namespace script{
 	std::shared_ptr<Context> ScriptFactory::newContext() {
 		auto c = std::make_shared<Context>(_isolate);
 		c->get()->Enter();
-		::injectBuiltin(_isolate, c);
+		utils::Singleton<api::ApiCollection>::GetInstance()->injectApi(c);
 		c->get()->Exit();
 		return c;
 	}

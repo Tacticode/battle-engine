@@ -13,3 +13,5 @@ set_target_sources(BattleEngine
 	CharacterScript.cpp
 	Wrapper.hpp
 	)
+
+include_relative_list(api)

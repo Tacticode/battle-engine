@@ -6,25 +6,48 @@
 
 ## V8
 We use v8 from google as script engine
-### 1st step
+### Unix/Linux with make support
 Please use command line
 ```
 $> 3rdparty/install.sh
+$> make -C 3rdparty/v8 x64.release -j8
 ```
+Where the x64.release is the target architecture. Note: for now FindV8.cmake has this x64.release hard coded, so just got with x64.release for now (tested by Wilko and Hengrui)
+
 To install 3rdparty dependencies. Windows portability not fully automatically supported without cygwin.
 You may have to build the project through extra command line.
 
+### Windows Command line
+The below is tested on my epi computer, no-cygwin environment
+- [instruction](https://www.chromium.org/developers/how-tos/install-depot-tools), or direct download link [here](https://storage.googleapis.com/chrome-infra/depot_tools.zip)
+- Unzip it into a folder, let's say PATH_DEPOT_TOOLS (eg. d:\somepath\ ), be sure that the full path is accessible without any space!, that is, "Program Files/depot_tools" for example, won't work
+- Go to your configuration panel, by right clicking your computer and select property -> advanced configuration -> environment variables; Then add an entry, PATH, set it to be the folder where you extracted your depot_tools.
+- Now open up a cmd terminal, validate previous step by typing gclient. You should be able to see gclient fetching some dependencies such as windows git, svn, etc. don't worry, let it run for a while
+- cd to a directory (eg. d:\somepath\ ) where you would like to download v8. Just any arbitrary place outside of the battle-engine project directory.
+```
+> set DEPOT_TOOLS_WIN_TOOLCHAIN=0
+> fetch v8
+> gclient sync
+```
+- `fetch v8`, this could take quite a while. You can see the folder size of v8 grow overtime, don't worry for it... around 20 minutes
+- `gclient sync`, this will make some update to gyp files, used to generate build of project, then you should see a line `Updating gypfiles` upon succed. Could take a while around 10 min.
+- `python.exe v8\gypfiles\gyp_v8 -Dtarget_arch=ia32`, where ia32 can be replaced by `x64` depends on your architecture. (Personally I tested only ia32)
+- Now you should be able to find an all.sln or similar under gypfiles
+- There is just maybe one more thing to do. Take a look for presence of `cygwin` under third_party of folder v8. You should find a setup_env.bat, you may need to add your path and python_path to that of `python_276` under `depot_tools`. Come back to this step if you see any error message like `bash: python command not found`.
+- Open the file using visual studio. Select the projects under folder `src`, including (v8, v8_base0) etc, so that you avoid compiling test cases. 
+- Everything compile just fine under Debug for now (tested). tho some issues remain to compile under Release.
+- Now you should find `v8/include`, `v8/somepath/Debug/`, where under debug you would find the following that are necessary
+```
+lib/icu*.lib, lib/v8_*.lib (except v8_external_snapshot.lib, v8_maybe_snapshot.lib)
+icuudt.dll
+```
+- Copy paste those under `3rdparty/v8`
 
-### 2nd step
-Build v8
+Use Cmake-gui or any ccmake to configure battle-engine.
+Check the box for V8, and configure
+All lib files should have a path except for the two binary blob files which are optional.
+Generate the project
+Open it with visual studio
+Compile and chill :D
 
-If you are on linux or mac with a make support
-```
-make -C 3rdparty/v8 x64.release -j8
-```
-
-If you are on Windows, hopefully type this in your command line will generate a visual studio project file so that then you can open it up and compile the lib
-```
-python.exe 3rdparty\v8\build\gyp_v8 -Dtarget_arch=x64
-```
-Where python.exe is probably under ```3rdparty\depot_tools\third_party```
+Note on 10/June: I am not sure yet but you may run into thread library problem upon compilation, then you may go to properties, find a option which you may choose for MD/MDT. and change it to whats unmatched in error message
