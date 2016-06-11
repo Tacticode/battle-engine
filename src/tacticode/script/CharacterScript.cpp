@@ -6,6 +6,11 @@ namespace script{
 	CharacterScript::CharacterScript() {
 		auto engine = utils::Singleton<ScriptFactory>::GetInstance();
 		_context = engine->newContext();
+		_context->embed(Context::BATTLE_ENGINE, getBattleEngineContext());
+	}
+
+	engine::BattleEngineContext *CharacterScript::getBattleEngineContext() {
+		return &_engineContext;
 	}
 
 	void CharacterScript::setScript(std::string const& script){

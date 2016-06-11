@@ -6,6 +6,8 @@
 #include "ICharacterScript.hpp"
 #include "tacticode/script/ScriptFactory.hpp"
 
+#include <cstring>
+
 namespace tacticode
 {
 	namespace engine
@@ -166,17 +168,19 @@ namespace tacticode
 			}
 		}
 
-		void Character::play()
+		void Character::play(BattleEngineContext& context)
 		{
 			applyEffects();
-			executeScript();
+			executeScript(context);
 		}
 
-		void Character::executeScript()
+		void Character::executeScript(BattleEngineContext& context)
 		{
 			// TODO			
-			if (_script != nullptr)
-			_script->run();
+			if (_script != nullptr) {
+				memcpy(_script->getBattleEngineContext(), &context, sizeof(context));
+				_script->run();
+			}
 		}
 
 		void Character::setScript(const std::string & script)

@@ -1,0 +1,55 @@
+{
+	"map": {
+    "name": "Sample map",
+    "style": "basic",
+    "width": 5,
+    "height": 5,
+    "cells" : []
+	},
+    "fightId": 1,
+    "teams":
+    [
+        {
+            "id": 1, //id team si team fight; id joueur si solo fight
+            "name": "Xx_T0to42_xX",
+            "characters":
+            [
+                {
+                    "name": "BoboTheWarrior",
+                    "breed": "elf",
+                    "health": 12,
+                    "attack": 5,
+                    "power": 0,
+                    "defense": 6,
+                    "resilience": 5,
+                    "luck": 5000,
+                    "movement": 7,
+                    "speed": 2,
+                    "spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
+                    "script": "$log(JSON.stringify({\"x\": 1}))	; "
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "k1ll3r93",
+            "characters":
+            [
+                {
+                    "name": "BibiTheMagus",
+                    "breed": "gobelin",
+                    "health": 15,
+                    "attack": 0,
+                    "power": 5,
+                    "defense": 6,
+                    "resilience": 5,
+                    "luck": 5000,
+                    "movement": 7,
+                    "speed": 2,
+                    "spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
+                    "script": "$log(JSON.stringify(getCurrentEntity()));"
+                }
+            ]
+        }
+    ]
+}

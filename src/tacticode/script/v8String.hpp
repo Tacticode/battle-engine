@@ -19,7 +19,8 @@ public:
 	 * carefult constructor not definitely exception safe
 	 * ******************************************************************/	        
 	v8String(std::string const& str);
-	~v8String();	
+	~v8String();
+	static v8::Handle<v8::String> fromString(std::string const& str);
 };
 
 }//script

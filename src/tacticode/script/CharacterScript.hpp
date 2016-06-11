@@ -12,10 +12,12 @@ namespace script{
 	class CharacterScript : public engine::ICharacterScript{
 		std::shared_ptr<Context> _context;
 		std::shared_ptr<Script> _script;
+		engine::BattleEngineContext _engineContext;
 	public:
 		CharacterScript();
 		virtual void setScript(std::string const& script);
 		virtual void run();
+		virtual engine::BattleEngineContext *getBattleEngineContext();
 		virtual ~CharacterScript();
 	};
 }//script

@@ -65,7 +65,12 @@ namespace tacticode
 		{
 			for (auto& character : m_characters)
 			{
-				character->play();
+				BattleEngineContext context;
+
+				context.team = NULL; //todo
+				context.character = &(*character);
+
+				character->play(context);
 				if (gameOver())
 				{
 					return false;

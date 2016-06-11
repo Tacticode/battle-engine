@@ -51,7 +51,7 @@ namespace tacticode
 			static const std::array<std::string, 4> validBreeds;
 			static const std::array<std::string, 8> validAttributes;
 			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
-		private:
+		public:
 			std::string						  m_name;
 			Breed							  m_breed;
 			int32_t							  m_currentHealth;
@@ -74,8 +74,8 @@ namespace tacticode
 			void applyEffects(); // TODO
 			void applyDamage(int32_t damages);
 			void applyHeal(int32_t heal);
-			void play();
-			void executeScript(); // TODO
+			void play(BattleEngineContext& );
+			void executeScript(BattleEngineContext& ); // TODO
 
 			bool isValidBreed(const std::string & breed);
 			Breed stringToBreed(const std::string & breed);
