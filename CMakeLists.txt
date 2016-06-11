@@ -40,7 +40,7 @@ ENDIF(V8LINK)
 #find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 #find_package(GMock REQUIRED)
 
-set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall -g")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 if(UNIX)
 	include(CheckCXXCompilerFlag)
@@ -60,18 +60,31 @@ include_directories(3rdparty)
 include_directories(3rdparty/v8/include)
 if (WIN32)
 	target_link_libraries(BattleEngine winmm)
-	file(COPY
-		${V8_ICUDATA_LIBRARY}
-		DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+
+	#use multithread static debug, as to compiled by v8
+	set(CMAKE_CXX_FLAGS_DEBUG
+  "/DWIN32 /Mtd"
+	)
+	#ICU DATA is actually not necessary
+	IF(V8_ICUDATA_LIBRARY)
+		file(COPY
+			${V8_ICUDATA_LIBRARY}
+			DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+	ENDIF(V8_ICUDATA_LIBRARY)
 	target_link_libraries (BattleEngine ${V8_LIBRARY} )
+
 ELSE (WIN32)
 	SET(LDFLAGS -Wl,--start-group ${V8_LIBRARY} ${V8_ICUDATA_LIBRARY} -Wl,--end-group -lrt -ldl -pthread)
 	target_link_libraries (BattleEngine ${LDFLAGS})
 ENDIF(WIN32)
 
+#blob shouldn't be necessary neither
+IF (V8_BLOB)
 file(COPY
     ${V8_BLOB}
     DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+ENDIF (V8_BLOB)
+
 ENDIF(V8LINK)
 
 include_relative_list(src)
