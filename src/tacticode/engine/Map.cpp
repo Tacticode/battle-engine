@@ -66,8 +66,8 @@ namespace tacticode
 					m_cells[y].push_back(nullptr);
 				}
 			}
-			auto _cells = json["cells"];
-			const auto & cells = *_cells;
+			auto ptrCells = json["cells"];
+			const auto & cells = *ptrCells;
 			for (size_t i = 0; i < cells.size(); ++i)
 			{
 				auto _cells_i = cells[i];
@@ -83,6 +83,17 @@ namespace tacticode
 						"the same cell is defined twice: [" + std::to_string(ptr->getX()) + "," + std::to_string(ptr->getY()) + "]");
 				}
 				m_cells[ptr->getY()][ptr->getX()] = std::move(ptr);
+			}
+			for (size_t y = 0; y < m_cells.size(); ++y)
+			{
+				for (size_t x = 0; x < m_cells[y].size(); ++x)
+				{
+					if (m_cells[y][x] == nullptr)
+					{
+						throw file::error::InvalidConfiguration("map",
+							"a cell is not defined: [" + std::to_string(x) + "," + std::to_string(y) + "]");
+					}
+				}
 			}
 		}
 
