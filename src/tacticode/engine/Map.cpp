@@ -8,6 +8,9 @@ namespace tacticode
 {
 	namespace engine
 	{
+		const int Map::fieldOfViewHeightLimit = 2;
+		const int Map::moveHeightLimit        = 2;
+
 		void Map::deserialize(const file::IValue & json)
 		{
 			if (!json.isObject())
@@ -58,12 +61,12 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("map", "cells is not an array");
 			}
 			// initializing the Map before allow us to read an unordered "cells" array
-			for (size_t y = 0; y < m_height; ++y)
+			for (int y = 0; y < m_height; ++y)
 			{
-				m_cells.push_back(Row());
-				for (size_t x = 0; x < m_width; ++x)
+				m_field.push_back(Row());
+				for (int x = 0; x < m_width; ++x)
 				{
-					m_cells[y].push_back(nullptr);
+					m_field[y].push_back(nullptr);
 				}
 			}
 			auto ptrCells = json["cells"];
@@ -77,18 +80,18 @@ namespace tacticode
 					throw file::error::InvalidConfiguration("map",
 						"cell is out of bound: [" + std::to_string(ptr->getX()) + "," + std::to_string(ptr->getY()) + "]");
 				}
-				if (m_cells[ptr->getY()][ptr->getX()] != nullptr)
+				if (m_field[ptr->getY()][ptr->getX()] != nullptr)
 				{
 					throw file::error::InvalidConfiguration("map",
 						"the same cell is defined twice: [" + std::to_string(ptr->getX()) + "," + std::to_string(ptr->getY()) + "]");
 				}
-				m_cells[ptr->getY()][ptr->getX()] = std::move(ptr);
+				m_field[ptr->getY()][ptr->getX()] = std::move(ptr);
 			}
-			for (size_t y = 0; y < m_cells.size(); ++y)
+			for (size_t y = 0; y < m_field.size(); ++y)
 			{
-				for (size_t x = 0; x < m_cells[y].size(); ++x)
+				for (size_t x = 0; x < m_field[y].size(); ++x)
 				{
-					if (m_cells[y][x] == nullptr)
+					if (m_field[y][x] == nullptr)
 					{
 						throw file::error::InvalidConfiguration("map",
 							"a cell is not defined: [" + std::to_string(x) + "," + std::to_string(y) + "]");
@@ -100,6 +103,87 @@ namespace tacticode
 		Map::Map(const file::IValue& json)
 		{
 			deserialize(json);
+		}
+		int Map::getWidth() const
+		{
+			return m_width;
+		}
+		int Map::getHeight() const
+		{
+			return m_height;
+		}
+		Cell & Map::getCell(int x, int y)
+		{
+			return *m_field[y][x];
+		}
+		const Cell & Map::getCell(int x, int y) const
+		{
+			return *m_field[y][x];
+		}
+		bool Map::isCellFree(int x, int y) const
+		{
+			return m_field[y][x]->getCharacter() == nullptr;
+		}
+		bool Map::isCellAccessible(int x, int y) const
+		{
+			return m_field[y][x]->isAccessible();
+		}
+		bool Map::hasCellLineOfSight(int x, int y) const
+		{
+			return m_field[y][x]->hasLineOfSight();
+		}
+
+		// Bresenham's line algorithm
+		bool Map::hasCellLineOfSightOnCell(int originX, int originY, int targetX, int targetY) const
+		{
+			int aX = originX < targetX ? originX : targetX;
+			int bX = originX > targetX ? originX : targetX;
+			int aY = originY < targetY ? originY : targetY;
+			int bY = originY > targetY ? originY : targetY;
+			int originHeight = m_field[aY][aX]->getHeight();
+			int targetHeight = m_field[bY][bX]->getHeight();
+
+			float deltaX = static_cast<float>(bX - aX);
+			if (std::abs(deltaX) < 0.00001) // avoid division by zero
+			{
+				for (int y = aY; y <= bY; ++y)
+				{
+					if (!m_field[y][aX]->hasLineOfSight()
+							|| originHeight + Map::fieldOfViewHeightLimit >= m_field[y][aX]->getHeight())
+					{
+						return false;
+					}
+				}
+				return true;
+			}
+			float deltaY = static_cast<float>(bY - aY);
+			float error = -1.0f;
+			float deltaError = std::abs(deltaY / deltaX);
+			int y = aY;
+			for (int x = aX; x <= bX - 1 && y <= bY; ++x)
+			{
+				// x/y on the way
+				if (!m_field[y][x]->hasLineOfSight()
+						|| originHeight + Map::fieldOfViewHeightLimit >= m_field[y][x]->getHeight())
+				{
+					return false;
+				}
+				error = error + deltaError;
+				if (error >= 0.0f)
+				{
+					++y;
+					error -= 1.0f;
+				}
+			}
+			return true;
+		}
+
+		// Dijkstra
+		std::stack<Cell &> Map::shortestWayToCell(int originX, int originY, int targetX, int targetY)
+		{
+			auto path = std::stack<Cell &>();
+
+			return std::move(path);
 		}
 	}
 }

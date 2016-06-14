@@ -6,22 +6,29 @@ namespace tacticode
 {
 	namespace engine
 	{
+		class Character;
+
 		class Cell
 		{
-			size_t m_x;
-			size_t m_y;
-			size_t m_height;
+			int    m_x;
+			int    m_y;
+			int    m_height;
 			bool   m_accessible;
 			bool   m_lineOfSight;
+			std::shared_ptr<Character> m_character;
 
 		public:
 			Cell(const file::IValue& json);
 			
-			size_t getX          () const;
-			size_t getY          () const;
-			size_t getHeight     () const;
+			int    getX          () const;
+			int    getY          () const;
+			int    getHeight     () const;
+
+			std::shared_ptr<Character>       getCharacter();
+			const std::shared_ptr<Character> getCharacter() const;
 
 			bool   isAccessible  () const;
+			bool   isFree()         const;
 			bool   hasLineOfSight() const;
 		};
 	}

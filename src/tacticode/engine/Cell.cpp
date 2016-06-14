@@ -72,26 +72,38 @@ namespace tacticode
 			m_lineOfSight = json["los"]->asBool();
 		}
 
-		size_t Cell::getX() const
+		int Cell::getX() const
 		{
 			return m_x;
 		}
 
-		size_t Cell::getY() const
+		int Cell::getY() const
 		{
 			return m_y;
 		}
-		size_t Cell::getHeight() const
+		int Cell::getHeight() const
 		{
 			return m_height;
+		}
+		std::shared_ptr<Character> Cell::getCharacter()
+		{
+			return m_character;
+		}
+		const std::shared_ptr<Character> Cell::getCharacter() const
+		{
+			return m_character;
 		}
 		bool Cell::isAccessible() const
 		{
 			return m_accessible;
 		}
+		bool Cell::isFree() const
+		{
+			return m_character == nullptr;
+		}
 		bool Cell::hasLineOfSight() const
 		{
-			return m_lineOfSight;
+			return m_lineOfSight && isFree();
 		}
 	}
 }
