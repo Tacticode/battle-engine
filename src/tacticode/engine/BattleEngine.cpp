@@ -32,18 +32,32 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("root", "teams field is not an array");
 			}
-			auto _teams = json["teams"];
-			auto & teams = *_teams;
-			for (size_t i = 0; i < teams.size(); ++i) // no std::array :(
+			auto teams = json["teams"];
+			for (size_t i = 0; i < teams->size(); ++i) // no std::array :(
 			{
-				auto _teams_i = teams[i];
-				m_teams.push_back(std::make_shared<Team>(*_teams_i));
+				auto currentTeam = (*teams)[i];
+				m_teams.push_back(std::make_shared<Team>(*currentTeam, m_map));
 			}
 
 			for (auto & t : m_teams)
 			{
 				for (auto & c : t->getCharacters())
 				{
+					const Vector2i & position = c->getPosition();
+					if (!m_map->isCellOnMap(position.x, position.y))
+					{
+						throw file::error::InvalidConfiguration("root", "character " + c->getName() + " has an invalid position");
+					}
+					auto & cell = m_map->getCell(position);
+					if (!cell.isFree())
+					{
+						throw file::error::InvalidConfiguration("root", "character tried to access an already taken cell: " + c->getName());
+					}
+					if (!cell.isAccessible())
+					{
+						throw file::error::InvalidConfiguration("root", "character position target a non accessible cell: " + c->getName());
+					}
+					cell.setCharacterId(c->getId());
 					m_characters.push_back(c);
 				}
 			}

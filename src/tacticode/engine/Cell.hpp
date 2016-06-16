@@ -10,24 +10,26 @@ namespace tacticode
 
 		class Cell
 		{
-			int    m_x;
-			int    m_y;
-			int    m_height;
-			bool   m_accessible;
-			bool   m_lineOfSight;
-			std::shared_ptr<Character> m_character;
+			int     m_x;
+			int     m_y;
+			int     m_height;
+			bool    m_accessible;
+			bool    m_lineOfSight;
+			bool    m_isFree;
+			int32_t m_characterId;
 
 		public:
 			Cell(const file::IValue& json);
 			
-			int    getX          () const;
-			int    getY          () const;
-			int    getHeight     () const;
+			int    getX()      const;
+			int    getY()      const;
+			int    getHeight() const;
 
-			std::shared_ptr<Character>       getCharacter();
-			const std::shared_ptr<Character> getCharacter() const;
+			int32_t getCharacterId() const;
+			void    setCharacterId(int32_t characterId);
+			void    unsetCharacterId();
 
-			bool   isAccessible  () const;
+			bool   isAccessible()   const;
 			bool   isFree()         const;
 			bool   hasLineOfSight() const;
 		};
