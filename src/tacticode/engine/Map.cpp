@@ -225,7 +225,7 @@ namespace tacticode
 			float error = -1.0f;
 			float deltaError = std::abs(deltaY / deltaX);
 			int y = aY;
-			for (int x = aX; x <= bX - 1 && y <= bY; ++x)
+			for (int x = aX; x <= bX - 1; ++x)
 			{
 				// x/y on the way
 				if (!m_field[y][x]->hasLineOfSight()
