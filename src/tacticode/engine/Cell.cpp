@@ -1,5 +1,6 @@
 #include "tacticode/file/error/InvalidConfiguration.hpp"
 #include "Cell.hpp"
+#include "Character.hpp"
 
 namespace tacticode
 {
@@ -81,26 +82,39 @@ namespace tacticode
 		{
 			return m_y;
 		}
+
 		int Cell::getHeight() const
 		{
 			return m_height;
 		}
-		std::shared_ptr<Character> Cell::getCharacter()
+
+		int32_t Cell::getCharacterId() const
 		{
-			return m_character;
+			return m_characterId;
 		}
-		const std::shared_ptr<Character> Cell::getCharacter() const
+
+		void Cell::setCharacterId(int32_t characterId)
 		{
-			return m_character;
+			m_characterId = characterId;
+			m_isFree = false;
 		}
+
+		void Cell::unsetCharacterId()
+		{
+			m_characterId = -1;
+			m_isFree = true;
+		}
+
 		bool Cell::isAccessible() const
 		{
 			return m_accessible;
 		}
+
 		bool Cell::isFree() const
 		{
-			return m_character == nullptr;
+			return m_isFree;
 		}
+
 		bool Cell::hasLineOfSight() const
 		{
 			return m_lineOfSight && isFree();

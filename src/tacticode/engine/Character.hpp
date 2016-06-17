@@ -21,6 +21,8 @@ namespace tacticode
 	}
 	namespace engine
 	{
+		class Map;
+
 		class Character
 		{
 		public:
@@ -50,22 +52,22 @@ namespace tacticode
 
 			static const std::array<std::string, 4> validBreeds;
 			static const std::array<std::string, 8> validAttributes;
+			Vector2i                          m_position;
 			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
-		public:
 			std::string						  m_name;
 			Breed							  m_breed;
 			int32_t							  m_currentHealth;
 			std::unique_ptr<const Attributes> m_baseAttributes;	   // Those attributes can be used by buff to make calculations
 
+			int32_t                           m_id;
 			int32_t							  m_teamId;
+			std::shared_ptr<Map>              m_map;
 
 			std::vector<std::unique_ptr<effect::IEffect>> m_effects;
 			std::vector<std::unique_ptr<spell::ISpell>>	  m_spells;
-			std::string m_script;
-
-			std::shared_ptr<ICharacterScript> _script;
+			std::shared_ptr<ICharacterScript>             m_script;
 		public:
-			explicit Character(const file::IValue& json);
+			explicit Character(const file::IValue& json, std::shared_ptr<Map> map);
 
 			void deserialize(const file::IValue& json);
 			void deserializeAttributes(const file::IValue& json);
@@ -81,11 +83,29 @@ namespace tacticode
 			Breed stringToBreed(const std::string & breed);
 
 			void setScript(const std::string & script);
-			const std::string& getScript() const;
-			int32_t getTeamId() const;
+			const std::shared_ptr<ICharacterScript> & getScript() const;
+
+			Attributes &        getCurrentAttributes();
+			const Attributes &  getCurrentAttributes() const;
+			const std::string & getName()              const;
+			Breed               getBreed()             const;
+			int32_t	            getCurrentHealth()     const;
+			const Attributes &  getBaseAttributes()    const;
+			int32_t             getId()                const;
+			int32_t             getTeamId()            const;
+
+			const std::vector<std::unique_ptr<effect::IEffect>> & getEffects() const;
+			const std::vector<std::unique_ptr<spell::ISpell>> & getSpells() const;
+
+
+			const Vector2i & getPosition() const;
+			void setPosition(int x, int y);
+			void setPosition(const Vector2i & position);
 
 			void addSpell(const std::string & spellName); // TODO: Wilko
 			void addEffect(std::unique_ptr<effect::IEffect> effect);
+
+			bool moveToCell(const Vector2i & position);
 		};
 
 	}

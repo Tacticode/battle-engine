@@ -74,7 +74,7 @@ namespace tacticode
 			for (size_t i = 0; i < cells.size(); ++i)
 			{
 				auto _cells_i = cells[i];
-				std::unique_ptr<Cell> ptr = std::make_unique<Cell>(*_cells_i);
+				std::shared_ptr<Cell> ptr = std::make_shared<Cell>(*_cells_i);
 				if (ptr->getX() >= m_width || ptr->getY() >= m_height)
 				{
 					throw file::error::InvalidConfiguration("map",
@@ -104,33 +104,98 @@ namespace tacticode
 		{
 			deserialize(json);
 		}
+
 		int Map::getWidth() const
 		{
 			return m_width;
 		}
+
 		int Map::getHeight() const
 		{
 			return m_height;
 		}
+
 		Cell & Map::getCell(int x, int y)
 		{
 			return *m_field[y][x];
 		}
+
 		const Cell & Map::getCell(int x, int y) const
 		{
 			return *m_field[y][x];
 		}
+
+		Cell & Map::getCell(const Vector2i & position)
+		{
+			return *m_field[position.y][position.x];
+		}
+
+		const Cell & Map::getCell(const Vector2i & position) const
+		{
+			return *m_field[position.y][position.x];
+		}
+
+		std::shared_ptr<Cell> Map::getCellPtr(int x, int y)
+		{
+			return m_field[y][x];
+		}
+
 		bool Map::isCellFree(int x, int y) const
 		{
-			return m_field[y][x]->getCharacter() == nullptr;
+			return m_field[y][x]->isFree();
 		}
+
+		bool Map::isCellFree(const Vector2i & position) const
+		{
+			return isCellFree(position.x, position.y);
+		}
+
 		bool Map::isCellAccessible(int x, int y) const
 		{
 			return m_field[y][x]->isAccessible();
 		}
+
+		bool Map::isCellAccessible(const Vector2i & position) const
+		{
+			return isCellAccessible(position.x, position.y);
+		}
+
 		bool Map::hasCellLineOfSight(int x, int y) const
 		{
 			return m_field[y][x]->hasLineOfSight();
+		}
+
+		bool Map::hasCellLineOfSight(const Vector2i & position) const
+		{
+			return hasCellLineOfSight(position.x, position.y);
+		}
+
+		bool Map::isCellOnMap(int x, int y) const
+		{
+			if (0 <= y && x < m_width && 0 <= y && y < m_height)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		bool Map::isCellOnMap(const Vector2i & position) const
+		{
+			return isCellOnMap(position.x, position.y);
+		}
+
+		bool Map::moveCharacterToCell(const Character & character, const Vector2i & position)
+		{
+			if (std::abs(position.x - character.getPosition().x) + std::abs(position.y - character.getPosition().y) != 1)
+			{
+				return false;
+			}
+			if (!isCellOnMap(position) || !isCellFree(position) || !isCellAccessible(position))
+			{
+				return false;
+			}
+			m_field[position.y][position.x]->setCharacterId(character.getId());
+			return true;
 		}
 
 		// Bresenham's line algorithm
@@ -178,11 +243,11 @@ namespace tacticode
 			return true;
 		}
 
-		// Dijkstra
-		std::stack<Cell &> Map::shortestWayToCell(int originX, int originY, int targetX, int targetY)
+		// Dijkstra algorithm
+		std::stack<std::shared_ptr<Cell>> Map::shortestWayToCell(int originX, int originY, int targetX, int targetY)
 		{
-			auto path = std::stack<Cell &>();
-
+			auto path = std::stack<std::shared_ptr<Cell>>();
+			// TODO
 			return std::move(path);
 		}
 	}

@@ -49,11 +49,12 @@ namespace tacticode
 			{
 				auto _characters_i = characters[i];
 				auto & character = *_characters_i;
-				m_characters.push_back(std::make_shared<Character>(character));
+				m_characters.push_back(std::make_shared<Character>(character, m_map));
 			}
 		}
 
-		Team::Team(const file::IValue& json)
+		Team::Team(const file::IValue& json, std::shared_ptr<Map> map)
+			: m_map(map)
 		{
 			deserialize(json);
 		}

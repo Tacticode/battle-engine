@@ -1,4 +1,5 @@
 #include "Character.hpp"
+#include "Map.hpp"
 #include "tacticode/effect/IEffect.hpp"
 #include "tacticode/spell/ISpell.hpp"
 #include "tacticode/file/error/InvalidConfiguration.hpp"
@@ -30,10 +31,11 @@ namespace tacticode
 		{
 		}
 
-		Character::Character(const file::IValue& json)
+		Character::Character(const file::IValue& json, std::shared_ptr<Map> map)
+			: m_map(map)
 		{
 			#ifdef V8LINK
-			_script = utils::Singleton<script::ScriptFactory>::GetInstance()->newCharacterScript();
+			m_script = utils::Singleton<script::ScriptFactory>::GetInstance()->newCharacterScript();
 			#endif
 			deserialize(json);
 		}
@@ -93,6 +95,15 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("character", "name field is not a string");
 			}
 			m_name = json["name"]->asString();
+			if (!json.hasField("id"))
+			{
+				throw file::error::InvalidConfiguration("character", "character has no id");
+			}
+			if (!json["id"]->isNumeric())
+			{
+				throw file::error::InvalidConfiguration("character", "id field is not a number");
+			}
+			m_id = json["id"]->asInt();
 			if (!json.hasField("breed"))
 			{
 				throw file::error::InvalidConfiguration("character", "character has no breed");
@@ -117,7 +128,7 @@ namespace tacticode
 			}
 			auto _spells = json["spells"];
 			const auto & spells = *_spells;
-			for (int32_t i = 0; i < spells.size(); ++i)
+			for (size_t i = 0; i < spells.size(); ++i)
 			{
 				if (!spells[i]->isString())
 				{
@@ -126,8 +137,36 @@ namespace tacticode
 				addSpell(spells[i]->asString());
 			}
 			deserializeAttributes(json);
-			if (_script != nullptr)
-			setScript(json.getString("script", std::string("$log('unset") + __FILE__ + "': )"));
+			if (m_script != nullptr)
+			{
+				setScript(json.getString("script", std::string("$log('unset") + __FILE__ + "': )"));
+			}
+			if (!json.hasField("position"))
+			{
+				throw file::error::InvalidConfiguration("character", "character has no position");
+			}
+			if (!json["position"]->isArray())
+			{
+				throw file::error::InvalidConfiguration("character", "position field is not an array");
+			}
+			auto positionPtr = json["position"];
+			auto & position = *positionPtr;
+			if (position.size() != 2)
+			{
+				throw file::error::InvalidConfiguration("character", "position field is not an array of two numbers");
+			}
+			else if (!position[0]->isNumeric() || !position[1]->isNumeric())
+			{
+				throw file::error::InvalidConfiguration("character", "position field is not an array of numbers");
+			}
+			int posX = position[0]->asInt();
+			int posY = position[1]->asInt();
+			if (posX < 0 || posY < 0)
+			{
+				throw file::error::InvalidConfiguration("character", "position field is not an array of positive numbers");
+			}
+			m_position.x = posX;
+			m_position.y = posY;
 		}
 
 		void Character::addSpell(const std::string & spellName) // TODO: Wilko
@@ -138,7 +177,7 @@ namespace tacticode
 
 		Character::Breed Character::stringToBreed(const std::string & breed)
 		{
-			for (int32_t i = 0; i < validBreeds.size(); ++i)
+			for (size_t i = 0; i < validBreeds.size(); ++i)
 			{
 				if (breed == validBreeds[i])
 				{
@@ -177,20 +216,56 @@ namespace tacticode
 		void Character::executeScript(BattleEngineContext& context)
 		{
 			// TODO			
-			if (_script != nullptr) {
-				memcpy(_script->getBattleEngineContext(), &context, sizeof(context));
-				_script->run();
+			if (m_script != nullptr)
+			{
+				memcpy(m_script->getBattleEngineContext(), &context, sizeof(context));
+				m_script->run();
 			}
 		}
 
 		void Character::setScript(const std::string & script)
 		{
-			_script->setScript(script);
+			m_script->setScript(script);
 		}
 
-		const std::string& Character::getScript() const
+		const std::shared_ptr<ICharacterScript> & Character::getScript() const
 		{
 			return m_script;
+		}
+
+		Character::Attributes & Character::getCurrentAttributes()
+		{
+			return *m_currentAttributes;
+		}
+
+		const Character::Attributes & Character::getCurrentAttributes() const
+		{
+			return *m_currentAttributes;
+		}
+
+		const std::string & Character::getName() const
+		{
+			return m_name;
+		}
+
+		Character::Breed Character::getBreed() const
+		{
+			return m_breed;
+		}
+
+		int32_t Character::getCurrentHealth() const
+		{
+			return m_currentHealth;
+		}
+
+		const Character::Attributes & Character::getBaseAttributes() const
+		{
+			return *m_baseAttributes;
+		}
+
+		int32_t Character::getId() const
+		{
+			return m_id;
 		}
 
 		int32_t Character::getTeamId() const
@@ -198,9 +273,40 @@ namespace tacticode
 			return m_teamId;
 		}
 
+		const std::vector<std::unique_ptr<effect::IEffect>>& Character::getEffects() const
+		{
+			return m_effects;
+		}
+
+		const std::vector<std::unique_ptr<spell::ISpell>>& Character::getSpells() const
+		{
+			return m_spells;
+		}
+
+		const Vector2i & Character::getPosition() const
+		{
+			return m_position;
+		}
+
+		void Character::setPosition(int x, int y)
+		{
+			m_position.x = x;
+			m_position.y = y;
+		}
+
+		void Character::setPosition(const Vector2i & position)
+		{
+			m_position = position;
+		}
+
 		void Character::addEffect(std::unique_ptr<effect::IEffect> effect)
 		{
 			m_effects.push_back(std::move(effect));
+		}
+
+		bool Character::moveToCell(const Vector2i & position)
+		{
+			return m_map->moveCharacterToCell(*this, position);
 		}
 
 		//todo : prevoir cas spéciaux si besoin
