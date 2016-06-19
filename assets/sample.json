@@ -41,6 +41,7 @@
             "characters":
             [
                 {
+		    "id": 12344,
                     "name": "BoboTheWarrior",
                     "breed": "elf",
                     "health": 12,
@@ -52,7 +53,8 @@
                     "movement": 7,
                     "speed": 2,
                     "spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
-                    "script": "$log('I am elf, BoboTheWarrior'); "
+                    "script": "$log('I am elf, BoboTheWarrior'); ",
+		    "position": [0, 0]
                 }
             ]
         },
@@ -62,6 +64,7 @@
             "characters":
             [
                 {
+		    "id": 12345,
                     "name": "BibiTheMagus",
                     "breed": "gobelin",
                     "health": 15,
@@ -73,7 +76,8 @@
                     "movement": 7,
                     "speed": 2,
                     "spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
-                    "script": ";"
+                    "script": ";",
+		    "position": [2, 2]
                 }
             ]
         }
