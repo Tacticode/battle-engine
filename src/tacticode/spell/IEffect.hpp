@@ -4,6 +4,9 @@
 #include <list>
 #include <memory>
 #include "tacticode/engine/Character.hpp"
+#include "tacticode/engine/Cell.hpp"
+#include "tacticode/engine/Map.hpp"
+#include "tacticode/engine/BattleEngine.hpp"
 
 namespace tacticode
 {

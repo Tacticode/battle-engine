@@ -109,5 +109,14 @@ namespace tacticode
 		{
 			return (m_map);
 		}
+		std::shared_ptr<Character> BattleEngine::getCharacter(int32_t characterId)
+		{
+			for (int i = 0; i < m_characters.size(); ++i)
+			{
+				if (m_characters[i]->getId() == characterId)
+					return (m_characters[i]);
+			}
+			return (nullptr);
+		}
 	}
 }

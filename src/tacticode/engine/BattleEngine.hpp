@@ -34,6 +34,7 @@ namespace tacticode
 			bool round();
 			bool gameOver(); //TODO set gameOver datas and return true, if game is over
 			std::shared_ptr<Map> getMap();
+			std::shared_ptr<Character> getCharacter(int32_t characterId);
 		};
 	}
 }
