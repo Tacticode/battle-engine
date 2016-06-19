@@ -11,7 +11,7 @@ namespace tacticode
 		public:
 			HealEffect();
 			virtual ~HealEffect() = default;
-			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, Spell spell);
+			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell);
 		};
 	}
 }

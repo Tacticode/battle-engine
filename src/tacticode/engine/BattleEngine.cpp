@@ -105,5 +105,9 @@ namespace tacticode
 				++i;
 			//TODO: use datas created by gameOver();
 		}
+		std::shared_ptr<Map> BattleEngine::getMap()
+		{
+			return (m_map);
+		}
 	}
 }

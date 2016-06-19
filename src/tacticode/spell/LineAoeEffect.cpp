@@ -8,8 +8,7 @@ namespace tacticode
 			: m_aoe(aoe)
 		{
 		}
-//add context as parameter
-		void	LineAoeEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, Spell spell)
+		void	LineAoeEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell)
 		{
 			int los = 1;
 			if (los == true)
@@ -18,7 +17,6 @@ namespace tacticode
 				for (size_t i = 0; i < m_aoe; ++i)
 				{
 					if (cell->getCharacter())
-
 				}
 				// if (target)
 				//	target->applyDamage(spell.getPower() * caster->m_currentAttributes->power / target->m_currentAttributes->resilience);

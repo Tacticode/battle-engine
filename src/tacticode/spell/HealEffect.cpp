@@ -9,7 +9,7 @@ namespace tacticode
 
 		}
 //add context as parameter
-		void	HealEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, Spell spell)
+		void	HealEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell)
 		{
 			int los = 1;
 			if (los == true)

@@ -9,12 +9,11 @@ namespace tacticode
 		{
 			m_effects.push_back(effect);
 		}
-
-		void Spell::castSpell()
+		void Spell::castSpell(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine)
 		{
 			for (std::list<std::shared_ptr<IEffect> >::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
 			{
-				//(*it)->applyEffect(context.caster, context.cell, this);
+				(*it)->applyEffect(caster, cell, engine, *this);
 			}
 		}
 

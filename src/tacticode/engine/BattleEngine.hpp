@@ -20,9 +20,9 @@ namespace tacticode
 		{
 		private:
 			bool m_isGameOver;
-			std::vector<std::shared_ptr<Team> >      m_teams;
+			std::vector<std::shared_ptr<Team> >		 m_teams;
 			std::vector<std::shared_ptr<Character> > m_characters;
-			std::shared_ptr<Map>                    m_map;
+			std::shared_ptr<Map>					m_map;
 
 		public:
 			explicit BattleEngine();
@@ -33,6 +33,7 @@ namespace tacticode
 			void game();
 			bool round();
 			bool gameOver(); //TODO set gameOver datas and return true, if game is over
+			std::shared_ptr<Map> getMap();
 		};
 	}
 }
