@@ -11,8 +11,7 @@ namespace tacticode{
   {
 
 	class SpellFactory {
-	  std::map<std::string, std::shared_ptr<Spell> >
-	  _dictionary;
+	  std::map<std::string, std::shared_ptr<Spell>> m_dictionary;
 	public:
 	  // initialise spell lists
 	  // temporary for test
