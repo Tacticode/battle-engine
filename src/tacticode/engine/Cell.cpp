@@ -6,6 +6,9 @@ namespace tacticode
 {
 	namespace engine
 	{
+		Cell::Cell(int x, int y){
+
+		}
 		Cell::Cell(const file::IValue& json)
 		{
 			if (!json.isObject())

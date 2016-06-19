@@ -55,7 +55,7 @@ namespace tacticode
 			Vector2i                          m_position;
 			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
 			std::string						  m_name;
-			Breed							  m_breed;
+			Breed							  m_breed;			
 			int32_t							  m_currentHealth;
 			std::unique_ptr<const Attributes> m_baseAttributes;	   // Those attributes can be used by buff to make calculations
 
@@ -68,6 +68,7 @@ namespace tacticode
 			std::shared_ptr<ICharacterScript>             m_script;
 		public:
 			explicit Character(const file::IValue& json, std::shared_ptr<Map> map);
+			std::string const& getBreedString() const;
 
 			void deserialize(const file::IValue& json);
 			void deserializeAttributes(const file::IValue& json);

@@ -76,7 +76,7 @@
                     "movement": 7,
                     "speed": 2,
                     "spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
-                    "script": ";",
+                    "script": "function onTurn(){moveToCell(1, 1);};",
 		    "position": [2, 2]
                 }
             ]

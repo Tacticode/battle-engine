@@ -91,6 +91,9 @@ namespace tacticode
 			{
 				for (size_t x = 0; x < m_field[y].size(); ++x)
 				{
+					if (m_field[y][x] == nullptr) {
+						m_field[y][x] = std::make_shared<Cell>(x, y);
+					}
 					if (m_field[y][x] == nullptr)
 					{
 						throw file::error::InvalidConfiguration("map",
