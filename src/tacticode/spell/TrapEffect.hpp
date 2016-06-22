@@ -12,7 +12,7 @@ namespace tacticode
 		{
 			std::list<std::shared_ptr<IEffect> > m_effects;
 		public:
-			TrapEffect(std::list<std::shared_ptr<IEffect> > effects);
+			TrapEffect(std::shared_ptr<IEffect>	 effects);
 			virtual ~TrapEffect() = default;
 			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell);
 		};

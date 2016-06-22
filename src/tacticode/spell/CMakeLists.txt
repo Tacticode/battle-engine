@@ -6,8 +6,10 @@ set_target_sources(BattleEngine
 	HealEffect.hpp
 	SpellFactory.hpp
 	TrapEffect.hpp
+	LineAoeEffect.hpp
 	Trap.hpp
 	Trap.cpp
+	LineAoeEffect.cpp
 	TrapEffect.cpp
 	SpellFactory.cpp
 	DamageEffect.cpp
