@@ -19,6 +19,7 @@ namespace tacticode
 			int32_t m_characterId;
 
 		public:
+			Cell(int x, int y);
 			Cell(const file::IValue& json);
 			
 			int    getX()      const;

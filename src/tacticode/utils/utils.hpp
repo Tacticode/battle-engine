@@ -7,4 +7,5 @@
 
 #include "Singleton.hpp"
 #include "Configuration.hpp"
+#include "FightLogger.hpp"
 #include "Debug.hpp"

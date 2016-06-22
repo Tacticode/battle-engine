@@ -91,6 +91,9 @@ namespace tacticode
 			{
 				for (size_t x = 0; x < m_field[y].size(); ++x)
 				{
+					if (m_field[y][x] == nullptr) {
+						m_field[y][x] = std::make_shared<Cell>(x, y);
+					}
 					if (m_field[y][x] == nullptr)
 					{
 						throw file::error::InvalidConfiguration("map",
@@ -225,7 +228,7 @@ namespace tacticode
 			float error = -1.0f;
 			float deltaError = std::abs(deltaY / deltaX);
 			int y = aY;
-			for (int x = aX; x <= bX - 1 && y <= bY; ++x)
+			for (int x = aX; x <= bX - 1; ++x)
 			{
 				// x/y on the way
 				if (!m_field[y][x]->hasLineOfSight()

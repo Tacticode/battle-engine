@@ -65,7 +65,7 @@ namespace script{
 	 * ******************************************************************/
 	ScriptFactory::~ScriptFactory(){
 		_isolate->Exit();
-		_isolate->Dispose();
+		//_isolate->Dispose();
 	    v8::V8::Dispose();
 		v8::V8::ShutdownPlatform();
 		delete _platform;

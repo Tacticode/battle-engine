@@ -7,6 +7,8 @@
 #include "Character.hpp"
 #include "Map.hpp"
 
+#include "tacticode/utils/utils.hpp"
+
 namespace tacticode
 {
 	namespace engine
@@ -51,7 +53,7 @@ namespace tacticode
 					auto & cell = m_map->getCell(position);
 					if (!cell.isFree())
 					{
-						throw file::error::InvalidConfiguration("root", "character tried to access an already taken cell: " + c->getName());
+						//throw file::error::InvalidConfiguration("root", "character tried to access an already taken cell: " + c->getName());
 					}
 					if (!cell.isAccessible())
 					{
@@ -59,6 +61,8 @@ namespace tacticode
 					}
 					cell.setCharacterId(c->getId());
 					m_characters.push_back(c);
+					utils::Singleton<utils::FightLogger>::GetInstance()->addEntity(
+						utils::Log::Entity(c->getId(), position.x, position.y, c->getBreedString(), t->m_id));
 				}
 			}
 		}

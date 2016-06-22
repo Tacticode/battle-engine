@@ -31,6 +31,10 @@ namespace tacticode
 		{
 		}
 
+		std::string const& Character::getBreedString() const{
+			return validBreeds[getBreed()];
+		}
+
 		Character::Character(const file::IValue& json, std::shared_ptr<Map> map)
 			: m_map(map)
 		{

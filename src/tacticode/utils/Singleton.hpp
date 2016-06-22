@@ -16,7 +16,7 @@ class Singleton
 {
 public:
 	static T* GetInstance();
-	static void destroy();
+	static void Destroy();
 
 private:
 
@@ -48,7 +48,7 @@ T* Singleton<T>::GetInstance()
 }
 
 template<typename T>
-void Singleton<T>::destroy()
+void Singleton<T>::Destroy()
 {
 	delete Singleton<T>::m_instance;
 	Singleton<T>::m_instance = 0;
