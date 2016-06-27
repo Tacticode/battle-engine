@@ -11,16 +11,16 @@ namespace tacticode
 	{
 		void SpellFactory::init() {
 			//spell registration : name, power, range, cooldown, active, aoe, los
-			registerSpell("Fireball", std::make_shared<Spell>(std::make_shared<DamageEffect>(),
-					"Fireball",1,5,1,1,1,1));
-			registerSpell("Holy Hand", std::make_shared<Spell>(std::make_shared<HealEffect>(),
-					"Holy Hand",0.7,3,1,1,1,1));
-			registerSpell("Snipe", std::make_shared<Spell>(std::make_shared<DamageEffect>(),
-					"Snipe",1,7,1,1,1,1));
-			registerSpell("Fire Trap", std::make_shared<Spell>(std::make_shared<TrapEffect>(std::make_shared<DamageEffect>()),
-					"Fire Trap",0.8,5,3,1,1,1));
-			registerSpell("Pass Through Arrow", std::make_shared<Spell>(std::make_shared<LineAoeEffect>(5, std::make_shared<DamageEffect>()),
-					"Pass Through Arrow",0.8,3,5,1,1,1));
+			registerSpell("FIREBALL", std::make_shared<Spell>(std::make_shared<DamageEffect>(),
+					"FIREBALL",1,5,1,1,1,1));
+			registerSpell("HOLY_HAND", std::make_shared<Spell>(std::make_shared<HealEffect>(),
+					"HOLY_HAND",0.7,3,1,1,1,1));
+			registerSpell("SNIPE", std::make_shared<Spell>(std::make_shared<DamageEffect>(),
+					"SNIPE",1,7,1,1,1,1));
+			registerSpell("FIRE_TRAP", std::make_shared<Spell>(std::make_shared<TrapEffect>(std::make_shared<DamageEffect>()),
+					"FIRE_TRAP",0.8,5,3,1,1,1));
+			registerSpell("PASS_THROUGH_ARROW", std::make_shared<Spell>(std::make_shared<LineAoeEffect>(5, std::make_shared<DamageEffect>()),
+					"PASS_THROUGH_ARROW",0.8,3,5,1,1,1));
 			std::cerr << "spell factory initialised" << std::endl;
 		}
 

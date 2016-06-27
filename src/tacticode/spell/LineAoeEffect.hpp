@@ -13,7 +13,7 @@ namespace tacticode
 		public:
 			LineAoeEffect(size_t aoe, std::shared_ptr<IEffect> effects);
 			virtual ~LineAoeEffect() = default;
-			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell);
+			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell, int isSecondary = -1);
 		};
 	}
 }

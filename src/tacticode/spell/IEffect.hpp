@@ -22,7 +22,7 @@ namespace tacticode
 		class IEffect{
 		public:
 			virtual ~IEffect() = default;
-			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell) = 0;
+			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell, int isSecondary = -1) = 0;
 		};
 	}
 }

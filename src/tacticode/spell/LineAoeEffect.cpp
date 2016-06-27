@@ -9,11 +9,11 @@ namespace tacticode
 		{
 			m_effects.push_back(effects);
 		}
-		void	LineAoeEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell)
+		void	LineAoeEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell, int isSecondary)
 		{
-			if (engine.getMap()->hasCellLineOfSightOnCell(caster->getPosition().x, caster->getPosition().y, cell->getX(), cell->getY()) &&
+			if ((engine.getMap()->hasCellLineOfSightOnCell(caster->getPosition().x, caster->getPosition().y, cell->getX(), cell->getY()) &&
 				(caster->getPosition().x == cell->getX() ||
-					caster->getPosition().y == cell->getY()))
+					caster->getPosition().y == cell->getY())) || isSecondary != -1)
 			{
 				std::list<std::shared_ptr<engine::Cell> > targets;
 				engine::Vector2i d;
