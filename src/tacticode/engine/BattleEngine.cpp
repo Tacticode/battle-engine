@@ -20,6 +20,12 @@ namespace tacticode
 		void BattleEngine::deserialize(const file::IValue& json)
 		{
 			// TODO
+			if (!json.hasField("fightId") || !json["fightId"]->isNumeric())
+			{
+				throw file::error::InvalidConfiguration("root", "No valid fightId field");
+			}
+			utils::Singleton<utils::FightLogger>::GetInstance()->setFightId(json["fightId"]->asInt());
+
 			if (!json.hasField("map"))
 			{
 				throw file::error::InvalidConfiguration("root", "No map field");
