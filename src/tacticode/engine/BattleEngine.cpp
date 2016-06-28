@@ -114,6 +114,9 @@ namespace tacticode
 			while (round() && i < 10)
 				++i;
 			//TODO: use datas created by gameOver();
+
+			//TODO: use the real winner...
+			utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(m_teams[std::rand() % m_teams.size()]->m_id);
 		}
 		std::shared_ptr<Map> BattleEngine::getMap()
 		{

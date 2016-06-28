@@ -12,9 +12,11 @@ using tacticode::utils::FightLogger;
 using tacticode::spell::SpellFactory;
 
 #include <iostream>
+#include <ctime>
 
 int main(int ac, char** av)
 {	
+	std::srand(std::time(0));
 	tacticode::engine::BattleEngine engine;
 
 	auto conf = Singleton<Configuration>::GetInstance();
