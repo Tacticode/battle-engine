@@ -32,7 +32,7 @@
         {"x": 4, "y": 4, "tile": "GROUND", "accessible": true, "los": true}
     ]
 	},
-    "fightId": 1,
+    "fightId": 197,
     "teams":
     [
         {
@@ -66,17 +66,17 @@
                 {
 		    "id": 12345,
                     "name": "BibiTheMagus",
-                    "breed": "gobelin",
+                    "breed": "goblin",
                     "health": 15,
                     "attack": 0,
                     "power": 5,
                     "defense": 6,
                     "resilience": 5,
                     "luck": 5000,
-                    "movement": 7,
+                    "movement": 0,
                     "speed": 2,
                     "spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
-                    "script": "function onTurn(){moveToCell(1, 1);};",
+                    "script": "function onTurn(){moveToCell(1, 2);moveToCell(1, 1);};",
 		    "position": [2, 2]
                 }
             ]
