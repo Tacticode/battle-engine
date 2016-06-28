@@ -15,7 +15,7 @@ namespace tacticode
 	{
 
 		const std::array<std::string, 4> Character::validBreeds =
-			{ "elf", "gobelin", "human", "orc" };
+			{ "elf", "goblin", "human", "orc" };
 		const std::array<std::string, 8> Character::validAttributes =
 			{ "health", "attack", "power", "defense", "resilience", "luck", "movement", "speed" };
 
@@ -117,6 +117,7 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("character", "breed field is not a string");
 			}
 			std::string breed = json["breed"]->asString();
+			std::transform(breed.begin(), breed.end(), breed.begin(), ::tolower);
 			if (!isValidBreed(breed))
 			{
 				throw file::error::InvalidConfiguration("character", "breed (" + breed + ") is not a valid string");
