@@ -15,7 +15,7 @@ namespace utils{
 		class Log;
 		//Later this Log needs to be refactor to be centralized through a factory
 		class Log {
-			std::shared_ptr<Json::Value> _value;
+			std::shared_ptr<Json::Value> m_value;
 		public:			
 			Log();
 			Json::Value& value() const;
