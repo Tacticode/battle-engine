@@ -50,8 +50,13 @@ namespace tacticode
 				orc		= 3
 			};
 
-			static const std::array<std::string, 4> validBreeds;
-			static const std::array<std::string, 8> validAttributes;
+			struct Cooldown
+			{
+				int32_t movement;
+				bool spell;
+			};
+
+		private:
 			Vector2i                          m_position;
 			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
 			std::string						  m_name;
@@ -62,11 +67,16 @@ namespace tacticode
 			int32_t                           m_id;
 			int32_t							  m_teamId;
 			std::shared_ptr<Map>              m_map;
+			Cooldown                          m_cooldown;
 
 			std::vector<std::unique_ptr<effect::IEffect>> m_effects;
 			std::vector<std::unique_ptr<spell::ISpell>>	  m_spells;
 			std::shared_ptr<ICharacterScript>             m_script;
+
 		public:
+			static const std::array<std::string, 4> validBreeds;
+			static const std::array<std::string, 8> validAttributes;
+
 			explicit Character(const file::IValue& json, std::shared_ptr<Map> map);
 			std::string const& getBreedString() const;
 

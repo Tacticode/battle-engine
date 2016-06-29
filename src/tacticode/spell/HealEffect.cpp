@@ -16,10 +16,10 @@ namespace tacticode
 			if (engine.getMap()->hasCellLineOfSightOnCell(caster->getPosition().x, caster->getPosition().y, cell->getX(), cell->getY()) || isSecondary != -1)
 			{
 				std::shared_ptr<engine::Character> target = engine.getCharacter(cell->getCharacterId());
-				log.add("HEAL", spell.getPower() * caster->m_currentAttributes->power);
+				log.add("HEAL", spell.getPower() * caster->getCurrentAttributes().power);
 				fightLog->addAction(log);
 				if (target)
-					target->applyHeal(spell.getPower() * caster->m_currentAttributes->power);
+					target->applyHeal(spell.getPower() * caster->getCurrentAttributes().power);
 			}
 		}
 	}

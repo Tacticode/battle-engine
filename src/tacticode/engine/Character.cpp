@@ -223,6 +223,8 @@ namespace tacticode
 			{
 				return;
 			}
+			m_cooldown.movement = m_currentAttributes->movement;
+			m_cooldown.spell = false;
 			applyEffects();
 			executeScript(context);
 		}

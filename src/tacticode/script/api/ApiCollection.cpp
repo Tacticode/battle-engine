@@ -68,11 +68,11 @@ namespace {
   	//no coordinate in character?!!
 		//result->Set(context, v8String::fromString("x"), v8::Number::New(args.GetIsolate(), character->x));
 
-		result->Set(context, v8String::fromString("name"), v8String::fromString(character->m_name));
+		result->Set(context, v8String::fromString("name"), v8String::fromString(character->getName()));
 		//breed is an integer? wut
 		//result->Set(context, v8String::fromString("breed"), v8String::fromString(character->m_breed));
 
-		result->Set(context, v8String::fromString("team"), v8::Number::New(args.GetIsolate(), character->m_teamId));
+		result->Set(context, v8String::fromString("team"), v8::Number::New(args.GetIsolate(), character->getTeamId()));
 
   	args.GetReturnValue().Set(scope.Escape(result));
   }
