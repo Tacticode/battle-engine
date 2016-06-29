@@ -12,10 +12,13 @@ namespace tacticode
 
 		void	Trap::applyEffect()
 		{
+			utils::Log log;
+			auto fightLog = utils::Singleton<utils::FightLogger>::GetInstance();
 			for (std::list<std::shared_ptr<IEffect>>::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
 			{
-				//TODO: getEntity on map cell!
-				//(*it)->applyEffect(context.caster, context.cell, this);
+				log.add("TRAPTRIGGER", m_spell.getName());
+				fightLog->addAction(log);
+				// (*it)->applyEffect(m_caster, m_pos, m_spell);
 			}
 		}
 	}
