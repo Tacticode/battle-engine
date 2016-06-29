@@ -45,7 +45,7 @@ namespace tacticode
 			enum Breed
 			{
 				elf		= 0,
-				gobelin = 1,
+				goblin  = 1,
 				human	= 2,
 				orc		= 3
 			};

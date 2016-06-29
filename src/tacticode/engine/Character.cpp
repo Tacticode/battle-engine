@@ -219,6 +219,10 @@ namespace tacticode
 
 		void Character::play(BattleEngineContext& context)
 		{
+			if (m_currentHealth <= 0)
+			{
+				return;
+			}
 			applyEffects();
 			executeScript(context);
 		}
