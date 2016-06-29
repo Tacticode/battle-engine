@@ -54,7 +54,7 @@ namespace tacticode
 			bool isCellOnMap       (int x, int y) const;
 			bool isCellOnMap       (const Vector2i & position) const;
 
-			bool moveCharacterToCell(const Character & character, const Vector2i & position);
+			bool moveCharacterToCell(Character & character, const Vector2i & position);
 
 			// Bresenham's line algorithm
 			bool hasCellLineOfSightOnCell(int originX, int originY, int targetX, int targetY) const;

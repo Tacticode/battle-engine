@@ -192,7 +192,7 @@ namespace tacticode
 			return isCellOnMap(position.x, position.y);
 		}
 
-		bool Map::moveCharacterToCell(const Character & character, const Vector2i & position)
+		bool Map::moveCharacterToCell(Character & character, const Vector2i & position)
 		{
 			if (std::abs(position.x - character.getPosition().x) + std::abs(position.y - character.getPosition().y) != 1)
 			{
@@ -202,7 +202,9 @@ namespace tacticode
 			{
 				return false;
 			}
+			m_field[character.getPosition().y][character.getPosition().x]->unsetCharacterId();
 			m_field[position.y][position.x]->setCharacterId(character.getId());
+			character.setPosition(position.x, position.y);
 			return true;
 		}
 
