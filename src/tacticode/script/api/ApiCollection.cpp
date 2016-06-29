@@ -13,6 +13,8 @@
 #include "tacticode/engine/Character.hpp"
 #include "tacticode/utils/FightLogger.hpp"
 
+#include "injectSpellApi.hpp"
+
 using tacticode::utils::Singleton;
 using tacticode::script::ScriptFactory;
 using tacticode::script::v8String;
@@ -57,7 +59,7 @@ namespace {
 
   	assert(battle_context);
 
-  	tacticode::engine::Character *character = battle_context->character;
+  	auto character = battle_context->character;
 
   	assert(character);
 
@@ -85,7 +87,7 @@ namespace {
 
   	assert(battle_context);
 
-  	tacticode::engine::Character *character = battle_context->character;
+  	auto character = battle_context->character;
 
   	assert(character);
     if (args.Length() >= 2) {
@@ -130,6 +132,8 @@ void ApiCollection::injectApi(std::shared_ptr<tacticode::script::Context> contex
 	}	
 	global->Set(v8String::fromString("getCurrentEntity"), v8::Function::New(isolate, functionGetCurrentEntity));
 	global->Set(v8String::fromString("moveToCell"), v8::Function::New(isolate, functionMoveToCell));
+
+  injectSpellApi(context);
 }
 
 ApiCollection::~ApiCollection() {

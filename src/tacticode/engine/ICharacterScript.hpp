@@ -1,17 +1,19 @@
 #pragma once
 
 #include <string>
-
+#include <memory>
 namespace tacticode{
 namespace engine{
 	class Character;
 	class Team;
+	class BattleEngine;
 	/* *******************************************************************
 	 * Structure to share between ia script and battle engine
 	 * ******************************************************************/        
 	struct BattleEngineContext {
-		Character *character;
-		Team 			*team;
+		BattleEngine *engine;
+		std::shared_ptr<Character> 	character;
+		std::shared_ptr<Team> 			team;
 		//Other info like battle engine
 		//maintain raw pointers instead of use shared_ptr, making life easier
 	};

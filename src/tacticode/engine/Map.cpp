@@ -123,6 +123,11 @@ namespace tacticode
 			return *m_field[y][x];
 		}
 
+		std::shared_ptr<Cell> Map::getManagedCell(int x, int y)
+		{
+			return m_field[y][x];
+		}
+
 		const Cell & Map::getCell(int x, int y) const
 		{
 			return *m_field[y][x];
