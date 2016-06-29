@@ -8,6 +8,7 @@
 #include "tacticode/script/ScriptFactory.hpp"
 
 #include <cstring>
+#include <algorithm>
 
 namespace tacticode
 {
