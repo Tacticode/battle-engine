@@ -61,7 +61,7 @@ if(V8LINK)
 
 		#use multithread static debug, as to compiled by v8
 		set(CMAKE_CXX_FLAGS_DEBUG
-			"/DWIN32 /Mtd"
+			${CMAKE_CXX_FLAGS_DEBUG} "/DWIN32 /MTd"
 		)
 		#ICU DATA is actually not necessary
 		if(V8_ICUDATA_LIBRARY)

@@ -78,7 +78,7 @@ namespace {
   void functionMoveToCell(const v8::FunctionCallbackInfo<v8::Value>& args) {
   	v8::EscapableHandleScope scope(args.GetIsolate());
   	v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
-  	int rt = 1;
+  	bool rt = false;
   	//BattleEngineContext stored in global of the context
   	tacticode::engine::BattleEngineContext *battle_context = reinterpret_cast<tacticode::engine::BattleEngineContext*>(
   		context->GetAlignedPointerFromEmbedderData(Context::BATTLE_ENGINE));
@@ -97,11 +97,11 @@ namespace {
 		    rt = character->moveToCell(engine::Vector2i(x, y));
 
 		    auto action = utils::Log::Action(character->getId(), x, y, "move");
-		    action.add("success", rt ? false : true);
+		    action.add("success", rt);
 		    utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 	    }
     }
-  	v8::Local<v8::Value> result = v8::Number::New(args.GetIsolate(), rt);
+  	v8::Local<v8::Value> result = v8::Boolean::New(args.GetIsolate(), rt);
   	args.GetReturnValue().Set(scope.Escape(result));
   }
 
