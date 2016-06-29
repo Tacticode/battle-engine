@@ -91,8 +91,9 @@ namespace tacticode
 			{
 				BattleEngineContext context;
 
-				context.team = NULL; //todo
-				context.character = &(*character);
+				context.team = nullptr; //todo
+				context.character = character;
+				context.engine = this;
 
 				character->play(context);
 				if (gameOver())

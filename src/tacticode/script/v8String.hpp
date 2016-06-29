@@ -21,6 +21,7 @@ public:
 	v8String(std::string const& str);
 	~v8String();
 	static v8::Handle<v8::String> fromString(std::string const& str);
+	static std::string toString(v8::Handle<v8::String>);
 };
 
 }//script

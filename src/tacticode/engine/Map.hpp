@@ -18,7 +18,7 @@ namespace tacticode
 	{
 		class Map
 		{
-			using Row = std::vector<std::shared_ptr<Cell>>;
+			using Row = std::vector<std::shared_ptr<Cell> >;
 			using Field = std::vector<Row>;
 
 			Field       m_field;
@@ -37,6 +37,7 @@ namespace tacticode
 			int getWidth() const;
 			int getHeight() const;
 			
+			std::shared_ptr<Cell> getManagedCell(int x, int y); //this is for wilko
 			Cell &       getCell(int x, int y);
 			const Cell & getCell(int x, int y) const;
 			Cell &       getCell(const Vector2i & position);

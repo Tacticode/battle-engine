@@ -6,9 +6,13 @@
 #include "tacticode/utils/utils.hpp"
 #include "ICharacterScript.hpp"
 #include "tacticode/script/ScriptFactory.hpp"
+#include "tacticode/spell/SpellFactory.hpp"
+#include "tacticode/utils/utils.hpp"
 
 #include <cstring>
 #include <algorithm>
+
+using tacticode::utils::Singleton;
 
 namespace tacticode
 {
@@ -224,7 +228,11 @@ namespace tacticode
 			// TODO			
 			if (m_script != nullptr)
 			{
-				memcpy(m_script->getBattleEngineContext(), &context, sizeof(context));
+				BattleEngineContext *script_context = m_script->getBattleEngineContext();
+				script_context->character = context.character;
+				script_context->team = context.team;
+				script_context->engine = context.engine;
+
 				m_script->run();
 			}
 		}
@@ -324,5 +332,18 @@ namespace tacticode
 		{
 			m_currentAttributes->health += heal;
 		}
+
+		//fix me later
+		/*
+		bool Character::launchSpell(std::string const& spell_str, int x, int y) {
+			auto facto = Singleton<spell::SpellFactory>::GetInstance();
+			auto spell = facto->get(spell_str);
+			if (spell) {
+				spell->castSpell()
+				//oh well, no shared ptr
+			}
+			return true;
+		}
+		*/
 	}
 }

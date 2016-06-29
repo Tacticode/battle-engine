@@ -107,6 +107,7 @@ namespace tacticode
 			void addEffect(std::unique_ptr<effect::IEffect> effect);
 
 			bool moveToCell(const Vector2i & position);
+			bool launchSpell(std::string const&, int x, int y);
 		};
 
 	}
