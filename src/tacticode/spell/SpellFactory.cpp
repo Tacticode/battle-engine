@@ -4,6 +4,7 @@
 #include "HealEffect.hpp"
 #include "TrapEffect.hpp"
 #include "LineAoeEffect.hpp"
+#include "CrossAoeEffect.hpp"
 
 namespace tacticode
 {
@@ -21,6 +22,12 @@ namespace tacticode
 					"FIRE_TRAP",0.8,5,3,1,1,1));
 			registerSpell("PASS_THROUGH_ARROW", std::make_shared<Spell>(std::make_shared<LineAoeEffect>(5, std::make_shared<DamageEffect>()),
 					"PASS_THROUGH_ARROW",0.8,3,5,1,1,1));
+			registerSpell("SMASH", std::make_shared<Spell>(std::make_shared<LineAoeEffect>(2, std::make_shared<DamageEffect>()),
+					"SMASH",2,1,2,1,2,1));
+			registerSpell("BLADESTORM", std::make_shared<Spell>(std::make_shared<CrossAoeEffect>(2, std::make_shared<DamageEffect>()),
+					"BLADESTORM",1,1,1,1,2,1));
+			registerSpell("METEORE", std::make_shared<Spell>(std::make_shared<CrossAoeEffect>(3, std::make_shared<DamageEffect>()),
+					"METEORE",1.5,5,3,1,3,1));
 			std::cerr << "spell factory initialised" << std::endl;
 		}
 
