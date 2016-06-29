@@ -194,7 +194,8 @@ namespace tacticode
 
 		bool Map::moveCharacterToCell(Character & character, const Vector2i & position)
 		{
-			if (std::abs(position.x - character.getPosition().x) + std::abs(position.y - character.getPosition().y) != 1)
+			size_t distance = std::abs(position.x - character.getPosition().x) + std::abs(position.y - character.getPosition().y);
+			if (distance != 1 || character.getCurrentMovementPoints() < distance)
 			{
 				return false;
 			}
@@ -202,6 +203,7 @@ namespace tacticode
 			{
 				return false;
 			}
+			character.reduceCurrentMovementPoint(distance);
 			m_field[character.getPosition().y][character.getPosition().x]->unsetCharacterId();
 			m_field[position.y][position.x]->setCharacterId(character.getId());
 			character.setPosition(position.x, position.y);

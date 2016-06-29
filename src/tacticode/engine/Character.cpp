@@ -293,6 +293,25 @@ namespace tacticode
 			return m_teamId;
 		}
 
+		bool Character::getCooldownSpell() const
+		{
+			return m_cooldown.spell;
+		}
+
+		int32_t Character::getCurrentMovementPoints() const
+		{
+			return m_cooldown.movement;
+		}
+
+		void Character::reduceCurrentMovementPoint(int32_t reductor)
+		{
+			m_cooldown.movement -= reductor;
+			if (m_cooldown.movement < 0)
+			{
+				m_cooldown.movement = 0;
+			}
+		}
+
 		const std::vector<std::unique_ptr<effect::IEffect>>& Character::getEffects() const
 		{
 			return m_effects;

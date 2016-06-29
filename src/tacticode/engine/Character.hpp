@@ -97,16 +97,20 @@ namespace tacticode
 			const std::shared_ptr<ICharacterScript> & getScript() const;
 
 			Attributes &        getCurrentAttributes();
-			const Attributes &  getCurrentAttributes() const;
-			const std::string & getName()              const;
-			Breed               getBreed()             const;
-			int32_t	            getCurrentHealth()     const;
-			const Attributes &  getBaseAttributes()    const;
-			int32_t             getId()                const;
-			int32_t             getTeamId()            const;
+			const Attributes &  getCurrentAttributes()     const;
+			const std::string & getName()                  const;
+			Breed               getBreed()                 const;
+			int32_t	            getCurrentHealth()         const;
+			const Attributes &  getBaseAttributes()        const;
+			int32_t             getId()                    const;
+			int32_t             getTeamId()                const;
+			bool			    getCooldownSpell()         const;
+			int32_t             getCurrentMovementPoints() const;
+
+			void reduceCurrentMovementPoint(int32_t reductor);
 
 			const std::vector<std::unique_ptr<effect::IEffect>> & getEffects() const;
-			const std::vector<std::unique_ptr<spell::ISpell>> & getSpells() const;
+			const std::vector<std::unique_ptr<spell::ISpell>>   & getSpells() const;
 
 
 			const Vector2i & getPosition() const;
