@@ -16,7 +16,7 @@ using tacticode::spell::SpellFactory;
 
 int main(int ac, char** av)
 {	
-	std::srand(std::time(0));
+	std::srand(static_cast<size_t>(std::time(0)));
 	tacticode::engine::BattleEngine engine;
 
 	auto conf = Singleton<Configuration>::GetInstance();

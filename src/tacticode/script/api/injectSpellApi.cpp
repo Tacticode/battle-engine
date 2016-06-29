@@ -41,8 +41,8 @@ namespace {
 	    v8::Local<v8::Value> argX = args[0];
 	    v8::Local<v8::Value> argY = args[1];
 	    if (argX->IsNumber() && argY->IsNumber()) {
- 		    int x = argX->ToNumber()->Value();
- 		    int y = argY->ToNumber()->Value();
+			int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
+			int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
 		    rt = character->moveToCell(engine::Vector2i(x, y));
 
 		    auto action = utils::Log::Action(character->getId(), x, y, "move");
@@ -74,8 +74,8 @@ namespace {
       if (spell->IsString() && argX->IsNumber() && argY->IsNumber()) {
         v8::String::Utf8Value utf8value(spell);
         std::string spell_str(*utf8value);
-        int x = argX->ToNumber()->Value();
-        int y = argY->ToNumber()->Value();
+        int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
+        int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
 
         auto map = battle_context->engine->getMap();
         auto facto = Singleton<spell::SpellFactory>::GetInstance();
