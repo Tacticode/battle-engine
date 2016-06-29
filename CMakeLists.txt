@@ -6,7 +6,7 @@ option (TODO
   "Enable todo debugging" ON)
 include(cmake/Config.cmake)
 option (V8LINK 
-  "Enable v8 compiling" OFF)
+  "Enable v8 compiling" ON)
 
 #TODO handle v8 dependency using cmake
 #include(CMakeLists-ExternalV8.txt)
@@ -16,7 +16,6 @@ include_directories("${PROJECT_SOURCE_DIR}/src")
 
 #Later move jsoncpp to lib or whatever
 include_directories("${PROJECT_SOURCE_DIR}/src/jsoncpp")
-
 
 if(V8LINK)
 #Find V8
