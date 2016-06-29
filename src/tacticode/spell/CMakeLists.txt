@@ -7,9 +7,11 @@ set_target_sources(BattleEngine
 	SpellFactory.hpp
 	TrapEffect.hpp
 	LineAoeEffect.hpp
+	CrossAoeEffect.hpp
 	Trap.hpp
 	Trap.cpp
 	LineAoeEffect.cpp
+	CrossAoeEffect.cpp
 	TrapEffect.cpp
 	SpellFactory.cpp
 	DamageEffect.cpp
