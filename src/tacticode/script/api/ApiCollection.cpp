@@ -104,7 +104,7 @@ namespace {
 	  args.GetReturnValue().Set(scope.Escape(list));
   }
 
-  void functionGetCurrentEntityOnCell(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  void functionGetEntityOnCell(const v8::FunctionCallbackInfo<v8::Value>& args) {
 	  v8::EscapableHandleScope scope(args.GetIsolate());
 	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
 
@@ -181,8 +181,10 @@ void ApiCollection::injectApi(std::shared_ptr<tacticode::script::Context> contex
 	{
 		tacticode::script::v8String funcName("$fireball");
 		global->Set(funcName.get(), v8::Function::New(isolate, functionFireBall));
-	}	
+	}
 	global->Set(v8String::fromString("getCurrentEntity"), v8::Function::New(isolate, functionGetCurrentEntity));
+	global->Set(v8String::fromString("getEntities"), v8::Function::New(isolate, functionGetEntities));
+	global->Set(v8String::fromString("getEntityOnCell"), v8::Function::New(isolate, functionGetEntityOnCell));
 	global->Set(v8String::fromString("moveToCell"), v8::Function::New(isolate, functionMoveToCell));
 
   injectSpellApi(context);
