@@ -24,17 +24,14 @@ namespace {
 	using namespace tacticode;
 
   void functionLog(const v8::FunctionCallbackInfo<v8::Value>& args) {
-  	std::ostringstream stringStream;
-			    stringStream << "{\"type\":\"console\", \"data\":\"";
-			    if (args.Length() >= 1) {
-			    v8::HandleScope scope(args.GetIsolate());
-			    v8::Local<v8::Value> arg = args[0];
-			    v8::String::Utf8Value value(arg);
-
-			    stringStream << *value;
-			    }
-			    stringStream << "\"}";
-			    std::cerr << stringStream.str();
+	  if (args.Length() >= 1) {
+		  v8::HandleScope scope(args.GetIsolate());
+		  v8::Local<v8::Value> arg = args[0];
+		  if (arg->IsString()) {
+			  v8::String::Utf8Value value(arg);
+			  std::cerr << *value << std::endl;
+		  }
+	  }
   }
 
   void functionFireBall(const v8::FunctionCallbackInfo<v8::Value>& args) {
