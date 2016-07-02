@@ -132,5 +132,20 @@ namespace tacticode
 			}
 			return (nullptr);
 		}
+		std::shared_ptr<Character> BattleEngine::getCharacterOnCell(int32_t x, int32_t y)
+		{
+			for (size_t i = 0; i < m_characters.size(); ++i)
+			{
+				if (m_characters[i]->getPosition().x == x
+					&& m_characters[i]->getPosition().x == y
+					&& m_characters[i]->getCurrentHealth() > 0)
+					return (m_characters[i]);
+			}
+			return (nullptr);
+		}
+		std::vector<std::shared_ptr<Character> >& BattleEngine::getCharacters()
+		{
+			return m_characters;
+		}
 	}
 }

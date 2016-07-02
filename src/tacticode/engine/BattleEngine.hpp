@@ -35,6 +35,8 @@ namespace tacticode
 			bool gameOver(); //TODO set gameOver datas and return true, if game is over
 			std::shared_ptr<Map> getMap();
 			std::shared_ptr<Character> getCharacter(int32_t characterId);
+			std::shared_ptr<Character> getCharacterOnCell(int32_t x, int32_t y);
+			std::vector<std::shared_ptr<Character> >& getCharacters();
 		};
 	}
 }

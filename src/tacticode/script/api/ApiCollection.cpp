@@ -49,32 +49,84 @@ namespace {
     }
   }
 
+  tacticode::engine::BattleEngineContext* getBattleContext(v8::Local<v8::Context>& context) {
+	  auto battle = reinterpret_cast<tacticode::engine::BattleEngineContext*>(
+		  context->GetAlignedPointerFromEmbedderData(Context::BATTLE_ENGINE));
+	  assert(battle);
+	  assert(battle->character);
+	  return battle;
+  }
+
+  v8::Local<v8::Object> createV8Entity(v8::Isolate* isolate, engine::Character& character) {
+	  v8::Local<v8::Object> result = v8::Object::New(isolate);
+	  v8::Local<v8::Context> context = isolate->GetCurrentContext();
+
+	  result->Set(context, v8String::fromString("id"), v8::Number::New(isolate, character.getId()));
+	  result->Set(context, v8String::fromString("name"), v8String::fromString(character.getName()));
+	  result->Set(context, v8String::fromString("x"), v8::Number::New(isolate, character.getPosition().x));
+	  result->Set(context, v8String::fromString("y"), v8::Number::New(isolate, character.getPosition().x));
+	  result->Set(context, v8String::fromString("team"), v8::Number::New(isolate, character.getTeamId()));
+	  result->Set(context, v8String::fromString("race"), v8String::fromString(character.getBreedString()));
+	  result->Set(context, v8String::fromString("health"), v8::Number::New(isolate, character.getCurrentHealth()));
+	  result->Set(context, v8String::fromString("maxHealth"), v8::Number::New(isolate, character.getBaseAttributes().health));
+	  result->Set(context, v8String::fromString("movement"), v8::Number::New(isolate, character.getCurrentMovementPoints()));
+	  result->Set(context, v8String::fromString("maxMovement"), v8::Number::New(isolate, character.getBaseAttributes().movement));
+
+	  // TODO skills array
+
+	  return result;
+  }
+
   void functionGetCurrentEntity(const v8::FunctionCallbackInfo<v8::Value>& args) {
-  	v8::EscapableHandleScope scope(args.GetIsolate());
-  	v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
+	  v8::EscapableHandleScope scope(args.GetIsolate());
+	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
 
-  	//BattleEngineContext stored in global of the context
-  	tacticode::engine::BattleEngineContext *battle_context = reinterpret_cast<tacticode::engine::BattleEngineContext*>(
-  		context->GetAlignedPointerFromEmbedderData(Context::BATTLE_ENGINE));
+	  auto battle_context = getBattleContext(context);
+	  auto character = battle_context->character;
 
-  	assert(battle_context);
+	  v8::Local<v8::Object> entity = createV8Entity(args.GetIsolate(), *character);
 
-  	auto character = battle_context->character;
+	  args.GetReturnValue().Set(scope.Escape(entity));
+  }
 
-  	assert(character);
+  void functionGetEntities(const v8::FunctionCallbackInfo<v8::Value>& args) {
+	  v8::EscapableHandleScope scope(args.GetIsolate());
+	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
 
-  	v8::Local<v8::Object> result = v8::Object::New(args.GetIsolate());
+	  auto battle_context = getBattleContext(context);
+	  auto& characters = battle_context->engine->getCharacters();
 
-  	//no coordinate in character?!!
-		//result->Set(context, v8String::fromString("x"), v8::Number::New(args.GetIsolate(), character->x));
+	  v8::Local<v8::Array> list = v8::Array::New(args.GetIsolate(), characters.size());
+	  for (size_t i = 0; i < characters.size(); ++i) {
+		  list->Set(i, createV8Entity(args.GetIsolate(), *characters[i]));
+	  }
 
-		result->Set(context, v8String::fromString("name"), v8String::fromString(character->getName()));
-		//breed is an integer? wut
-		//result->Set(context, v8String::fromString("breed"), v8String::fromString(character->m_breed));
+	  args.GetReturnValue().Set(scope.Escape(list));
+  }
 
-		result->Set(context, v8String::fromString("team"), v8::Number::New(args.GetIsolate(), character->getTeamId()));
+  void functionGetCurrentEntityOnCell(const v8::FunctionCallbackInfo<v8::Value>& args) {
+	  v8::EscapableHandleScope scope(args.GetIsolate());
+	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
 
-  	args.GetReturnValue().Set(scope.Escape(result));
+	  auto battle_context = getBattleContext(context);
+	  auto engine = battle_context->engine;
+
+	  if (args.Length() >= 2) {
+		  v8::Local<v8::Value> argX = args[0];
+		  v8::Local<v8::Value> argY = args[1];
+
+		  if (argX->IsNumber() && argY->IsNumber()) {
+			  int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
+			  int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
+
+			  auto character = engine->getCharacterOnCell(x, y);
+			  if (character) {
+				  v8::Local<v8::Object> entity = createV8Entity(args.GetIsolate(), *character);
+				  args.GetReturnValue().Set(scope.Escape(entity));
+			  }
+		  }
+	  }
+	  args.GetReturnValue().Set(scope.Escape(v8::Null(args.GetIsolate())));
   }
 
   void functionMoveToCell(const v8::FunctionCallbackInfo<v8::Value>& args) {
@@ -138,8 +190,6 @@ void ApiCollection::injectApi(std::shared_ptr<tacticode::script::Context> contex
 
 ApiCollection::~ApiCollection() {
 }
-
-
 }//api
 }//script
 }//tacticode
