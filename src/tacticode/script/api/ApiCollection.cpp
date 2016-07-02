@@ -120,6 +120,7 @@ namespace {
 			  if (character) {
 				  v8::Local<v8::Object> entity = createV8Entity(args.GetIsolate(), *character);
 				  args.GetReturnValue().Set(scope.Escape(entity));
+				  return;
 			  }
 		  }
 	  }
