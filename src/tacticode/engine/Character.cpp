@@ -40,13 +40,14 @@ namespace tacticode
 			return validBreeds[getBreed()];
 		}
 
-		Character::Character(const file::IValue& json, std::shared_ptr<Map> map)
+		Character::Character(const file::IValue& json, std::shared_ptr<Map> map, int32_t teamId)
 			: m_map(map)
 		{
 			#ifdef V8LINK
 			m_script = utils::Singleton<script::ScriptFactory>::GetInstance()->newCharacterScript();
 			#endif
 			deserialize(json);
+			m_teamId = teamId;
 		}
 
 		void Character::assertAttributeDeserialize(const file::IValue& json, std::string attribute)

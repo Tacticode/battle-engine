@@ -77,7 +77,7 @@ namespace tacticode
 			static const std::array<std::string, 4> validBreeds;
 			static const std::array<std::string, 8> validAttributes;
 
-			explicit Character(const file::IValue& json, std::shared_ptr<Map> map);
+			explicit Character(const file::IValue& json, std::shared_ptr<Map> map, int32_t teamId);
 			std::string const& getBreedString() const;
 
 			void deserialize(const file::IValue& json);
