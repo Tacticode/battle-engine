@@ -61,7 +61,7 @@ namespace {
 	  result->Set(context, v8String::fromString("id"), v8::Number::New(isolate, character.getId()));
 	  result->Set(context, v8String::fromString("name"), v8String::fromString(character.getName()));
 	  result->Set(context, v8String::fromString("x"), v8::Number::New(isolate, character.getPosition().x));
-	  result->Set(context, v8String::fromString("y"), v8::Number::New(isolate, character.getPosition().x));
+	  result->Set(context, v8String::fromString("y"), v8::Number::New(isolate, character.getPosition().y));
 	  result->Set(context, v8String::fromString("team"), v8::Number::New(isolate, character.getTeamId()));
 	  result->Set(context, v8String::fromString("race"), v8String::fromString(character.getBreedString()));
 	  result->Set(context, v8String::fromString("health"), v8::Number::New(isolate, character.getCurrentHealth()));

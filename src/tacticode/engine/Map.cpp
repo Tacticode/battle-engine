@@ -101,6 +101,31 @@ namespace tacticode
 					}
 				}
 			}
+			if (!json.hasField("start_positions"))
+			{
+				throw file::error::InvalidConfiguration("map", "Map has no start_positions");
+			}
+			if (!json["start_positions"]->isArray())
+			{
+				throw file::error::InvalidConfiguration("map", "start_positions is not an array");
+			}
+			auto ptrStartPositions = json["start_positions"];
+			for (size_t i = 0; i < ptrStartPositions->size(); ++i)
+			{
+				auto ptrStartPosition = (*ptrStartPositions)[i];
+				if (!ptrStartPosition->hasField("x") || !ptrStartPosition->hasField("y"))
+				{
+					throw file::error::InvalidConfiguration("map", "start_positions should contain x and y");
+				}
+				auto ptrStartPositionX = (*ptrStartPosition)["x"];
+				auto ptrStartPositionY = (*ptrStartPosition)["y"];
+				if (!ptrStartPositionX->isNumeric() || !ptrStartPositionY->isNumeric())
+				{
+					throw file::error::InvalidConfiguration("map", "start_positions should contain two numbers");
+				}
+				engine::Vector2i v(ptrStartPositionX->asInt(), ptrStartPositionY->asInt());
+				m_startingPositions.push_back(v);
+			}
 		}
 
 		Map::Map(const file::IValue& json)
@@ -143,9 +168,9 @@ namespace tacticode
 			return *m_field[position.y][position.x];
 		}
 
-		std::shared_ptr<Cell> Map::getCellPtr(int x, int y)
+		Vector2i Map::getStartingPosition(int32_t index) const
 		{
-			return m_field[y][x];
+			return m_startingPositions[index];
 		}
 
 		bool Map::isCellFree(int x, int y) const

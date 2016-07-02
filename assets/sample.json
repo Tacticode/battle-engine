@@ -30,6 +30,40 @@
 			{"x": 4, "y": 2, "tile": "GROUND", "accessible": true, "los": true},
 			{"x": 4, "y": 3, "z": 1, "tile": "TREE", "accessible": false, "los": false},
 			{"x": 4, "y": 4, "tile": "GROUND", "accessible": true, "los": true}
+		],
+		"start_positions": [
+			{
+				"x": 1,
+				"y": 0
+			},
+			{
+				"x": 2,
+				"y": 0
+			},
+			{
+				"x": 3,
+				"y": 0
+			},
+			{
+				"x": 4,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 0
+			},
+			{
+				"x": 11,
+				"y": 0
+			},
+			{
+				"x": 0,
+				"y": 11
+			},
+			{
+				"x": 11,
+				"y": 11
+			}
 		]
 	},
 	"fightId": 197,
@@ -41,7 +75,7 @@
 			"characters":
 			[
 				{
-			"id": 12344,
+					"id": 12344,
 					"name": "BoboTheWarrior",
 					"breed": "elf",
 					"health": 12,
@@ -53,8 +87,7 @@
 					"movement": 7,
 					"speed": 2,
 					"spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
-					"script": "$log('I am elf, BoboTheWarrior'); ",
-			"position": [0, 0]
+					"script": "function onTurn() { $log(JSON.stringify(getEntities())); }"
 				}
 			]
 		},
@@ -64,7 +97,7 @@
 			"characters":
 			[
 				{
-			"id": 12345,
+					"id": 12345,
 					"name": "BibiTheMagus",
 					"breed": "goblin",
 					"health": 15,
@@ -76,8 +109,7 @@
 					"movement": 5,
 					"speed": 2,
 					"spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
-					"script": "function onTurn(){moveToCell(1, 2);moveToCell(1, 1);};",
-			"position": [2, 2]
+					"script": "function onTurn(){ $log('test'); }"
 				}
 			]
 		}

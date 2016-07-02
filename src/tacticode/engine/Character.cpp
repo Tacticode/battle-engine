@@ -152,32 +152,6 @@ namespace tacticode
 			{
 				setScript(json.getString("script", std::string("$log('unset") + __FILE__ + "': )"));
 			}
-			if (!json.hasField("position"))
-			{
-				throw file::error::InvalidConfiguration("character", "character has no position");
-			}
-			if (!json["position"]->isArray())
-			{
-				throw file::error::InvalidConfiguration("character", "position field is not an array");
-			}
-			auto positionPtr = json["position"];
-			auto & position = *positionPtr;
-			if (position.size() != 2)
-			{
-				throw file::error::InvalidConfiguration("character", "position field is not an array of two numbers");
-			}
-			else if (!position[0]->isNumeric() || !position[1]->isNumeric())
-			{
-				throw file::error::InvalidConfiguration("character", "position field is not an array of numbers");
-			}
-			int posX = position[0]->asInt();
-			int posY = position[1]->asInt();
-			if (posX < 0 || posY < 0)
-			{
-				throw file::error::InvalidConfiguration("character", "position field is not an array of positive numbers");
-			}
-			m_position.x = posX;
-			m_position.y = posY;
 		}
 
 		void Character::addSpell(const std::string & spellName) // TODO: Wilko

@@ -26,6 +26,8 @@ namespace tacticode
 			int         m_height;
 			std::string m_name;
 
+			std::vector<engine::Vector2i> m_startingPositions;
+
 			void deserialize(const file::IValue& json);
 
 		public:
@@ -37,13 +39,13 @@ namespace tacticode
 			int getWidth() const;
 			int getHeight() const;
 			
-			std::shared_ptr<Cell> getManagedCell(int x, int y); //this is for wilko
 			Cell &       getCell(int x, int y);
 			const Cell & getCell(int x, int y) const;
 			Cell &       getCell(const Vector2i & position);
 			const Cell & getCell(const Vector2i & position) const;
+			Vector2i     getStartingPosition(int32_t index) const;
 
-			std::shared_ptr<Cell> getCellPtr(int x, int y);
+			std::shared_ptr<Cell> getManagedCell(int x, int y);
 
 			bool isCellFree        (int x, int y) const;
 			bool isCellFree        (const Vector2i & position) const;
