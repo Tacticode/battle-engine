@@ -82,13 +82,18 @@ namespace utils{
 
 		void FightLogger::setMap(std::string const& mapString)
 		{
-			log["map"] = Json::Value(mapString.c_str());
+			//deprecated
+			//log["map"] = Json::Value(mapString.c_str());
 		}
 
 		FightLogger::~FightLogger()
 		{
 			Json::FastWriter wt;
 			std::cout << wt.write(log);
+		}
+
+		Json::Value& FightLogger::value()  {
+			return log;
 		}
 
 }//utils

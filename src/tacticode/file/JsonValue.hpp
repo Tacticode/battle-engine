@@ -10,6 +10,7 @@ namespace tacticode
 {
 	namespace file
 	{
+		Json::Value const& getRawJsonValue(IValue const&v);
 		class JsonValue : public IValue
 		{
 		private:
@@ -58,6 +59,8 @@ namespace tacticode
 			virtual std::shared_ptr<IValue> operator[](size_t index) const;
 			//to add set for later
 			//virtual void set(std::string const&, IValue const&)
+			friend Json::Value const& getRawJsonValue(IValue const&v);
+			
 			private:
 				Json::Value _value;
 		};

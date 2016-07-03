@@ -1,5 +1,6 @@
 #include "tacticode/file/IValue.hpp"
 #include "tacticode/file/JsonLoader.hpp"
+#include "tacticode/file/JsonValue.hpp"
 #include "tacticode/file/error/InvalidConfiguration.hpp"
 #include "Map.hpp"
 #include "Cell.hpp"
@@ -130,7 +131,8 @@ namespace tacticode
 
 		Map::Map(const file::IValue& json)
 		{
-			deserialize(json);
+			deserialize(json);			
+			utils::Singleton<utils::FightLogger>::GetInstance()->value()["map"] = tacticode::file::getRawJsonValue(json);
 		}
 
 		int Map::getWidth() const

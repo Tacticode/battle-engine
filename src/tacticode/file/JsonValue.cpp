@@ -159,5 +159,11 @@ namespace tacticode
 					std::to_string(index) + "'");
 			return std::make_shared<JsonValue>(_value[static_cast<int>(index)]);
 		}
+
+		Json::Value const&getRawJsonValue(IValue const &v) {
+			JsonValue const&value = dynamic_cast<JsonValue const&>(v);
+			return value._value;
+		}
+
 	} // namespace file
 } // namespace tacticode

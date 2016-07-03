@@ -44,6 +44,7 @@ namespace utils{
 			void setFightId(int fightId);
 			void setMap(std::string const&);
 			//and more
+			Json::Value& value();			
 
 			~FightLogger();
 		};

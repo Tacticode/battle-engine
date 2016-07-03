@@ -129,7 +129,7 @@ namespace tacticode
 
 			//TODO: use the real winner...
 			if (winnerId < 0)
-				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(-1);
+				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(0);
 			else
 				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(winnerId);
 		}
