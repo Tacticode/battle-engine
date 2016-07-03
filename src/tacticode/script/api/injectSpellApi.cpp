@@ -44,54 +44,11 @@ namespace {
 			int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
 			int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
 		    rt = character->moveToCell(engine::Vector2i(x, y));
-
-		    auto action = utils::Log::Action(character->getId(), x, y, "move");
-		    action.add("success", rt);
-		    utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 	    }
     }
   	v8::Local<v8::Value> result = v8::Boolean::New(args.GetIsolate(), rt);
   	args.GetReturnValue().Set(scope.Escape(result));
   }
-
-  void functionSpell(const v8::FunctionCallbackInfo<v8::Value>& args) {
-    v8::EscapableHandleScope scope(args.GetIsolate());
-    v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
-    bool rt = false;
-    //BattleEngineContext stored in global of the context
-    tacticode::engine::BattleEngineContext *battle_context = reinterpret_cast<tacticode::engine::BattleEngineContext*>(
-      context->GetAlignedPointerFromEmbedderData(Context::BATTLE_ENGINE));
-
-    assert(battle_context);
-
-    auto character = battle_context->character;
-
-    assert(character);
-    if (args.Length() >= 2) {
-      v8::Local<v8::Value> spell = args[0];
-      v8::Local<v8::Value> argX = args[1];
-      v8::Local<v8::Value> argY = args[2];
-      if (spell->IsString() && argX->IsNumber() && argY->IsNumber()) {
-        v8::String::Utf8Value utf8value(spell);
-        std::string spellName(*utf8value);
-        int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
-        int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
-
-        auto map = battle_context->engine->getMap();
-        if (character->hasSpell(spellName))
-		{
-          rt = character->castSpell(spellName, engine::Vector2i(x, y), *(battle_context->engine));
-        }
-
-        auto action = utils::Log::Action(character->getId(), x, y, spellName);
-        action.add("success", rt);
-        utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
-      }
-    }
-    v8::Local<v8::Value> result = v8::Boolean::New(args.GetIsolate(), rt);
-    args.GetReturnValue().Set(scope.Escape(result));    
-  }
-
 }
 
 namespace tacticode{
@@ -102,7 +59,6 @@ void injectSpellApi(std::shared_ptr<Context> context) {
   v8::Isolate *isolate = Singleton<ScriptFactory>::GetInstance()->getEngine();
 
   auto global = context->get()->Global();
-  global->Set(v8String::fromString("spell"), v8::Function::New(isolate, functionSpell));
 }
 
 }//api

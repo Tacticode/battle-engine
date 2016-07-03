@@ -175,6 +175,39 @@ namespace {
 	  args.GetReturnValue().Set(scope.Escape(result));
   }
 
+  void functionCast(const v8::FunctionCallbackInfo<v8::Value>& args) {
+	  v8::EscapableHandleScope scope(args.GetIsolate());
+	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
+
+	  auto battle_context = getBattleContext(context);
+	  auto character = battle_context->character;
+	  bool rt = false;
+
+	  if (args.Length() == 3) {
+		  v8::Local<v8::Value> spell = args[0];
+		  v8::Local<v8::Value> argX = args[1];
+		  v8::Local<v8::Value> argY = args[2];
+		  if (spell->IsString() && argX->IsNumber() && argY->IsNumber()) {
+			  v8::String::Utf8Value utf8value(spell);
+			  std::string spellName(*utf8value);
+			  int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
+			  int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
+
+			  rt = character->castSpell(spellName, engine::Vector2i(x, y), *(battle_context->engine));
+		  }
+	  }
+	  else if (args.Length() == 1) {
+		  v8::Local<v8::Value> spell = args[0];
+		  if (spell->IsString()) {
+			  v8::String::Utf8Value utf8value(spell);
+			  std::string spellName(*utf8value);
+			  rt = character->castSpell(spellName, character->getPosition(), *(battle_context->engine));
+		  }
+	  }
+
+	  v8::Local<v8::Value> result = v8::Boolean::New(args.GetIsolate(), rt);
+	  args.GetReturnValue().Set(scope.Escape(result));
+  }
 }
 
 namespace tacticode{
@@ -196,8 +229,7 @@ void ApiCollection::injectApi(std::shared_ptr<tacticode::script::Context> contex
 	global->Set(v8String::fromString("getCell"), v8::Function::New(isolate, functionGetCell));
 
 	global->Set(v8String::fromString("moveToCell"), v8::Function::New(isolate, functionMoveToCell));
-
-  injectSpellApi(context);
+	global->Set(v8String::fromString("cast"), v8::Function::New(isolate, functionCast));
 }
 
 ApiCollection::~ApiCollection() {
