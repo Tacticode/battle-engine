@@ -4,6 +4,4 @@ set_target_sources(BattleEngine
 	AFunction.hpp #Afunction since apprently Function is a reserved keyword?
 	ApiCollection.hpp
 	ApiCollection.cpp
-	injectSpellApi.cpp
-	injectSpellApi.hpp
 	)
