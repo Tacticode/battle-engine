@@ -107,6 +107,7 @@ namespace tacticode
 			int32_t             getTeamId()                const;
 			bool			    getCooldownSpell()         const;
 			int32_t             getCurrentMovementPoints() const;
+			bool					isDead()	const;
 
 			void reduceCurrentMovementPoint(int32_t reductor);
 

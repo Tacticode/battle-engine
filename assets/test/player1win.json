@@ -20,7 +20,7 @@
 	"teams":
 	[
 		{
-			"id": 1, //id team si team fight; id joueur si solo fight
+			"id": 42, //id team si team fight; id joueur si solo fight
 			"name": "Xx_T0to42_xX",
 			"characters":
 			[

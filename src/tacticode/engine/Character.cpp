@@ -193,6 +193,11 @@ namespace tacticode
 			}
 		}
 
+		bool Character::isDead() const
+		{
+			return getCurrentHealth() <= 0;
+		}
+
 		void Character::play(BattleEngineContext& context)
 		{
 			if (m_currentHealth <= 0)
@@ -356,7 +361,9 @@ namespace tacticode
 			return false;
 		}
 
-		bool Character::castSpell(std::string const & spellName, const Vector2i & position, BattleEngine & engine)
+		bool Character::castSpell(std::string const & spellName,
+			const Vector2i & position,
+			BattleEngine & engine)
 		{
 			if (!hasSpell(spellName) || !m_map->isCellOnMap(position))
 			{
@@ -379,16 +386,25 @@ namespace tacticode
 			action.add("health", damages);
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 
-			m_currentAttributes->health -= damages;
+			if (!isDead()) {
+				m_currentAttributes->health -= damages;
+				if (isDead()) {
+					auto action = utils::Log::Action(m_id, "dead");
+					utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);	
+					m_map->getCell(m_position.x, m_position.y).unsetCharacterId();
+				}
+			}
 		}
 
 		void Character::applyHeal(int32_t heal)
 		{
-			auto action = utils::Log::Action(m_id, "heal");
-			action.add("health", heal);
-			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+			if (!isDead()) {			
+				auto action = utils::Log::Action(m_id, "heal");
+				action.add("health", heal);
+				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 
-			m_currentAttributes->health += heal;
+				m_currentAttributes->health += heal;
+			}
 		}
 
 	}

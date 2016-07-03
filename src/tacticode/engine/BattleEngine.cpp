@@ -89,8 +89,11 @@ namespace tacticode
 
 		bool BattleEngine::round()
 		{
+			winnerId = -2;
 			for (auto& character : m_characters)
 			{
+				if (character->isDead())
+					continue;
 				BattleEngineContext context;
 
 				context.team = nullptr; //todo
@@ -98,28 +101,37 @@ namespace tacticode
 				context.engine = this;
 
 				character->play(context);
+				if (winnerId == -2 || winnerId == character->getTeamId()) {
+					winnerId = character->getTeamId();
+				} else {
+					winnerId = -1;
+				}
 				if (gameOver())
 				{
 					return false;
 				}
 			}
-			return true;
+			//anything else than -1 means everyone dead or some winner
+			return winnerId != -1;
 		}
 
 		bool BattleEngine::gameOver()
 		{
-			return false;
+			return winnerId > 0;
 		}
 
 		void BattleEngine::game()
 		{
 			int i = 0;
-			while (round() && i < 10)
+			while (round() && i < 1000)
 				++i;
 			//TODO: use datas created by gameOver();
 
 			//TODO: use the real winner...
-			utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(m_teams[std::rand() % m_teams.size()]->m_id);
+			if (winnerId < 0)
+				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(-1);
+			else
+				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(winnerId);
 		}
 		std::shared_ptr<Map> BattleEngine::getMap()
 		{

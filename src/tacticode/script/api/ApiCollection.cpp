@@ -153,7 +153,6 @@ namespace {
 
 				  auto character = battle_context->engine->getCharacterOnCell(x, y);
 				  if (character) {
-					  v8::Local<v8::Object> entity = createV8Entity(args.GetIsolate(), *character);
 					  result->Set(context, v8String::fromString("entity"), createV8Entity(args.GetIsolate(), *character));
 				  } else {				  	
 					  result->Set(context, v8String::fromString("entity"), v8::Null(args.GetIsolate()));

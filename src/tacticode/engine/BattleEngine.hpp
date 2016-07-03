@@ -23,6 +23,7 @@ namespace tacticode
 			std::vector<std::shared_ptr<Team> >		 m_teams;
 			std::vector<std::shared_ptr<Character> > m_characters;
 			std::shared_ptr<Map>					m_map;
+			int32_t winnerId;
 
 		public:
 			explicit BattleEngine();
