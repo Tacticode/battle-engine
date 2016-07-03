@@ -8,7 +8,6 @@ namespace tacticode
 		DamageEffect::DamageEffect()
 		{
 		}
-//add context as parameter
 		void	DamageEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell, int isSecondary)
 		{
 			// if (engine.getMap()->hasCellLineOfSightOnCell(caster->getPosition().x, caster->getPosition().y, cell->getX(), cell->getY()) || isSecondary != -1)
@@ -17,6 +16,8 @@ namespace tacticode
 				if (target)
 				{
 					int dmg = spell.getPower() * caster->getCurrentAttributes().power / target->getCurrentAttributes().resilience;
+					if (dmg = 0)
+						dmg = 5; // test pour les dégats
 					target->applyDamage(dmg);
 				}
 			}
