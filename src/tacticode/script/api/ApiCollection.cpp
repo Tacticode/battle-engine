@@ -13,8 +13,6 @@
 #include "tacticode/engine/Character.hpp"
 #include "tacticode/utils/FightLogger.hpp"
 
-#include "injectSpellApi.hpp"
-
 using tacticode::utils::Singleton;
 using tacticode::script::ScriptFactory;
 using tacticode::script::v8String;
