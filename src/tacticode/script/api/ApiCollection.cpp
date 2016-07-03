@@ -66,6 +66,19 @@ namespace {
 	  return result;
   }
 
+  v8::Local<v8::Object> createV8Cell(v8::Isolate *isolate, engine::Cell const& cell){
+	  v8::Local<v8::Object> result = v8::Object::New(isolate);
+	  v8::Local<v8::Context> context = isolate->GetCurrentContext();
+
+	  result->Set(context, v8String::fromString("x"), v8::Number::New(isolate, cell.getX()));
+	  result->Set(context, v8String::fromString("y"), v8::Number::New(isolate, cell.getY()));
+	  result->Set(context, v8String::fromString("height"), v8::Number::New(isolate, cell.getHeight()));
+	  result->Set(context, v8String::fromString("isAccessible"), v8::Boolean::New(isolate, cell.isAccessible()));
+	  result->Set(context, v8String::fromString("hasLineOfSight"), v8::Boolean::New(isolate, cell.hasLineOfSight()));
+	  result->Set(context, v8String::fromString("isFree"), v8::Boolean::New(isolate, cell.isFree()));
+		return result;
+  }
+
   void functionGetCurrentEntity(const v8::FunctionCallbackInfo<v8::Value>& args) {
 	  v8::EscapableHandleScope scope(args.GetIsolate());
 	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
@@ -136,13 +149,16 @@ namespace {
 
 			  if (map->isCellOnMap(x, y)) {
 				  auto const& cell = map->getCell(x, y);
-				  v8::Local<v8::Object> result = v8::Object::New(args.GetIsolate());
-				  result->Set(context, v8String::fromString("x"), v8::Number::New(args.GetIsolate(), cell.getX()));
-				  result->Set(context, v8String::fromString("y"), v8::Number::New(args.GetIsolate(), cell.getY()));
-				  result->Set(context, v8String::fromString("height"), v8::Number::New(args.GetIsolate(), cell.getHeight()));
-				  result->Set(context, v8String::fromString("isAccessible"), v8::Boolean::New(args.GetIsolate(), cell.isAccessible()));
-				  result->Set(context, v8String::fromString("hasLineOfSight"), v8::Boolean::New(args.GetIsolate(), cell.hasLineOfSight()));
-				  result->Set(context, v8String::fromString("isFree"), v8::Boolean::New(args.GetIsolate(), cell.isFree()));
+				  auto result = createV8Cell(args.GetIsolate(), cell);
+
+				  auto character = battle_context->engine->getCharacterOnCell(x, y);
+				  if (character) {
+					  v8::Local<v8::Object> entity = createV8Entity(args.GetIsolate(), *character);
+					  result->Set(context, v8String::fromString("entity"), createV8Entity(args.GetIsolate(), *character));
+				  } else {				  	
+					  result->Set(context, v8String::fromString("entity"), v8::Null(args.GetIsolate()));
+				  }
+
 				  args.GetReturnValue().Set(scope.Escape(result));
 				  return;
 			  }
@@ -228,6 +244,7 @@ void ApiCollection::injectApi(std::shared_ptr<tacticode::script::Context> contex
 
 	global->Set(v8String::fromString("moveToCell"), v8::Function::New(isolate, functionMoveToCell));
 	global->Set(v8String::fromString("cast"), v8::Function::New(isolate, functionCast));
+
 }
 
 ApiCollection::~ApiCollection() {
