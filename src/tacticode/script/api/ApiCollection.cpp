@@ -127,6 +127,38 @@ namespace {
 	  args.GetReturnValue().Set(scope.Escape(v8::Null(args.GetIsolate())));
   }
 
+  void functionGetCell(const v8::FunctionCallbackInfo<v8::Value>& args) {
+	  v8::EscapableHandleScope scope(args.GetIsolate());
+	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
+
+	  auto battle_context = getBattleContext(context);
+	  auto map = battle_context->engine->getMap();
+
+	  if (args.Length() >= 2) {
+		  v8::Local<v8::Value> argX = args[0];
+		  v8::Local<v8::Value> argY = args[1];
+
+		  if (argX->IsNumber() && argY->IsNumber()) {
+			  int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
+			  int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
+
+			  if (map->isCellOnMap(x, y)) {
+				  auto const& cell = map->getCell(x, y);
+				  v8::Local<v8::Object> result = v8::Object::New(args.GetIsolate());
+				  result->Set(context, v8String::fromString("x"), v8::Number::New(args.GetIsolate(), cell.getX()));
+				  result->Set(context, v8String::fromString("y"), v8::Number::New(args.GetIsolate(), cell.getY()));
+				  result->Set(context, v8String::fromString("height"), v8::Number::New(args.GetIsolate(), cell.getHeight()));
+				  result->Set(context, v8String::fromString("isAccessible"), v8::Boolean::New(args.GetIsolate(), cell.isAccessible()));
+				  result->Set(context, v8String::fromString("hasLineOfSight"), v8::Boolean::New(args.GetIsolate(), cell.hasLineOfSight()));
+				  result->Set(context, v8String::fromString("isFree"), v8::Boolean::New(args.GetIsolate(), cell.isFree()));
+				  args.GetReturnValue().Set(scope.Escape(result));
+				  return;
+			  }
+		  }
+	  }
+	  args.GetReturnValue().Set(scope.Escape(v8::Null(args.GetIsolate())));
+  }
+
   void functionMoveToCell(const v8::FunctionCallbackInfo<v8::Value>& args) {
   	v8::EscapableHandleScope scope(args.GetIsolate());
   	v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
@@ -183,6 +215,8 @@ void ApiCollection::injectApi(std::shared_ptr<tacticode::script::Context> contex
 	global->Set(v8String::fromString("getCurrentEntity"), v8::Function::New(isolate, functionGetCurrentEntity));
 	global->Set(v8String::fromString("getEntities"), v8::Function::New(isolate, functionGetEntities));
 	global->Set(v8String::fromString("getEntityOnCell"), v8::Function::New(isolate, functionGetEntityOnCell));
+	global->Set(v8String::fromString("getCell"), v8::Function::New(isolate, functionGetCell));
+
 	global->Set(v8String::fromString("moveToCell"), v8::Function::New(isolate, functionMoveToCell));
 
   injectSpellApi(context);

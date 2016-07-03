@@ -109,7 +109,7 @@
 					"movement": 5,
 					"speed": 2,
 					"spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
-					"script": "function onTurn(){ $log('test'); }"
+					"script": "function onTurn(){ $log(JSON.stringify(getCell(1, 0))); }"
 				}
 			]
 		}
