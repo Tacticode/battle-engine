@@ -21,6 +21,7 @@ namespace utils{
 			Json::Value& value() const;
 			static Log Entity(int id, int x, int y, std::string const& breed, int team);
 			static Log Action(int id, int x, int y, std::string const& type);
+			static Log Action(int id, std::string const& type);
 
 			template<typename T>
 			void add(std::string const& key, T const& v) {

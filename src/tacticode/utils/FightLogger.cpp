@@ -29,7 +29,7 @@ namespace utils{
 			rt.value()["team"] = (Json::Value(team));
 			return rt;
 		}
-		
+
 		Log Log::Action(int id, int x, int y, std::string const& type)
 		{
 			Log rt;
@@ -37,6 +37,15 @@ namespace utils{
 			rt.value()["entity"] = Json::Value(id);
 			rt.value()["x"] = Json::Value(x);
 			rt.value()["y"] = Json::Value(y);
+			rt.value()["type"] = Json::Value(type);
+			return rt;
+		}
+
+		Log Log::Action(int id, std::string const& type)
+		{
+			Log rt;
+
+			rt.value()["entity"] = Json::Value(id);
 			rt.value()["type"] = Json::Value(type);
 			return rt;
 		}
