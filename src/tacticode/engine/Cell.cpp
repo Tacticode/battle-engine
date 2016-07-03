@@ -120,7 +120,7 @@ namespace tacticode
 
 		bool Cell::hasLineOfSight() const
 		{
-			return m_lineOfSight && isFree();
+			return m_lineOfSight;
 		}
 	}
 }
