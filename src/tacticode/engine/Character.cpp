@@ -12,8 +12,6 @@
 #include <cstring>
 #include <algorithm>
 
-using tacticode::utils::Singleton;
-
 namespace tacticode
 {
 	namespace engine
@@ -40,13 +38,14 @@ namespace tacticode
 			return validBreeds[getBreed()];
 		}
 
-		Character::Character(const file::IValue& json, std::shared_ptr<Map> map)
+		Character::Character(const file::IValue& json, std::shared_ptr<Map> map, int32_t teamId)
 			: m_map(map)
 		{
 			#ifdef V8LINK
 			m_script = utils::Singleton<script::ScriptFactory>::GetInstance()->newCharacterScript();
 			#endif
 			deserialize(json);
+			m_teamId = teamId;
 		}
 
 		void Character::assertAttributeDeserialize(const file::IValue& json, std::string attribute)
@@ -136,53 +135,30 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("character", "spells field is not an array");
 			}
-			auto _spells = json["spells"];
-			const auto & spells = *_spells;
-			for (size_t i = 0; i < spells.size(); ++i)
+			auto spells = json["spells"];
+			for (size_t i = 0; i < spells->size(); ++i)
 			{
-				if (!spells[i]->isString())
+				if (!(*spells)[i]->isString())
 				{
 					throw file::error::InvalidConfiguration("character", "item of spells is not a string");
 				}
-				addSpell(spells[i]->asString());
+				const auto spellName = (*spells)[i]->asString();
+				if (m_spells.find(spellName) != m_spells.end())
+				{
+					throw file::error::InvalidConfiguration("character", "a spell name is defined more than one time");
+				}
+				addSpell(spellName);
 			}
 			deserializeAttributes(json);
 			if (m_script != nullptr)
 			{
 				setScript(json.getString("script", std::string("$log('unset") + __FILE__ + "': )"));
 			}
-			if (!json.hasField("position"))
-			{
-				throw file::error::InvalidConfiguration("character", "character has no position");
-			}
-			if (!json["position"]->isArray())
-			{
-				throw file::error::InvalidConfiguration("character", "position field is not an array");
-			}
-			auto positionPtr = json["position"];
-			auto & position = *positionPtr;
-			if (position.size() != 2)
-			{
-				throw file::error::InvalidConfiguration("character", "position field is not an array of two numbers");
-			}
-			else if (!position[0]->isNumeric() || !position[1]->isNumeric())
-			{
-				throw file::error::InvalidConfiguration("character", "position field is not an array of numbers");
-			}
-			int posX = position[0]->asInt();
-			int posY = position[1]->asInt();
-			if (posX < 0 || posY < 0)
-			{
-				throw file::error::InvalidConfiguration("character", "position field is not an array of positive numbers");
-			}
-			m_position.x = posX;
-			m_position.y = posY;
 		}
 
-		void Character::addSpell(const std::string & spellName) // TODO: Wilko
+		void Character::addSpell(const std::string & spellName)
 		{
-			// this should throw an exception if the spellName does not exist: tacticode::spell::error::InvalidSpellName()
-			//std::unique_ptr<spell::ISpell> ptr = spellFactory().createSpell(spellName);
+			m_spells[spellName] = 0;
 		}
 
 		Character::Breed Character::stringToBreed(const std::string & breed)
@@ -217,8 +193,19 @@ namespace tacticode
 			}
 		}
 
+		bool Character::isDead() const
+		{
+			return getCurrentHealth() <= 0;
+		}
+
 		void Character::play(BattleEngineContext& context)
 		{
+			if (m_currentHealth <= 0)
+			{
+				return;
+			}
+			m_cooldown.movement = m_currentAttributes->movement;
+			m_cooldown.spell = false;
 			applyEffects();
 			executeScript(context);
 		}
@@ -287,14 +274,59 @@ namespace tacticode
 			return m_teamId;
 		}
 
+		bool Character::getCooldownSpell() const
+		{
+			return m_cooldown.spell;
+		}
+
+		int32_t Character::getCurrentMovementPoints() const
+		{
+			return m_cooldown.movement;
+		}
+
+		void Character::reduceCurrentMovementPoint(int32_t reductor)
+		{
+			m_cooldown.movement -= reductor;
+			if (m_cooldown.movement < 0)
+			{
+				m_cooldown.movement = 0;
+			}
+		}
+
 		const std::vector<std::unique_ptr<effect::IEffect>>& Character::getEffects() const
 		{
 			return m_effects;
 		}
 
-		const std::vector<std::unique_ptr<spell::ISpell>>& Character::getSpells() const
+		bool Character::hasSpell(const std::string & name) const
 		{
-			return m_spells;
+			return m_spells.find(name) != m_spells.end();
+		}
+
+		spell::ISpell & Character::getSpellByName(const std::string & spellName)
+		{
+			auto spellFactory = utils::Singleton<spell::SpellFactory>::GetInstance();
+			return *spellFactory->get(spellName);
+		}
+
+		int32_t Character::getSpellCooldown(const std::string & spellName) const
+		{
+			const auto & it = m_spells.find(spellName);
+			if (it == m_spells.end())
+			{
+				return -1;
+			}
+			return it->second;
+		}
+
+		const std::unique_ptr<std::list<std::string>> Character::getSpells() const
+		{
+			auto spellNames = std::make_unique<std::list<std::string>>();
+			for (auto & item : m_spells)
+			{
+				spellNames->emplace_back(item.first);
+			}
+			return spellNames;
 		}
 
 		const Vector2i & Character::getPosition() const
@@ -320,19 +352,58 @@ namespace tacticode
 
 		bool Character::moveToCell(const Vector2i & position)
 		{
-			return m_map->moveCharacterToCell(*this, position);
+			if (m_map->moveCharacterToCell(*this, position))
+			{
+				auto action = utils::Log::Action(m_id, position.x, position.y, "move");
+				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+				return true;
+			}
+			return false;
+		}
+
+		bool Character::castSpell(std::string const & spellName,
+			const Vector2i & position,
+			BattleEngine & engine)
+		{
+			if (!hasSpell(spellName) || !m_map->isCellOnMap(position))
+			{
+				return false;
+			}
+			auto & spell = getSpellByName(spellName);
+
+			auto action = utils::Log::Action(m_id, position.x, position.y, "skill");
+			action.add("skill", spellName);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+
+			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
+			return true;
 		}
 
 		//todo : prevoir cas spéciaux si besoin
 		void Character::applyDamage(int32_t damages)
 		{
-			m_currentAttributes->health -= damages;
-		}
-		void Character::applyHeal(int32_t heal)
-		{
-			m_currentAttributes->health += heal;
+			auto action = utils::Log::Action(m_id, "damage");
+			action.add("health", damages);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+
+			if (!isDead()) {
+				m_currentAttributes->health -= damages;
+				if (isDead()) {
+					auto action = utils::Log::Action(m_id, "dead");
+					utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);	
+					m_map->getCell(m_position.x, m_position.y).unsetCharacterId();
+				}
+			}
 		}
 
+		void Character::applyHeal(int32_t heal)
+		{
+			if (!isDead()) {			
+				auto action = utils::Log::Action(m_id, "heal");
+				action.add("health", heal);
+				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+
+<<<<<<< HEAD
 //		fix me later
 
 		/*bool Character::launchSpell(std::string const& spell_str, int x, int y) {
@@ -344,5 +415,11 @@ namespace tacticode
 			}
 			return true;
 			}*/
+=======
+				m_currentAttributes->health += heal;
+			}
+		}
+
+>>>>>>> 641bbaee1609810fa5723a37b2e5557b15717540
 	}
 }

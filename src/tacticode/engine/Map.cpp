@@ -1,5 +1,6 @@
 #include "tacticode/file/IValue.hpp"
 #include "tacticode/file/JsonLoader.hpp"
+#include "tacticode/file/JsonValue.hpp"
 #include "tacticode/file/error/InvalidConfiguration.hpp"
 #include "Map.hpp"
 #include "Cell.hpp"
@@ -101,11 +102,37 @@ namespace tacticode
 					}
 				}
 			}
+			if (!json.hasField("start_positions"))
+			{
+				throw file::error::InvalidConfiguration("map", "Map has no start_positions");
+			}
+			if (!json["start_positions"]->isArray())
+			{
+				throw file::error::InvalidConfiguration("map", "start_positions is not an array");
+			}
+			auto ptrStartPositions = json["start_positions"];
+			for (size_t i = 0; i < ptrStartPositions->size(); ++i)
+			{
+				auto ptrStartPosition = (*ptrStartPositions)[i];
+				if (!ptrStartPosition->hasField("x") || !ptrStartPosition->hasField("y"))
+				{
+					throw file::error::InvalidConfiguration("map", "start_positions should contain x and y");
+				}
+				auto ptrStartPositionX = (*ptrStartPosition)["x"];
+				auto ptrStartPositionY = (*ptrStartPosition)["y"];
+				if (!ptrStartPositionX->isNumeric() || !ptrStartPositionY->isNumeric())
+				{
+					throw file::error::InvalidConfiguration("map", "start_positions should contain two numbers");
+				}
+				engine::Vector2i v(ptrStartPositionX->asInt(), ptrStartPositionY->asInt());
+				m_startingPositions.push_back(v);
+			}
 		}
 
 		Map::Map(const file::IValue& json)
 		{
-			deserialize(json);
+			deserialize(json);			
+			utils::Singleton<utils::FightLogger>::GetInstance()->value()["map"] = tacticode::file::getRawJsonValue(json);
 		}
 
 		int Map::getWidth() const
@@ -143,9 +170,9 @@ namespace tacticode
 			return *m_field[position.y][position.x];
 		}
 
-		std::shared_ptr<Cell> Map::getCellPtr(int x, int y)
+		Vector2i Map::getStartingPosition(int32_t index) const
 		{
-			return m_field[y][x];
+			return m_startingPositions[index];
 		}
 
 		bool Map::isCellFree(int x, int y) const
@@ -180,7 +207,7 @@ namespace tacticode
 
 		bool Map::isCellOnMap(int x, int y) const
 		{
-			if (0 <= y && x < m_width && 0 <= y && y < m_height)
+			if (0 <= x && x < m_width && 0 <= y && y < m_height)
 			{
 				return true;
 			}
@@ -192,9 +219,10 @@ namespace tacticode
 			return isCellOnMap(position.x, position.y);
 		}
 
-		bool Map::moveCharacterToCell(const Character & character, const Vector2i & position)
+		bool Map::moveCharacterToCell(Character & character, const Vector2i & position)
 		{
-			if (std::abs(position.x - character.getPosition().x) + std::abs(position.y - character.getPosition().y) != 1)
+			int32_t distance = std::abs(position.x - character.getPosition().x) + std::abs(position.y - character.getPosition().y);
+			if (distance != 1 || character.getCurrentMovementPoints() < distance)
 			{
 				return false;
 			}
@@ -202,7 +230,10 @@ namespace tacticode
 			{
 				return false;
 			}
+			character.reduceCurrentMovementPoint(distance);
+			m_field[character.getPosition().y][character.getPosition().x]->unsetCharacterId();
 			m_field[position.y][position.x]->setCharacterId(character.getId());
+			character.setPosition(position.x, position.y);
 			return true;
 		}
 

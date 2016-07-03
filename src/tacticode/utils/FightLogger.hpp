@@ -15,12 +15,13 @@ namespace utils{
 		class Log;
 		//Later this Log needs to be refactor to be centralized through a factory
 		class Log {
-			std::shared_ptr<Json::Value> _value;
+			std::shared_ptr<Json::Value> m_value;
 		public:			
 			Log();
 			Json::Value& value() const;
 			static Log Entity(int id, int x, int y, std::string const& breed, int team);
 			static Log Action(int id, int x, int y, std::string const& type);
+			static Log Action(int id, std::string const& type);
 
 			template<typename T>
 			void add(std::string const& key, T const& v) {
@@ -43,6 +44,7 @@ namespace utils{
 			void setFightId(int fightId);
 			void setMap(std::string const&);
 			//and more
+			Json::Value& value();			
 
 			~FightLogger();
 		};

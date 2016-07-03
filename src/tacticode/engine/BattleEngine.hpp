@@ -23,6 +23,7 @@ namespace tacticode
 			std::vector<std::shared_ptr<Team> >		 m_teams;
 			std::vector<std::shared_ptr<Character> > m_characters;
 			std::shared_ptr<Map>					m_map;
+			int32_t winnerId;
 
 		public:
 			explicit BattleEngine();
@@ -35,6 +36,8 @@ namespace tacticode
 			bool gameOver(); //TODO set gameOver datas and return true, if game is over
 			std::shared_ptr<Map> getMap();
 			std::shared_ptr<Character> getCharacter(int32_t characterId);
+			std::shared_ptr<Character> getCharacterOnCell(int32_t x, int32_t y);
+			std::vector<std::shared_ptr<Character> >& getCharacters();
 		};
 	}
 }

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include <map>
 #include <array>
 
 #include "tacticode/file/IValue.hpp"
@@ -45,29 +46,39 @@ namespace tacticode
 			enum Breed
 			{
 				elf		= 0,
-				gobelin = 1,
+				goblin  = 1,
 				human	= 2,
 				orc		= 3
 			};
 
-			static const std::array<std::string, 4> validBreeds;
-			static const std::array<std::string, 8> validAttributes;
+			struct Cooldown
+			{
+				int32_t movement;
+				bool spell;
+			};
+
+		private:
 			Vector2i                          m_position;
 			std::unique_ptr<Attributes>		  m_currentAttributes; // Those attributes are used in combat
 			std::string						  m_name;
-			Breed							  m_breed;			
+			Breed							  m_breed;
 			int32_t							  m_currentHealth;
 			std::unique_ptr<const Attributes> m_baseAttributes;	   // Those attributes can be used by buff to make calculations
 
 			int32_t                           m_id;
 			int32_t							  m_teamId;
 			std::shared_ptr<Map>              m_map;
+			Cooldown                          m_cooldown;
 
 			std::vector<std::unique_ptr<effect::IEffect>> m_effects;
-			std::vector<std::unique_ptr<spell::ISpell>>	  m_spells;
+			std::map<std::string, int32_t>	              m_spells;
 			std::shared_ptr<ICharacterScript>             m_script;
+
 		public:
-			explicit Character(const file::IValue& json, std::shared_ptr<Map> map);
+			static const std::array<std::string, 4> validBreeds;
+			static const std::array<std::string, 8> validAttributes;
+
+			explicit Character(const file::IValue& json, std::shared_ptr<Map> map, int32_t teamId);
 			std::string const& getBreedString() const;
 
 			void deserialize(const file::IValue& json);
@@ -87,17 +98,25 @@ namespace tacticode
 			const std::shared_ptr<ICharacterScript> & getScript() const;
 
 			Attributes &        getCurrentAttributes();
-			const Attributes &  getCurrentAttributes() const;
-			const std::string & getName()              const;
-			Breed               getBreed()             const;
-			int32_t	            getCurrentHealth()     const;
-			const Attributes &  getBaseAttributes()    const;
-			int32_t             getId()                const;
-			int32_t             getTeamId()            const;
+			const Attributes &  getCurrentAttributes()     const;
+			const std::string & getName()                  const;
+			Breed               getBreed()                 const;
+			int32_t	            getCurrentHealth()         const;
+			const Attributes &  getBaseAttributes()        const;
+			int32_t             getId()                    const;
+			int32_t             getTeamId()                const;
+			bool			    getCooldownSpell()         const;
+			int32_t             getCurrentMovementPoints() const;
+			bool					isDead()	const;
+
+			void reduceCurrentMovementPoint(int32_t reductor);
 
 			const std::vector<std::unique_ptr<effect::IEffect>> & getEffects() const;
-			const std::vector<std::unique_ptr<spell::ISpell>> & getSpells() const;
 
+			bool hasSpell(const std::string & name) const;
+			spell::ISpell & getSpellByName(const std::string & spellName);
+			int32_t getSpellCooldown(const std::string & spellName) const;
+			const std::unique_ptr<std::list<std::string>> getSpells() const;
 
 			const Vector2i & getPosition() const;
 			void setPosition(int x, int y);
@@ -107,7 +126,7 @@ namespace tacticode
 			void addEffect(std::unique_ptr<effect::IEffect> effect);
 
 			bool moveToCell(const Vector2i & position);
-			bool launchSpell(std::string const&, int x, int y);
+			bool castSpell(std::string const&, const Vector2i & position, BattleEngine & engine);
 		};
 
 	}

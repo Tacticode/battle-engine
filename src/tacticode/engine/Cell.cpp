@@ -6,7 +6,7 @@ namespace tacticode
 {
 	namespace engine
 	{
-		Cell::Cell(int x, int y){
+		Cell::Cell(int x, int y) : m_x(x), m_y(y), m_height(0), m_accessible(true), m_lineOfSight(true){
 
 		}
 		Cell::Cell(const file::IValue& json)
@@ -120,7 +120,7 @@ namespace tacticode
 
 		bool Cell::hasLineOfSight() const
 		{
-			return m_lineOfSight && isFree();
+			return m_lineOfSight;
 		}
 	}
 }

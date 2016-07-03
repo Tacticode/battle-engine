@@ -49,7 +49,7 @@ namespace tacticode
 			{
 				auto _characters_i = characters[i];
 				auto & character = *_characters_i;
-				m_characters.push_back(std::make_shared<Character>(character, m_map));
+				m_characters.push_back(std::make_shared<Character>(character, m_map, m_id));
 			}
 		}
 

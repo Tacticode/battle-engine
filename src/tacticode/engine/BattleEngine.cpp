@@ -47,10 +47,12 @@ namespace tacticode
 				m_teams.push_back(std::make_shared<Team>(*currentTeam, m_map));
 			}
 
+			int entityIndex = 0;
 			for (auto & t : m_teams)
 			{
 				for (auto & c : t->getCharacters())
 				{
+					c->setPosition(m_map->getStartingPosition(entityIndex++));
 					const Vector2i & position = c->getPosition();
 					if (!m_map->isCellOnMap(position.x, position.y))
 					{
@@ -87,8 +89,11 @@ namespace tacticode
 
 		bool BattleEngine::round()
 		{
+			winnerId = -2;
 			for (auto& character : m_characters)
 			{
+				if (character->isDead())
+					continue;
 				BattleEngineContext context;
 
 				context.team = nullptr; //todo
@@ -96,28 +101,37 @@ namespace tacticode
 				context.engine = this;
 
 				character->play(context);
+				if (winnerId == -2 || winnerId == character->getTeamId()) {
+					winnerId = character->getTeamId();
+				} else {
+					winnerId = -1;
+				}
 				if (gameOver())
 				{
 					return false;
 				}
 			}
-			return true;
+			//anything else than -1 means everyone dead or some winner
+			return winnerId != -1;
 		}
 
 		bool BattleEngine::gameOver()
 		{
-			return false;
+			return winnerId > 0;
 		}
 
 		void BattleEngine::game()
 		{
 			int i = 0;
-			while (round() && i < 10)
+			while (round() && i < 1000)
 				++i;
 			//TODO: use datas created by gameOver();
 
 			//TODO: use the real winner...
-			utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(m_teams[std::rand() % m_teams.size()]->m_id);
+			if (winnerId < 0)
+				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(0);
+			else
+				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(winnerId);
 		}
 		std::shared_ptr<Map> BattleEngine::getMap()
 		{
@@ -125,12 +139,27 @@ namespace tacticode
 		}
 		std::shared_ptr<Character> BattleEngine::getCharacter(int32_t characterId)
 		{
-			for (int i = 0; i < m_characters.size(); ++i)
+			for (size_t i = 0; i < m_characters.size(); ++i)
 			{
 				if (m_characters[i]->getId() == characterId)
 					return (m_characters[i]);
 			}
 			return (nullptr);
+		}
+		std::shared_ptr<Character> BattleEngine::getCharacterOnCell(int32_t x, int32_t y)
+		{
+			for (size_t i = 0; i < m_characters.size(); ++i)
+			{
+				if (m_characters[i]->getPosition().x == x
+					&& m_characters[i]->getPosition().x == y
+					&& m_characters[i]->getCurrentHealth() > 0)
+					return (m_characters[i]);
+			}
+			return (nullptr);
+		}
+		std::vector<std::shared_ptr<Character> >& BattleEngine::getCharacters()
+		{
+			return m_characters;
 		}
 	}
 }
