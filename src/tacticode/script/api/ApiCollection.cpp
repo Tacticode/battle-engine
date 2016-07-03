@@ -34,18 +34,6 @@ namespace {
 	  }
   }
 
-  void functionFireBall(const v8::FunctionCallbackInfo<v8::Value>& args) {
-    if (args.Length() >= 2) {
-    v8::HandleScope scope(args.GetIsolate());
-    v8::Local<v8::Value> argX = args[0];
-    v8::Local<v8::Value> argY = args[1];
-
-    (void)argX;
-    (void)argY;
-    //Todo, fireball somehow
-    }
-  }
-
   tacticode::engine::BattleEngineContext* getBattleContext(v8::Local<v8::Context>& context) {
 	  auto battle = reinterpret_cast<tacticode::engine::BattleEngineContext*>(
 		  context->GetAlignedPointerFromEmbedderData(Context::BATTLE_ENGINE));
@@ -202,16 +190,8 @@ void ApiCollection::injectApi(std::shared_ptr<tacticode::script::Context> contex
 	v8::Isolate *isolate = Singleton<ScriptFactory>::GetInstance()->getEngine();
 
 	auto global = context->get()->Global();
-	{
-		//Inject a function like this
-		tacticode::script::v8String funcName("$log");
-		global->Set(funcName.get(), v8::Function::New(isolate, functionLog));		
-	}
 
-	{
-		tacticode::script::v8String funcName("$fireball");
-		global->Set(funcName.get(), v8::Function::New(isolate, functionFireBall));
-	}
+	global->Set(v8String::fromString("$log"), v8::Function::New(isolate, functionLog));
 	global->Set(v8String::fromString("getCurrentEntity"), v8::Function::New(isolate, functionGetCurrentEntity));
 	global->Set(v8String::fromString("getEntities"), v8::Function::New(isolate, functionGetEntities));
 	global->Set(v8String::fromString("getEntityOnCell"), v8::Function::New(isolate, functionGetEntityOnCell));
