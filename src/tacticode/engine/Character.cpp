@@ -347,7 +347,11 @@ namespace tacticode
 
 		bool Character::moveToCell(const Vector2i & position)
 		{
-			return m_map->moveCharacterToCell(*this, position);
+			if (m_map->moveCharacterToCell(*this, position))
+			{
+				auto action = utils::Log::Action(m_id, position.x, position.y, "move");
+				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+			}
 		}
 
 		bool Character::castSpell(std::string const & spellName, const Vector2i & position, BattleEngine & engine)
@@ -358,6 +362,10 @@ namespace tacticode
 			}
 			auto & spell = getSpellByName(spellName);
 
+			auto action = utils::Log::Action(m_id, position.x, position.y, "skill");
+			action.add("skill", spellName);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+
 			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
 			return true;
 		}
@@ -365,11 +373,19 @@ namespace tacticode
 		//todo : prevoir cas spéciaux si besoin
 		void Character::applyDamage(int32_t damages)
 		{
+			auto action = utils::Log::Action(m_id, "damage");
+			action.add("health", damages);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+
 			m_currentAttributes->health -= damages;
 		}
 
 		void Character::applyHeal(int32_t heal)
 		{
+			auto action = utils::Log::Action(m_id, "heal");
+			action.add("health", heal);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+
 			m_currentAttributes->health += heal;
 		}
 
