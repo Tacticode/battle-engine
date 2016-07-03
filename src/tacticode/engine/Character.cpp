@@ -143,7 +143,7 @@ namespace tacticode
 					throw file::error::InvalidConfiguration("character", "item of spells is not a string");
 				}
 				const auto spellName = (*spells)[i]->asString();
-				if (m_spells.find(spellName) == m_spells.end())
+				if (m_spells.find(spellName) != m_spells.end())
 				{
 					throw file::error::InvalidConfiguration("character", "a spell name is defined more than one time");
 				}
