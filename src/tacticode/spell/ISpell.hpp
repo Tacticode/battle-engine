@@ -29,7 +29,7 @@ namespace tacticode
 			std::list<std::shared_ptr<IEffect>> m_effects;
 		public:
 			virtual ~ISpell() = default;
-			virtual void castSpell(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine) = 0;
+			virtual void castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine) = 0;
 			virtual const std::string& getName() const = 0;
 			virtual const float getPower() const = 0;
 			virtual const size_t getRange() const = 0;

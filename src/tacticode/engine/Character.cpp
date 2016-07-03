@@ -12,8 +12,6 @@
 #include <cstring>
 #include <algorithm>
 
-using tacticode::utils::Singleton;
-
 namespace tacticode
 {
 	namespace engine
@@ -137,15 +135,19 @@ namespace tacticode
 			{
 				throw file::error::InvalidConfiguration("character", "spells field is not an array");
 			}
-			auto _spells = json["spells"];
-			const auto & spells = *_spells;
-			for (size_t i = 0; i < spells.size(); ++i)
+			auto spells = json["spells"];
+			for (size_t i = 0; i < spells->size(); ++i)
 			{
-				if (!spells[i]->isString())
+				if (!(*spells)[i]->isString())
 				{
 					throw file::error::InvalidConfiguration("character", "item of spells is not a string");
 				}
-				addSpell(spells[i]->asString());
+				const auto spellName = (*spells)[i]->asString();
+				if (m_spells.find(spellName) != m_spells.end())
+				{
+					throw file::error::InvalidConfiguration("character", "a spell name is defined more than one time");
+				}
+				addSpell(spellName);
 			}
 			deserializeAttributes(json);
 			if (m_script != nullptr)
@@ -154,10 +156,9 @@ namespace tacticode
 			}
 		}
 
-		void Character::addSpell(const std::string & spellName) // TODO: Wilko
+		void Character::addSpell(const std::string & spellName)
 		{
-			// this should throw an exception if the spellName does not exist: tacticode::spell::error::InvalidSpellName()
-			//std::unique_ptr<spell::ISpell> ptr = spellFactory().createSpell(spellName);
+			m_spells[spellName] = 0;
 		}
 
 		Character::Breed Character::stringToBreed(const std::string & breed)
@@ -292,9 +293,35 @@ namespace tacticode
 			return m_effects;
 		}
 
-		const std::vector<std::unique_ptr<spell::ISpell>>& Character::getSpells() const
+		bool Character::hasSpell(const std::string & name) const
 		{
-			return m_spells;
+			return m_spells.find(name) != m_spells.end();
+		}
+
+		spell::ISpell & Character::getSpellByName(const std::string & spellName)
+		{
+			auto spellFactory = utils::Singleton<spell::SpellFactory>::GetInstance();
+			return *spellFactory->get(spellName);
+		}
+
+		int32_t Character::getSpellCooldown(const std::string & spellName) const
+		{
+			const auto & it = m_spells.find(spellName);
+			if (it == m_spells.end())
+			{
+				return -1;
+			}
+			return it->second;
+		}
+
+		const std::unique_ptr<std::list<std::string>> Character::getSpells() const
+		{
+			auto spellNames = std::make_unique<std::list<std::string>>();
+			for (auto & item : m_spells)
+			{
+				spellNames->emplace_back(item.first);
+			}
+			return spellNames;
 		}
 
 		const Vector2i & Character::getPosition() const
@@ -323,27 +350,28 @@ namespace tacticode
 			return m_map->moveCharacterToCell(*this, position);
 		}
 
+		bool Character::castSpell(std::string const & spellName, const Vector2i & position, BattleEngine & engine)
+		{
+			if (!hasSpell(spellName) || !m_map->isCellOnMap(position))
+			{
+				return false;
+			}
+			auto & spell = getSpellByName(spellName);
+
+			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
+			return true;
+		}
+
 		//todo : prevoir cas spéciaux si besoin
 		void Character::applyDamage(int32_t damages)
 		{
 			m_currentAttributes->health -= damages;
 		}
+
 		void Character::applyHeal(int32_t heal)
 		{
 			m_currentAttributes->health += heal;
 		}
 
-		//fix me later
-		/*
-		bool Character::launchSpell(std::string const& spell_str, int x, int y) {
-			auto facto = Singleton<spell::SpellFactory>::GetInstance();
-			auto spell = facto->get(spell_str);
-			if (spell) {
-				spell->castSpell()
-				//oh well, no shared ptr
-			}
-			return true;
-		}
-		*/
 	}
 }

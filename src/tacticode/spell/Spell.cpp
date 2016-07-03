@@ -9,8 +9,9 @@ namespace tacticode
 		{
 			m_effects.push_back(effect);
 		}
-		void Spell::castSpell(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine)
+		void Spell::castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine)
 		{
+			auto & caster = engine.getCharacter(casterId);
 			utils::Log log;
 			auto fightLog = utils::Singleton<utils::FightLogger>::GetInstance();
 			log.add("LAUNCHSPELL", m_name);

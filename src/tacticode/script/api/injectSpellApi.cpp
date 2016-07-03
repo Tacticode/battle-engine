@@ -73,19 +73,17 @@ namespace {
       v8::Local<v8::Value> argY = args[2];
       if (spell->IsString() && argX->IsNumber() && argY->IsNumber()) {
         v8::String::Utf8Value utf8value(spell);
-        std::string spell_str(*utf8value);
+        std::string spellName(*utf8value);
         int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
         int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
 
         auto map = battle_context->engine->getMap();
-        auto facto = Singleton<spell::SpellFactory>::GetInstance();
-        auto spell = facto->get(spell_str);
-        if (spell) {
-          spell->castSpell(character, map->getManagedCell(x, y), *(battle_context->engine));
-          rt = true;
+        if (character->hasSpell(spellName))
+		{
+          rt = character->castSpell(spellName, engine::Vector2i(x, y), *(battle_context->engine));
         }
 
-        auto action = utils::Log::Action(character->getId(), x, y, spell_str);
+        auto action = utils::Log::Action(character->getId(), x, y, spellName);
         action.add("success", rt);
         utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
       }

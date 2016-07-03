@@ -20,7 +20,7 @@ namespace tacticode
 		public:
 			Spell(std::shared_ptr<IEffect> effect, std::string name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los);
 			virtual ~Spell() = default;
-			virtual void castSpell(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine);
+			void castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine);
 			virtual const std::string& getName() const;
 			virtual const float getPower() const;
 			virtual const size_t getRange() const;

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <memory>
+#include <map>
 #include <array>
 
 #include "tacticode/file/IValue.hpp"
@@ -70,7 +71,7 @@ namespace tacticode
 			Cooldown                          m_cooldown;
 
 			std::vector<std::unique_ptr<effect::IEffect>> m_effects;
-			std::vector<std::unique_ptr<spell::ISpell>>	  m_spells;
+			std::map<std::string, int32_t>	              m_spells;
 			std::shared_ptr<ICharacterScript>             m_script;
 
 		public:
@@ -110,8 +111,11 @@ namespace tacticode
 			void reduceCurrentMovementPoint(int32_t reductor);
 
 			const std::vector<std::unique_ptr<effect::IEffect>> & getEffects() const;
-			const std::vector<std::unique_ptr<spell::ISpell>>   & getSpells() const;
 
+			bool hasSpell(const std::string & name) const;
+			spell::ISpell & getSpellByName(const std::string & spellName);
+			int32_t getSpellCooldown(const std::string & spellName) const;
+			const std::unique_ptr<std::list<std::string>> getSpells() const;
 
 			const Vector2i & getPosition() const;
 			void setPosition(int x, int y);
@@ -121,7 +125,7 @@ namespace tacticode
 			void addEffect(std::unique_ptr<effect::IEffect> effect);
 
 			bool moveToCell(const Vector2i & position);
-			bool launchSpell(std::string const&, int x, int y);
+			bool castSpell(std::string const&, const Vector2i & position, BattleEngine & engine);
 		};
 
 	}
