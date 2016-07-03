@@ -6,7 +6,7 @@ namespace tacticode
 {
 	namespace engine
 	{
-		Cell::Cell(int x, int y){
+		Cell::Cell(int x, int y) : m_x(x), m_y(y), m_height(0), m_accessible(true) {
 
 		}
 		Cell::Cell(const file::IValue& json)
