@@ -148,33 +148,25 @@ namespace {
   }
 
   void functionMoveToCell(const v8::FunctionCallbackInfo<v8::Value>& args) {
-  	v8::EscapableHandleScope scope(args.GetIsolate());
-  	v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
-  	bool rt = false;
-  	//BattleEngineContext stored in global of the context
-  	tacticode::engine::BattleEngineContext *battle_context = reinterpret_cast<tacticode::engine::BattleEngineContext*>(
-  		context->GetAlignedPointerFromEmbedderData(Context::BATTLE_ENGINE));
+	  v8::EscapableHandleScope scope(args.GetIsolate());
+	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
 
-  	assert(battle_context);
+	  auto battle_context = getBattleContext(context);
+	  auto character = battle_context->character;
+	  bool rt = false;
 
-  	auto character = battle_context->character;
+	  if (args.Length() >= 2) {
+		  v8::Local<v8::Value> argX = args[0];
+		  v8::Local<v8::Value> argY = args[1];
+		  if (argX->IsNumber() && argY->IsNumber()) {
+			  int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
+			  int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
 
-  	assert(character);
-    if (args.Length() >= 2) {
-	    v8::Local<v8::Value> argX = args[0];
-	    v8::Local<v8::Value> argY = args[1];
-	    if (argX->IsNumber() && argY->IsNumber()) {
- 		    int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
-			int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
-		    rt = character->moveToCell(engine::Vector2i(x, y));
-
-		    auto action = utils::Log::Action(character->getId(), x, y, "move");
-		    action.add("success", rt);
-		    utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
-	    }
-    }
-  	v8::Local<v8::Value> result = v8::Boolean::New(args.GetIsolate(), rt);
-  	args.GetReturnValue().Set(scope.Escape(result));
+			  rt = character->moveToCell(engine::Vector2i(x, y));
+		  }
+	  }
+	  v8::Local<v8::Value> result = v8::Boolean::New(args.GetIsolate(), rt);
+	  args.GetReturnValue().Set(scope.Escape(result));
   }
 
 }
