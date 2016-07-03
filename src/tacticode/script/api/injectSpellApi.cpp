@@ -81,7 +81,7 @@ namespace {
         auto facto = Singleton<spell::SpellFactory>::GetInstance();
         auto spell = facto->get(spell_str);
         if (spell) {
-          spell->castSpell(character, map->getManagedCell(x, y), *(battle_context->engine));
+          spell->castSpell(character->getId(), map->getManagedCell(x, y), *(battle_context->engine));
           rt = true;
         }
 

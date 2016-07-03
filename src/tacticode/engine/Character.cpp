@@ -324,7 +324,7 @@ namespace tacticode
 			return m_spells.find(name) != m_spells.end();
 		}
 
-		const spell::ISpell & Character::getSpellByName(const std::string & spellName) const
+		spell::ISpell & Character::getSpellByName(const std::string & spellName)
 		{
 			auto spellFactory = utils::Singleton<spell::SpellFactory>::GetInstance();
 			return *spellFactory->get(spellName);
@@ -376,27 +376,28 @@ namespace tacticode
 			return m_map->moveCharacterToCell(*this, position);
 		}
 
+		bool Character::castSpell(std::string const & spellName, const Vector2i & position, BattleEngine & engine)
+		{
+			if (!hasSpell(spellName) || !m_map->isCellOnMap(position))
+			{
+				return false;
+			}
+			auto & spell = getSpellByName(spellName);
+
+			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
+			return true;
+		}
+
 		//todo : prevoir cas spéciaux si besoin
 		void Character::applyDamage(int32_t damages)
 		{
 			m_currentAttributes->health -= damages;
 		}
+
 		void Character::applyHeal(int32_t heal)
 		{
 			m_currentAttributes->health += heal;
 		}
 
-		//fix me later
-		/*
-		bool Character::launchSpell(std::string const& spell_str, int x, int y) {
-			auto facto = Singleton<spell::SpellFactory>::GetInstance();
-			auto spell = facto->get(spell_str);
-			if (spell) {
-				spell->castSpell()
-				//oh well, no shared ptr
-			}
-			return true;
-		}
-		*/
 	}
 }
