@@ -1,5 +1,7 @@
 #include "Spell.hpp"
 
+using tacticode::utils::Singleton;
+
 namespace tacticode
 {
 	namespace spell

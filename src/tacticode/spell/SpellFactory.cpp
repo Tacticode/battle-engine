@@ -38,7 +38,9 @@ namespace tacticode
 		}
 
 		std::shared_ptr<Spell> SpellFactory::get(std::string const& n) {
-			return (m_dictionary[n]);
+			if (m_dictionary.find(n) != m_dictionary.end())
+				return (m_dictionary[n]);
+			return nullptr;
 		}
 
 		SpellFactory::~SpellFactory() {

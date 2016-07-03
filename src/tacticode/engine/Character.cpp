@@ -225,7 +225,7 @@ namespace tacticode
 
 		void Character::executeScript(BattleEngineContext& context)
 		{
-			// TODO			
+			// TODO
 			if (m_script != nullptr)
 			{
 				BattleEngineContext *script_context = m_script->getBattleEngineContext();
@@ -333,9 +333,9 @@ namespace tacticode
 			m_currentAttributes->health += heal;
 		}
 
-		//fix me later
-		/*
-		bool Character::launchSpell(std::string const& spell_str, int x, int y) {
+//		fix me later
+
+		/*bool Character::launchSpell(std::string const& spell_str, int x, int y) {
 			auto facto = Singleton<spell::SpellFactory>::GetInstance();
 			auto spell = facto->get(spell_str);
 			if (spell) {
@@ -343,7 +343,6 @@ namespace tacticode
 				//oh well, no shared ptr
 			}
 			return true;
-		}
-		*/
+			}*/
 	}
 }
