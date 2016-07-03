@@ -56,8 +56,14 @@ namespace {
 	  result->Set(context, v8String::fromString("maxHealth"), v8::Number::New(isolate, character.getBaseAttributes().health));
 	  result->Set(context, v8String::fromString("movement"), v8::Number::New(isolate, character.getCurrentMovementPoints()));
 	  result->Set(context, v8String::fromString("maxMovement"), v8::Number::New(isolate, character.getBaseAttributes().movement));
-
-	  // TODO skills array
+	  
+	  const auto& spells = character.getSpells();
+	  auto spellsArray = v8::Array::New(isolate, spells->size());
+	  size_t index = 0;
+	  for (const std::string& spell : *spells) {
+		  spellsArray->Set(index++, v8String::fromString(spell));
+	  }
+	  result->Set(context, v8String::fromString("skills"), spellsArray);
 
 	  return result;
   }

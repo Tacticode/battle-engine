@@ -86,7 +86,7 @@
 					"luck": 5000,
 					"movement": 7,
 					"speed": 2,
-					"spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
+					"spells": ["FIREBALL", "HOLY_HAND"],
 					"script": "function onTurn() { $log(JSON.stringify(getEntities())); }"
 				}
 			]
@@ -108,7 +108,7 @@
 					"luck": 5000,
 					"movement": 5,
 					"speed": 2,
-					"spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
+					"spells": ["SNIPE", "PASS_THROUGH_ARROW"],
 					"script": "function onTurn(){ $log(JSON.stringify(getCell(1, 0))); }"
 				}
 			]
