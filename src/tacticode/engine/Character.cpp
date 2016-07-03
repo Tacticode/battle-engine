@@ -351,7 +351,9 @@ namespace tacticode
 			{
 				auto action = utils::Log::Action(m_id, position.x, position.y, "move");
 				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+				return true;
 			}
+			return false;
 		}
 
 		bool Character::castSpell(std::string const & spellName, const Vector2i & position, BattleEngine & engine)
