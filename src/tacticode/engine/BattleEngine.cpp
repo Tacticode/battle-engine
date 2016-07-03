@@ -47,10 +47,12 @@ namespace tacticode
 				m_teams.push_back(std::make_shared<Team>(*currentTeam, m_map));
 			}
 
+			int entityIndex = 0;
 			for (auto & t : m_teams)
 			{
 				for (auto & c : t->getCharacters())
 				{
+					c->setPosition(m_map->getStartingPosition(entityIndex++));
 					const Vector2i & position = c->getPosition();
 					if (!m_map->isCellOnMap(position.x, position.y))
 					{
