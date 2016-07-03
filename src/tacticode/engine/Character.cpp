@@ -8,7 +8,6 @@
 #include "tacticode/script/ScriptFactory.hpp"
 #include "tacticode/spell/SpellFactory.hpp"
 #include "tacticode/utils/utils.hpp"
-
 #include <cstring>
 #include <algorithm>
 
@@ -390,7 +389,7 @@ namespace tacticode
 				m_currentAttributes->health -= damages;
 				if (isDead()) {
 					auto action = utils::Log::Action(m_id, "dead");
-					utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);	
+					utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 					m_map->getCell(m_position.x, m_position.y).unsetCharacterId();
 				}
 			}
@@ -398,15 +397,14 @@ namespace tacticode
 
 		void Character::applyHeal(int32_t heal)
 		{
-			if (!isDead()) {			
+			if (!isDead()) {
 				auto action = utils::Log::Action(m_id, "heal");
 				action.add("health", heal);
 				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 
-<<<<<<< HEAD
 //		fix me later
 
-		/*bool Character::launchSpell(std::string const& spell_str, int x, int y) {
+				/*bool Character::launchSpell(std::string const& spell_str, int x, int y) {
 			auto facto = Singleton<spell::SpellFactory>::GetInstance();
 			auto spell = facto->get(spell_str);
 			if (spell) {
@@ -415,11 +413,9 @@ namespace tacticode
 			}
 			return true;
 			}*/
-=======
 				m_currentAttributes->health += heal;
 			}
 		}
 
->>>>>>> 641bbaee1609810fa5723a37b2e5557b15717540
 	}
 }
