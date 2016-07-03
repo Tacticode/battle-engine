@@ -11,8 +11,6 @@ namespace tacticode
 		}
 		void	LineAoeEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell, int isSecondary)
 		{
-			utils::Log log;
-			auto fightLog = utils::Singleton<utils::FightLogger>::GetInstance();
 			if ((engine.getMap()->hasCellLineOfSightOnCell(caster->getPosition().x, caster->getPosition().y, cell->getX(), cell->getY()) &&
 				(caster->getPosition().x == cell->getX() ||
 					caster->getPosition().y == cell->getY())) || isSecondary != -1)
@@ -20,8 +18,6 @@ namespace tacticode
 				std::list<std::shared_ptr<engine::Cell> > targets;
 				engine::Vector2i d;
 				std::shared_ptr<engine::Map> map = engine.getMap();
-				log.add("SPELLTYPE", "aoe in line");
-				fightLog->addAction(log);
 				d.x = 0;
 				d.y = 0;
 				if (caster->getPosition().y == cell->getY())

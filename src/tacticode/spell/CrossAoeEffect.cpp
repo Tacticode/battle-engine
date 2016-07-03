@@ -11,14 +11,10 @@ namespace tacticode
 		}
 		void	CrossAoeEffect::applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell, int isSecondary)
 		{
-			utils::Log log;
-			auto fightLog = utils::Singleton<utils::FightLogger>::GetInstance();
 			if ((engine.getMap()->hasCellLineOfSightOnCell(caster->getPosition().x, caster->getPosition().y, cell->getX(), cell->getY())) || isSecondary != -1)
 			{
 				std::list<std::shared_ptr<engine::Cell> > targets;
 				std::shared_ptr<engine::Map> map = engine.getMap();
-				log.add("SPELLTYPE", "aoe en croix");
-				fightLog->addAction(log);
 				for (size_t i = 0; i < m_aoe; ++i)
 				{
 					if (engine.getCharacter(map->getCell(cell->getX() + i, cell->getY()).getCharacterId()))
