@@ -205,7 +205,7 @@ namespace tacticode
 
 		bool Map::isCellOnMap(int x, int y) const
 		{
-			if (0 <= y && x < m_width && 0 <= y && y < m_height)
+			if (0 <= x && x < m_width && 0 <= y && y < m_height)
 			{
 				return true;
 			}
