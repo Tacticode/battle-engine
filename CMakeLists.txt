@@ -81,6 +81,7 @@ if(V8LINK)
 			${V8_BLOB}
 			DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
 	endif(V8_BLOB)
+
 endif(V8LINK)
 
 include_relative_list(src)

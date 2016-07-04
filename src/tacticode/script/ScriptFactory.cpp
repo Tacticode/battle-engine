@@ -46,7 +46,7 @@ namespace script{
 		#if defined(WIN32)
 		//v8::V8::InitializeExternalStartupData(argv0.c_str());
 		#else
-		v8::V8::InitializeExternalStartupData(argv0.c_str());
+		//v8::V8::InitializeExternalStartupData(argv0.c_str());
 		#endif
 		//Initialize platform
 		_platform = v8::platform::CreateDefaultPlatform();
