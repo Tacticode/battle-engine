@@ -89,7 +89,6 @@ namespace tacticode
 
 		bool BattleEngine::round()
 		{
-			winnerId = -2;
 			for (auto& character : m_characters)
 			{
 				if (character->isDead())
@@ -101,22 +100,33 @@ namespace tacticode
 				context.engine = this;
 
 				character->play(context);
-				if (winnerId == -2 || winnerId == character->getTeamId()) {
-					winnerId = character->getTeamId();
-				} else {
-					winnerId = -1;
-				}
 				if (gameOver())
 				{
 					return false;
 				}
 			}
-			//anything else than -1 means everyone dead or some winner
-			return winnerId != -1;
+			return true;
 		}
 
 		bool BattleEngine::gameOver()
 		{
+			std::vector<int> aliveTeams;
+			for (const auto& team : m_teams)
+			{
+				for (const auto& character : team->getCharacters())
+				{
+					if (!character->isDead())
+					{
+						aliveTeams.push_back(team->m_id);
+						break;
+					}
+				}
+			}
+			winnerId = -1;
+			if (aliveTeams.size() == 1)
+			{
+				winnerId = aliveTeams[0];
+			}
 			return winnerId > 0;
 		}
 
@@ -126,10 +136,7 @@ namespace tacticode
 			while (round() && i < 50)
 				++i;
 
-			if (winnerId < 0)
-				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(0);
-			else
-				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(winnerId);
+			utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(winnerId > 0 ? winnerId : 0);
 		}
 		std::shared_ptr<Map> BattleEngine::getMap()
 		{
