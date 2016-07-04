@@ -70,7 +70,7 @@ namespace tacticode
 					cell.setCharacterId(c->getId());
 					m_characters.push_back(c);
 					utils::Singleton<utils::FightLogger>::GetInstance()->addEntity(
-						utils::Log::Entity(c->getId(), position.x, position.y, c->getBreedString(), t->m_id));
+						utils::Log::Entity(c->getId(), position.x, position.y, c->getBreedString(), t->m_id, c->getBaseAttributes().health));
 				}
 			}
 		}

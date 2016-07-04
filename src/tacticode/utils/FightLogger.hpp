@@ -19,7 +19,7 @@ namespace utils{
 		public:			
 			Log();
 			Json::Value& value() const;
-			static Log Entity(int id, int x, int y, std::string const& breed, int team);
+			static Log Entity(int id, int x, int y, std::string const& breed, int team, int health);
 			static Log Action(int id, int x, int y, std::string const& type);
 			static Log Action(int id, std::string const& type);
 

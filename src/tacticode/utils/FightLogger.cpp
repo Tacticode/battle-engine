@@ -18,7 +18,7 @@ namespace utils{
 			return *m_value;
 		}
 
-		Log Log::Entity(int id, int x, int y, std::string const& breed, int team)
+		Log Log::Entity(int id, int x, int y, std::string const& breed, int team, int health)
 		{
 			Log rt;
 
@@ -27,6 +27,7 @@ namespace utils{
 			rt.value()["y"] = (Json::Value(y));
 			rt.value()["breed"] = (Json::Value(breed));
 			rt.value()["team"] = (Json::Value(team));
+			rt.value()["health"] = (Json::Value(health));
 			return rt;
 		}
 
