@@ -6,8 +6,8 @@ namespace tacticode
 {
 	namespace engine
 	{
-		Cell::Cell(int x, int y) : m_x(x), m_y(y), m_height(0), m_accessible(true), m_lineOfSight(true){
-
+		Cell::Cell(int x, int y) : m_x(x), m_y(y), m_height(0), m_accessible(true), m_lineOfSight(true), m_isFree(true)
+		{
 		}
 		Cell::Cell(const file::IValue& json)
 		{
@@ -74,6 +74,7 @@ namespace tacticode
 				throw file::error::InvalidConfiguration("cell", "los is not a boolean");
 			}
 			m_lineOfSight = json["los"]->asBool();
+			m_isFree = true;
 		}
 
 		int Cell::getX() const
