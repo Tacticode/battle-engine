@@ -80,14 +80,14 @@
 					"breed": "elf",
 					"health": 12,
 					"attack": 5,
-					"power": 0,
+					"power": 5,
 					"defense": 6,
-					"resilience": 5,
+					"resilience": 1,
 					"luck": 5000,
 					"movement": 7,
 					"speed": 2,
 					"spells": ["FIREBALL", "HOLY_HAND"],
-					"script": "function onTurn() { $log(JSON.stringify(getEntities())); }"
+					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('FIREBALL', 2, 0); }"
 				}
 			]
 		},
@@ -101,10 +101,10 @@
 					"name": "BibiTheMagus",
 					"breed": "goblin",
 					"health": 15,
-					"attack": 0,
+					"attack": 5,
 					"power": 5,
 					"defense": 6,
-					"resilience": 5,
+					"resilience": 1,
 					"luck": 5000,
 					"movement": 5,
 					"speed": 2,
