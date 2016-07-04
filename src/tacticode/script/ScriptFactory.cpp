@@ -36,6 +36,12 @@ namespace script{
 	/* *******************************************************************
 	 * Initialize v8 engine instance
 	 * ******************************************************************/
+	void messageListener(v8::Handle<v8::Message> message, v8::Handle<v8::Value> error)
+	{
+		// TODO: display the error to the user somehow.
+		std::cerr << "some error detected" << std::endl;
+	}
+
 	ScriptFactory::ScriptFactory(){
 		auto conf = Singleton<Configuration>::GetInstance()->value();	
 		std::string argv0 = conf.getString("startup_path");
@@ -58,6 +64,7 @@ namespace script{
 			create_params.array_buffer_allocator = new ::ArrayBufferAllocator;
 			_isolate = v8::Isolate::New(create_params);
 			_isolate->Enter();
+			_isolate->AddMessageListener(messageListener);
 	}
 	
 	/* *******************************************************************
