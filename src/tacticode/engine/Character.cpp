@@ -386,9 +386,11 @@ namespace tacticode
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 
 			if (!isDead()) {
+				// TODO: what's the difference?
+				m_currentHealth -= damages;
 				m_currentAttributes->health -= damages;
 				if (isDead()) {
-					auto action = utils::Log::Action(m_id, "dead");
+					auto action = utils::Log::Action(m_id, "death");
 					utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 					m_map->getCell(m_position.x, m_position.y).unsetCharacterId();
 				}
@@ -398,24 +400,14 @@ namespace tacticode
 		void Character::applyHeal(int32_t heal)
 		{
 			if (!isDead()) {
+				// TODO: what's the difference?
+				m_currentHealth += heal;
+				m_currentAttributes->health += heal;
+
 				auto action = utils::Log::Action(m_id, "heal");
 				action.add("health", heal);
 				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
-
-//		fix me later
-
-				/*bool Character::launchSpell(std::string const& spell_str, int x, int y) {
-			auto facto = Singleton<spell::SpellFactory>::GetInstance();
-			auto spell = facto->get(spell_str);
-			if (spell) {
-				spell->castSpell()
-				//oh well, no shared ptr
-			}
-			return true;
-			}*/
-				m_currentAttributes->health += heal;
 			}
 		}
-
 	}
 }
