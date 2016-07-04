@@ -123,11 +123,9 @@ namespace tacticode
 		void BattleEngine::game()
 		{
 			int i = 0;
-			while (round() && i < 1000)
+			while (round() && i < 50)
 				++i;
-			//TODO: use datas created by gameOver();
 
-			//TODO: use the real winner...
 			if (winnerId < 0)
 				utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(0);
 			else
