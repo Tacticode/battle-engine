@@ -15,7 +15,7 @@ namespace tacticode
 				std::shared_ptr<engine::Character> target = engine.getCharacter(cell->getCharacterId());
 				if (target)
 				{
-					int dmg = spell.getPower() * caster->getCurrentAttributes().power / target->getCurrentAttributes().resilience;
+					int dmg = spell.getPower() * caster->getCurrentAttributes().power;// / target->getCurrentAttributes().resilience;
 					target->applyDamage(dmg);
 				}
 			}
