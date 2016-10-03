@@ -409,5 +409,16 @@ namespace tacticode
 				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 			}
 		}
+		void Character::addBuff(std::shared_ptr<spell::ISpell> buff)
+		{
+			m_buff.push_back(buff);
+		}
+		void Character::applyBuff()
+		{
+			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
+			{
+
+			}
+		}
 	}
 }
