@@ -286,7 +286,14 @@ namespace tacticode
 		std::stack<std::shared_ptr<Cell>> Map::shortestWayToCell(int originX, int originY, int targetX, int targetY)
 		{
 			auto path = std::stack<std::shared_ptr<Cell>>();
+
+			//consider store this within the class to avoid realloc
+			int *visited = new int[m_width * m_height];
+			for (int i = 0; i < m_width * m_height; i++) {
+				visited[i] = 0;
+			}
 			// TODO
+			delete []visited;
 			return std::move(path);
 		}
 	}
