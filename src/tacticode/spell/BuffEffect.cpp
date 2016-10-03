@@ -4,7 +4,7 @@ namespace tacticode
 {
 	namespace spell
 	{
-		BuffEffect::BuffEffect(std::shared_ptr<IBuff> buff)
+		BuffEffect::BuffEffect(std::shared_ptr<IEffect> effects)
 		{
 			m_effects.push_back(effects);
 		}

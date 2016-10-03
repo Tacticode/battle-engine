@@ -8,8 +8,10 @@ set_target_sources(BattleEngine
 	TrapEffect.hpp
 	LineAoeEffect.hpp
 	CrossAoeEffect.hpp
+	BuffEffect.hpp
 	Trap.hpp
 	Trap.cpp
+	BuffEffect.cpp
 	LineAoeEffect.cpp
 	CrossAoeEffect.cpp
 	TrapEffect.cpp
