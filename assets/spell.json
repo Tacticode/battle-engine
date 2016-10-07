@@ -52,7 +52,7 @@
                     "luck": 5000,
                     "movement": 7,
                     "speed": 2,
-                    "spells": ["FIREBALL", "ICEBALL", "MORT_DE_MASSE", "WATERBALL"],
+                    "spells": ["FIREBALL", "BLADESTORM", "MORT_DE_MASSE", "WATERBALL"],
                     "script": "$log('I am elf, BoboTheWarrior'); ",
 		    "position": [0, 0]
                 }
