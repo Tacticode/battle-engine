@@ -47,6 +47,7 @@ namespace tacticode
 				m_teams.push_back(std::make_shared<Team>(*currentTeam, m_map));
 			}
 
+
 			int entityIndex = 0;
 			for (auto & t : m_teams)
 			{
@@ -73,6 +74,9 @@ namespace tacticode
 						utils::Log::Entity(c->getId(), position.x, position.y, c->getBreedString(), t->m_id, c->getBaseAttributes().health, c->getName()));
 				}
 			}
+
+			utils::Singleton<utils::FightLogger>::GetInstance()->value()["teams"] =
+				getRawJsonValue(*teams);
 		}
 
 		void BattleEngine::readOnStdin()
