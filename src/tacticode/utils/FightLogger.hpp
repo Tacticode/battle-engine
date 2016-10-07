@@ -39,6 +39,7 @@ namespace utils{
 			FightLogger();
 
 			//more like intern use
+			void addTurn(int turn);
 			void addEntity(Log const &); //order is not important
 			void addAction(Log const &); //order is important!
 			void setWinner(int winnerid);

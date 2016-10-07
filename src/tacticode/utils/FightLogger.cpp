@@ -73,6 +73,15 @@ namespace utils{
 			log["entities"][log["entities"].size()].swap(l.value());
 		}
 
+		void FightLogger::addTurn(int turn)
+		{
+			Log turnLog;
+
+			turnLog.value()["type"] = Json::Value("newturn");
+			turnLog.value()["turn"] = Json::Value(turn);
+			log["actions"][log["actions"].size()].swap(turnLog.value());
+		}
+
 		void FightLogger::setWinner(int winnerId)
 		{
 			log["winner"] = Json::Value(winnerId);
