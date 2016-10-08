@@ -47,6 +47,7 @@ namespace tacticode
 				m_teams.push_back(std::make_shared<Team>(*currentTeam, m_map));
 			}
 
+
 			int entityIndex = 0;
 			for (auto & t : m_teams)
 			{
@@ -73,6 +74,9 @@ namespace tacticode
 						utils::Log::Entity(c->getId(), position.x, position.y, c->getBreedString(), t->m_id, c->getBaseAttributes().health, c->getName()));
 				}
 			}
+
+			utils::Singleton<utils::FightLogger>::GetInstance()->value()["teams"] =
+				getRawJsonValue(*teams);
 		}
 
 		void BattleEngine::readOnStdin()
@@ -133,8 +137,13 @@ namespace tacticode
 		void BattleEngine::game()
 		{
 			int i = 0;
-			while (round() && i < 50)
+			while (i < 100) { // max turn is 100
+				utils::Singleton<utils::FightLogger>::GetInstance()->addTurn(i);
+				if (!round()) {
+					break;
+				}
 				++i;
+			}
 
 			utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(winnerId > 0 ? winnerId : 0);
 		}
