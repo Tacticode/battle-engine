@@ -86,8 +86,8 @@
 					"luck": 5000,
 					"movement": 7,
 					"speed": 2,
-					"spells": ["FIREBALL", "HOLY_HAND"],
-					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('FIREBALL', 2, 0); }"
+					"spells": ["FIREBALL", "HOLY_HAND", "METEORE"],
+					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('METEORE', 2, 0); }"
 				}
 			]
 		},
