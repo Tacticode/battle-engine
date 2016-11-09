@@ -413,6 +413,16 @@ namespace tacticode
 		{
 			m_buff.push_back(buff);
 		}
+		void Character::removeBuff()
+		{
+			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
+			{
+				//if ((*it)->time <= 0)
+				//{
+					//pop list;
+				//}
+			}
+		}
 		void Character::applyBuff()
 		{
 			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)

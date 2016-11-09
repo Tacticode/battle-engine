@@ -71,7 +71,7 @@ if(V8LINK)
 		target_link_libraries (BattleEngine ${V8_LIBRARY} )
 
 	else(WIN32)
-		SET(LDFLAGS -Wl,--start-group ${V8_LIBRARY} -Wl,--end-group -lrt -ldl -pthread)
+		SET(LDFLAGS -Wl,--start-group ${V8_LIBRARY} ${V8_ICUDATA_LIBRARY} -Wl,--end-group -lrt -ldl -pthread)
 		target_link_libraries (BattleEngine ${LDFLAGS})
 	endif(WIN32)
 

@@ -87,7 +87,7 @@
 					"movement": 7,
 					"speed": 2,
 				    "spells": ["FIREBALL", "HOLY_HAND", "METEORE", "PASS_THROUGH_ARROW"],
-					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('PASS_THROUGH_ARROW', 2, 0); }"
+					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('METEORE', 2, 0); }"
 				}
 			]
 		},
