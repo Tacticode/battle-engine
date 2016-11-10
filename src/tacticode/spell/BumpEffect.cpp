@@ -17,7 +17,8 @@ namespace tacticode
 				std::shared_ptr<engine::Map> map = engine.getMap();
 				for (std::list<std::shared_ptr<IEffect>>::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
 				{
-					(*it)->applyEffect(caster, cell, engine, spell);
+					if (*it != nullptr)
+						(*it)->applyEffect(caster, cell, engine, spell);
 				}
 
 				d.x = 0;
