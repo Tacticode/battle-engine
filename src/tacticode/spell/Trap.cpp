@@ -14,10 +14,11 @@ namespace tacticode
 		{
 			utils::Log log;
 			auto fightLog = utils::Singleton<utils::FightLogger>::GetInstance();
+			log.add("TRAPTRIGGER", m_spell.getName());
+			fightLog->addAction(log);
+			
 			for (std::list<std::shared_ptr<IEffect>>::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
 			{
-				log.add("TRAPTRIGGER", m_spell.getName());
-				fightLog->addAction(log);
 				// (*it)->applyEffect(m_caster, m_pos, m_spell);
 			}
 		}

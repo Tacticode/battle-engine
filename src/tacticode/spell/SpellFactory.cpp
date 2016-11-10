@@ -5,6 +5,7 @@
 #include "TrapEffect.hpp"
 #include "LineAoeEffect.hpp"
 #include "CrossAoeEffect.hpp"
+#include "TrapSpell.hpp"
 
 namespace tacticode
 {
@@ -28,16 +29,17 @@ namespace tacticode
 					"BLADESTORM",1,1,1,1,2,1));
 			registerSpell("METEORE", std::make_shared<Spell>(std::make_shared<CrossAoeEffect>(3, std::make_shared<DamageEffect>()),
 					"METEORE",1.5,5,3,1,3,1));
+			registerSpell("TRAP", std::make_shared<TrapSpell>());
 			std::cerr << "spell factory initialised" << std::endl;
 		}
 
 		void SpellFactory::registerSpell(
 			std::string const& n,
-			std::shared_ptr<Spell> spell) {
+			std::shared_ptr<ISpell> spell) {
 			m_dictionary[n] = spell;
 		}
 
-		std::shared_ptr<Spell> SpellFactory::get(std::string const& n) {
+		std::shared_ptr<ISpell> SpellFactory::get(std::string const& n) {
 			if (m_dictionary.find(n) != m_dictionary.end())
 				return (m_dictionary[n]);
 			return nullptr;

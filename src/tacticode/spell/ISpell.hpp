@@ -3,7 +3,6 @@
 #include <string>
 #include <list>
 #include <memory>
-#include "IEffect.hpp"
 
 namespace tacticode
 {
@@ -15,7 +14,6 @@ namespace tacticode
 	}
 	namespace spell
 	{
-		class IEffect;
 		class ISpell
 		{
 		protected:
@@ -26,17 +24,17 @@ namespace tacticode
 			size_t m_cooldown;
 			size_t m_los;
 			size_t m_isActive;
-			std::list<std::shared_ptr<IEffect>> m_effects;
 		public:
+			ISpell(std::string const& name) : m_name(name) {};
 			virtual ~ISpell() = default;
 			virtual void castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine) = 0;
-			virtual const std::string& getName() const = 0;
-			virtual const float getPower() const = 0;
-			virtual const size_t getRange() const = 0;
-			virtual const size_t getCooldown() const = 0;
-			virtual const size_t getIsActive() const = 0;
-			virtual const size_t getAoe() const = 0;
-			virtual const size_t getLos() const = 0;
+			virtual const std::string& getName() const {return m_name;}
+			virtual const float getPower() const {return m_power;}
+			virtual const size_t getRange() const {return m_range;}
+			virtual const size_t getCooldown() const {return m_aoe;}
+			virtual const size_t getIsActive() const {return m_isActive;}
+			virtual const size_t getAoe() const {return m_aoe;}
+			virtual const size_t getLos() const {return m_los;}
 		};
 	}
 }

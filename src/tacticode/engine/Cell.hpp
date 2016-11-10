@@ -7,7 +7,6 @@ namespace tacticode
 	namespace engine
 	{
 		class Character;
-
 		class Cell
 		{
 			int     m_x;

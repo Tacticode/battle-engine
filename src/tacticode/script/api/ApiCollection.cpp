@@ -12,6 +12,8 @@
 #include "tacticode/engine/BattleEngine.hpp"
 #include "tacticode/engine/Character.hpp"
 #include "tacticode/utils/FightLogger.hpp"
+#include "tacticode/engine/Cell.hpp"
+#include "tacticode/engine/Map.hpp"
 
 using tacticode::utils::Singleton;
 using tacticode::script::ScriptFactory;

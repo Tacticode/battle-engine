@@ -3,6 +3,8 @@
 #include <vector>
 #include <memory>
 #include <stack>
+#include <tuple>
+#include <algorithm>
 
 #include "Cell.hpp"
 #include "Character.hpp"
@@ -16,6 +18,12 @@ namespace tacticode
 
 	namespace engine
 	{
+		class TrapEntity {
+		public:
+			virtual void trap(Character &) = 0;
+			virtual ~TrapEntity() {}
+		};
+
 		class Map
 		{
 			using Row = std::vector<std::shared_ptr<Cell> >;
@@ -29,6 +37,9 @@ namespace tacticode
 			std::vector<engine::Vector2i> m_startingPositions;
 
 			void deserialize(const file::IValue& json);
+
+			//traps
+			std::map<std::pair<int,int>, TrapEntity*> m_traps;
 
 		public:
 			static const int fieldOfViewHeightLimit;
@@ -57,6 +68,8 @@ namespace tacticode
 			bool isCellOnMap       (const Vector2i & position) const;
 
 			bool moveCharacterToCell(Character & character, const Vector2i & position);
+
+			bool addTrap(const Vector2i &position, TrapEntity *);
 
 			// Bresenham's line algorithm
 			bool hasCellLineOfSightOnCell(int originX, int originY, int targetX, int targetY) const;

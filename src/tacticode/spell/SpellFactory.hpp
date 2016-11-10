@@ -11,14 +11,14 @@ namespace tacticode{
   {
 
 	class SpellFactory {
-	  std::map<std::string, std::shared_ptr<Spell>> m_dictionary;
+	  std::map<std::string, std::shared_ptr<ISpell>> m_dictionary;
 	public:
 	  // initialise spell lists
 	  // temporary for test
 	  // later may use json or other format instead of hard code in function
 	  void init();
-	  void registerSpell(std::string const &, std::shared_ptr<Spell> );
-	  std::shared_ptr<Spell> get(std::string const &);
+	  void registerSpell(std::string const &, std::shared_ptr<ISpell> );
+	  std::shared_ptr<ISpell> get(std::string const &);
 	  ~SpellFactory();
 	};
   }

@@ -19,4 +19,5 @@ set_target_sources(BattleEngine
 	DamageEffect.cpp
 	HealEffect.cpp
 	Spell.cpp
+	TrapSpell.cpp
 	)

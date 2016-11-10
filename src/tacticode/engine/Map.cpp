@@ -4,9 +4,11 @@
 #include "tacticode/file/error/InvalidConfiguration.hpp"
 #include "Map.hpp"
 #include "Cell.hpp"
+#include "tacticode/utils/utils.hpp"
 
 namespace tacticode
 {
+
 	namespace engine
 	{
 		const int Map::fieldOfViewHeightLimit = 2;
@@ -222,10 +224,10 @@ namespace tacticode
 		bool Map::moveCharacterToCell(Character & character, const Vector2i & position)
 		{
 			int32_t distance = std::abs(position.x - character.getPosition().x) + std::abs(position.y - character.getPosition().y);
-			if (distance != 1 || character.getCurrentMovementPoints() < distance)
-			{
-				return false;
-			}
+			// if (distance != 1 || character.getCurrentMovementPoints() < distance)
+			// {
+			// 	return false;
+			// }
 			if (!isCellOnMap(position) || !isCellFree(position) || !isCellAccessible(position))
 			{
 				return false;
@@ -234,6 +236,17 @@ namespace tacticode
 			m_field[character.getPosition().y][character.getPosition().x]->unsetCharacterId();
 			m_field[position.y][position.x]->setCharacterId(character.getId());
 			character.setPosition(position.x, position.y);
+
+			//handle trap
+			{
+				auto pos = std::pair<int, int>(position.x, position.y);
+				auto it = m_traps.find(pos);
+				if (!(it == m_traps.end())) {
+					it->second->trap(character);
+					delete it->second;
+					m_traps.erase(it);
+				}
+			}
 			return true;
 		}
 
@@ -296,5 +309,17 @@ namespace tacticode
 			delete []visited;
 			return std::move(path);
 		}
+
+		bool Map::addTrap(const Vector2i &position, TrapEntity *trap) {
+			auto pos = std::pair<int, int>(position.x, position.y);
+			auto it = m_traps.find(pos);
+			if (!(it == m_traps.end())) {
+				//already trap there
+				return false;
+			}
+			m_traps[pos] = trap;			
+			return true;
+		}
+
 	}
 }

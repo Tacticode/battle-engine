@@ -1,4 +1,7 @@
 #include "Spell.hpp"
+#include "tacticode/utils/utils.hpp"
+#include "IEffect.hpp"
+#include "tacticode/engine/BattleEngine.hpp"
 
 using tacticode::utils::Singleton;
 
@@ -6,8 +9,8 @@ namespace tacticode
 {
 	namespace spell
 	{
-		Spell::Spell(std::shared_ptr<IEffect> effect, std::string name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los)
-			: m_name(name), m_power(power), m_range(range), m_cooldown(cooldown), m_isActive(active), m_aoe(aoe), m_los(los)
+		Spell::Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los)
+			: ISpell(name), m_power(power), m_range(range), m_cooldown(cooldown), m_isActive(active), m_aoe(aoe), m_los(los)
 		{
 			m_effects.push_back(effect);
 		}
@@ -20,10 +23,6 @@ namespace tacticode
 			}
 		}
 
-		const std::string& Spell::getName() const
-		{
-			return m_name;
-		}
 		const float Spell::getPower() const
 		{
 			return m_power;
