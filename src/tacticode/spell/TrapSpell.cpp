@@ -38,6 +38,7 @@ namespace spell{
 			auto caster = engine.getCharacter(casterId);
 			Vector2i pos(cell->getX(), cell->getY());
 
+			ISpell::logCast(casterId, pos.x, pos.y);
 			if (engine.getMap()->addTrap(pos, new TrapEntityImpl(&(*caster), &engine, pos))) {
 				auto action = utils::Log::Action(casterId, "trap");
 				action.add("state", "created");

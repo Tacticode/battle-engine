@@ -223,6 +223,40 @@ namespace {
 	  v8::Local<v8::Value> result = v8::Boolean::New(args.GetIsolate(), rt);
 	  args.GetReturnValue().Set(scope.Escape(result));
   }
+
+  void functionHasLos(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  	  v8::EscapableHandleScope scope(args.GetIsolate());
+	  v8::Local<v8::Context> context = args.GetIsolate()->GetCurrentContext();
+
+	  auto battle_context = getBattleContext(context);
+	  auto character = battle_context->character;
+	  bool rt = false;
+	  auto map = battle_context->engine->getMap();	  
+
+	  if (args.Length() >= 2) {
+		  v8::Local<v8::Value> argX = args[0];
+		  v8::Local<v8::Value> argY = args[1];
+
+		  if (argX->IsNumber() && argY->IsNumber()) {
+			  int32_t x = static_cast<int32_t>(argX->ToNumber()->Value());
+			  int32_t y = static_cast<int32_t>(argY->ToNumber()->Value());
+
+			  if (args.Length() >= 4) {
+				  v8::Local<v8::Value> argW = args[2];
+				  v8::Local<v8::Value> argZ = args[3];
+				  if (argW->IsNumber() && argY->IsNumber()) {
+					  int32_t w = static_cast<int32_t>(argW->ToNumber()->Value());
+					  int32_t z = static_cast<int32_t>(argZ->ToNumber()->Value());
+	 				  rt = map->hasCellLineOfSightOnCell(x, y, w, z);
+				  }
+			  } else {
+			  	rt = map->hasCellLineOfSightOnCell(character->getPosition().x, character->getPosition().y, x, y);
+			  }
+		  }
+	  }
+	  v8::Local<v8::Value> result = v8::Boolean::New(args.GetIsolate(), rt);
+	  args.GetReturnValue().Set(scope.Escape(result));
+  }
 }
 
 namespace tacticode{
@@ -245,7 +279,7 @@ void ApiCollection::injectApi(std::shared_ptr<tacticode::script::Context> contex
 
 	global->Set(v8String::fromString("moveToCell"), v8::Function::New(isolate, functionMoveToCell));
 	global->Set(v8String::fromString("cast"), v8::Function::New(isolate, functionCast));
-
+	global->Set(v8String::fromString("haslos"), v8::Function::New(isolate, functionHasLos));
 }
 
 ApiCollection::~ApiCollection() {

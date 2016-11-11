@@ -370,10 +370,6 @@ namespace tacticode
 			}
 			auto & spell = getSpellByName(spellName);
 
-			auto action = utils::Log::Action(m_id, position.x, position.y, "skill");
-			action.add("skill", spellName);
-			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
-
 			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
 			return true;
 		}

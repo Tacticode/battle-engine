@@ -7,8 +7,15 @@ using tacticode::utils::Singleton;
 
 namespace tacticode
 {
+	using engine::Vector2i;
 	namespace spell
 	{
+		void ISpell::logCast(int id, int x, int y) {
+			auto action = utils::Log::Action(id, x, y, "skill");
+			action.add("skill", m_name);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+		}
+
 		Spell::Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los)
 			: ISpell(name), m_power(power), m_range(range), m_cooldown(cooldown), m_isActive(active), m_aoe(aoe), m_los(los)
 		{
@@ -17,9 +24,22 @@ namespace tacticode
 		void Spell::castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine)
 		{
 			auto caster = engine.getCharacter(casterId);
-			for (std::list<std::shared_ptr<IEffect> >::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
-			{
-				(*it)->applyEffect(caster, cell, engine, *this);
+			Vector2i const& stpos = caster->getPosition();
+			Vector2i edpos(cell->getX(), cell->getY());
+			auto map = engine.getMap();
+
+			if (map->reachLineOfSight(stpos, edpos)) {
+				logCast(casterId, edpos.x, edpos.y);
+
+				for (std::list<std::shared_ptr<IEffect> >::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
+				{
+					(*it)->applyEffect(caster, cell, engine, *this);
+				}				
+			} else {
+				auto action = utils::Log::Action(casterId, edpos.x, edpos.y, "skill");
+				action.add("skill", m_name);
+				action.add("blocked", true);
+				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 			}
 		}
 

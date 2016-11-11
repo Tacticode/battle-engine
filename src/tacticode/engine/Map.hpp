@@ -73,6 +73,10 @@ namespace tacticode
 
 			// Bresenham's line algorithm
 			bool hasCellLineOfSightOnCell(int originX, int originY, int targetX, int targetY) const;
+
+			//ed will be initialised to the reachable position
+			bool reachLineOfSight(Vector2i const& st, Vector2i & ed) const;
+
 			std::stack<std::shared_ptr<Cell>> shortestWayToCell(int originX, int originY, int targetX, int targetY);
 		};
 	}

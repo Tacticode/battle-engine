@@ -266,7 +266,7 @@ namespace tacticode
 				for (int y = aY; y <= bY; ++y)
 				{
 					if (!m_field[y][aX]->hasLineOfSight()
-							|| originHeight + Map::fieldOfViewHeightLimit >= m_field[y][aX]->getHeight())
+							|| originHeight + Map::fieldOfViewHeightLimit < m_field[y][aX]->getHeight())
 					{
 						return false;
 					}
@@ -281,7 +281,7 @@ namespace tacticode
 			{
 				// x/y on the way
 				if (!m_field[y][x]->hasLineOfSight()
-						|| originHeight + Map::fieldOfViewHeightLimit >= m_field[y][x]->getHeight())
+						|| originHeight + Map::fieldOfViewHeightLimit < m_field[y][x]->getHeight())
 				{
 					return false;
 				}
@@ -321,5 +321,52 @@ namespace tacticode
 			return true;
 		}
 
+		bool Map::reachLineOfSight(Vector2i const& st, Vector2i & ed) const{
+			int aX = std::min(st.x, ed.x);
+			int bX = std::max(st.x, ed.x);
+			int aY = std::min(st.y, ed.y);
+			int bY = std::max(st.y, ed.y);
+			int originHeight = m_field[aY][aX]->getHeight();
+			int targetHeight = m_field[bY][bX]->getHeight();
+
+			float deltaX = static_cast<float>(bX - aX);
+			ed.y = st.y;
+			ed.x = st.x;
+			if (std::abs(deltaX) < 0.00001) // avoid division by zero
+			{
+				for (int y = aY; y <= bY; ++y)
+				{
+					if (!m_field[y][aX]->hasLineOfSight()
+							|| originHeight + Map::fieldOfViewHeightLimit < m_field[y][aX]->getHeight())
+					{
+						return false;
+					}
+					ed.y = y;
+				}
+				return true;
+			}
+			float deltaY = static_cast<float>(bY - aY);
+			float error = -1.0f;
+			float deltaError = std::abs(deltaY / deltaX);
+			int y = aY;
+			for (int x = aX; x <= bX - 1; ++x)
+			{
+				// x/y on the way
+				if (!m_field[y][x]->hasLineOfSight()
+						|| originHeight + Map::fieldOfViewHeightLimit < m_field[y][x]->getHeight())
+				{
+					return false;
+				}
+				error = error + deltaError;
+				if (error >= 0.0f)
+				{
+					++y;
+					error -= 1.0f;
+				}
+				ed.x = x;
+				ed.y = y;
+			}
+			return true;
+		}
 	}
 }

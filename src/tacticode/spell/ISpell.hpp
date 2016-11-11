@@ -27,6 +27,7 @@ namespace tacticode
 		public:
 			ISpell(std::string const& name) : m_name(name) {};
 			virtual ~ISpell() = default;
+			void logCast(int caster, int x, int y); //a helper function to centralize log cast
 			virtual void castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine) = 0;
 			virtual const std::string& getName() const {return m_name;}
 			virtual const float getPower() const {return m_power;}
