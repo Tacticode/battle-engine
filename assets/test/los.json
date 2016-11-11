@@ -239,7 +239,7 @@
                     "movement": 5,
                     "speed": 0,
                     "spells": [],
-                    "script": "function onTurn() { }",
+                    "script": "i = 0; function onTurn() { $log((i % 5) + ', ' + Math.floor(i % 25 / 5) + 'reachable ?: ' + haslos(i % 5, Math.floor(i % 25 / 5) )); ++i;}",
                     "position": [
                         3,
                         2
