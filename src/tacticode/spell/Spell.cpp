@@ -11,6 +11,17 @@ namespace tacticode
 		{
 			m_effects.push_back(effect);
 		}
+		Spell::Spell(const Spell &spell)
+		{
+			m_name = spell.getName();
+			m_power = spell.getPower();
+			m_range = spell.getRange();
+			m_cooldown = spell.getCooldown();
+			m_isActive = spell.getIsActive();
+			m_aoe = spell.getAoe();
+			m_los = spell.getLos();
+			m_effects = spell.getEffects();
+		}
 		void Spell::castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine)
 		{
 			auto caster = engine.getCharacter(casterId);
@@ -47,6 +58,11 @@ namespace tacticode
 		const size_t Spell::getLos() const
 		{
 			return m_los;
+		}
+
+		const std::list<std::shared_ptr<IEffect> > Spell::getEffects() const
+		{
+			return m_effects;
 		}
 	}
 }

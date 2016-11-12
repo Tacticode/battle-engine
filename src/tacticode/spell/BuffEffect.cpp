@@ -19,7 +19,7 @@ namespace tacticode
 			if (map->isCellOnMap(cell->getX(), cell->getY()))
 			{
 				std::shared_ptr<engine::Character> target = engine.getCharacter(cell->getCharacterId());
-				//target->addBuff(spell);
+				target->addBuff(std::make_shared<Spell>(spell));
 			}
 		}
 	}

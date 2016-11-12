@@ -37,6 +37,7 @@ namespace tacticode
 			virtual const size_t getIsActive() const = 0;
 			virtual const size_t getAoe() const = 0;
 			virtual const size_t getLos() const = 0;
+			virtual const std::list<std::shared_ptr<IEffect>> getEffects() const = 0;
 		};
 	}
 }

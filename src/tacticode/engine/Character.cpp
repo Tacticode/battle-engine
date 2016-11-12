@@ -427,7 +427,10 @@ namespace tacticode
 		{
 			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
 			{
+				for (std::list<std::shared_ptr<spell::IEffect>>::const_iterator it2 = (*it)->getEffects().begin(); it2 != (*it)->getEffects().end(); ++it2)
+				{
 
+				}
 			}
 		}
 	}
