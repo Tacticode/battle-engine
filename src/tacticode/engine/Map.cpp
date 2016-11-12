@@ -237,29 +237,196 @@ namespace tacticode
 			return true;
 		}
 
+		int Map::getOctant(int x0, int y0, int x1, int y1) const
+		{
+			if (x0 < x1)
+			{
+				if (y0 > y1)
+				{
+					if (std::abs(x0 - x1) > std::abs(y0 - y1))
+					{
+						return 0;
+					}
+					else
+					{
+						return 1;
+					}
+				}
+				else
+				{
+					if (std::abs(x0 - x1) > std::abs(y0 - y1))
+					{
+						return 7;
+					}
+					else
+					{
+						return 6;
+					}
+				}
+			}
+			else
+			{
+				if (y0 > y1)
+				{
+					if (std::abs(x0 - x1) > std::abs(y0 - y1))
+					{
+						return 3;
+					}
+					else
+					{
+						return 2;
+					}
+				}
+				else
+				{
+					if (std::abs(x0 - x1) > std::abs(y0 - y1))
+					{
+						return 4;
+					}
+					else
+					{
+						return 5;
+					}
+				}
+			}
+			return -1;
+		}
+
+		// Fix me
+		bool Map::hasLineOfSightByOctant(int originX, int originY, int targetX, int targetY, int octant, int originHeight) const
+		{
+			int aX;
+			int bX;
+			int aY;
+			int bY;
+
+			switch (octant)
+			{
+			case 0:
+				aX = originX;
+				aY = originY;
+				bX = targetX;
+				bY = targetY;
+				break;
+			case 1:
+				aX = originY;
+				aY = originX;
+				bX = targetY;
+				bY = targetX;
+				break;
+			case 2:
+				aX = targetY;
+				aY = originX;
+				bX = originY;
+				bY = targetX;
+				break;
+			case 3:
+				aX = targetX;
+				aY = originY;
+				bX = originX;
+				bY = targetY;
+				break;
+			case 4:
+				aX = targetX;
+				aY = targetY;
+				bX = originX;
+				bY = originY;
+				break;
+			case 5:
+				aX = targetY;
+				aY = targetX;
+				bX = originY;
+				bY = originX;
+				break;
+			case 6:
+				aX = targetY;
+				aY = originX;
+				bX = originY;
+				bY = targetX;
+				break;
+			case 7:
+				aX = originX;
+				aY = targetY;
+				bX = targetX;
+				bY = originY;
+				break;
+			}
+			if (!m_field[y][x]->hasLineOfSight()
+				|| originHeight + Map::fieldOfViewHeightLimit >= m_field[y][x]->getHeight())
+			{
+				return false;
+			}
+			return false;
+		}
+
 		// Bresenham's line algorithm
 		bool Map::hasCellLineOfSightOnCell(int originX, int originY, int targetX, int targetY) const
 		{
-			int aX = originX < targetX ? originX : targetX;
-			int bX = originX > targetX ? originX : targetX;
-			int aY = originY < targetY ? originY : targetY;
-			int bY = originY > targetY ? originY : targetY;
+
+			int octant = getOctant(originX, originY, targetX, targetY);
+
+			int aX;
+			int bX;
+			int aY;
+			int bY;
+
+			switch (octant)
+			{
+			case 0:
+				aX = originX;
+				aY = originY;
+				bX = targetX;
+				bY = targetY;
+				break;
+			case 1:
+				aX = originY;
+				aY = originX;
+				bX = targetY;
+				bY = targetX;
+				break;
+			case 2:
+				aX = originY;
+				aY = targetX;
+				bX = targetY;
+				bY = originX;
+				break;
+			case 3:
+				aX = targetX;
+				aY = originY;
+				bX = originX;
+				bY = targetY;
+				break;
+			case 4:
+				aX = targetX;
+				aY = targetY;
+				bX = originX;
+				bY = originY;
+				break;
+			case 5:
+				aX = targetY;
+				aY = targetX;
+				bX = originY;
+				bY = originX;
+				break;
+			case 6:
+				aX = originY;
+				aY = targetX;
+				bX = targetY;
+				bY = originX;
+				break;
+			case 7:
+				aX = originX;
+				aY = targetY;
+				bX = targetX;
+				bY = originY;
+				break;
+			}
+
+
 			int originHeight = m_field[aY][aX]->getHeight();
 			int targetHeight = m_field[bY][bX]->getHeight();
 
 			float deltaX = static_cast<float>(bX - aX);
-			if (std::abs(deltaX) < 0.00001) // avoid division by zero
-			{
-				for (int y = aY; y <= bY; ++y)
-				{
-					if (!m_field[y][aX]->hasLineOfSight()
-							|| originHeight + Map::fieldOfViewHeightLimit >= m_field[y][aX]->getHeight())
-					{
-						return false;
-					}
-				}
-				return true;
-			}
 			float deltaY = static_cast<float>(bY - aY);
 			float error = -1.0f;
 			float deltaError = std::abs(deltaY / deltaX);
@@ -267,11 +434,10 @@ namespace tacticode
 			for (int x = aX; x <= bX - 1; ++x)
 			{
 				// x/y on the way
-				if (!m_field[y][x]->hasLineOfSight()
-						|| originHeight + Map::fieldOfViewHeightLimit >= m_field[y][x]->getHeight())
-				{
-					return false;
-				}
+				if (!hasLineOfSightByOctant(x, y, octant, originHeight))
+					//		{
+					//			return false;
+					//		}
 				error = error + deltaError;
 				if (error >= 0.0f)
 				{
