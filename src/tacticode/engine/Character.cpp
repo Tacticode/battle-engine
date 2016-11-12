@@ -374,6 +374,12 @@ namespace tacticode
 			action.add("skill", spellName);
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 
+			if (spell.getLos() && engine.getMap()->hasCellLineOfSightOnCell(getPosition().x, getPosition().y, position.x, position.y))
+			{
+				action.add("skill", "spell failed (LoS)");
+				return false;
+			}
+
 			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
 			return true;
 		}
