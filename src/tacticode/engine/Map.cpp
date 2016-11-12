@@ -292,63 +292,44 @@ namespace tacticode
 			return -1;
 		}
 
-		// Fix me
-		bool Map::hasLineOfSightByOctant(int originX, int originY, int targetX, int targetY, int octant, int originHeight) const
+		bool Map::hasLineOfSightByOctant(int aX, int aY, int octant, int originHeight) const
 		{
-			int aX;
-			int bX;
-			int aY;
-			int bY;
+			int x;
+			int y;
 
 			switch (octant)
 			{
 			case 0:
-				aX = originX;
-				aY = originY;
-				bX = targetX;
-				bY = targetY;
+				x =  aX;
+				y =  aY;
 				break;
 			case 1:
-				aX = originY;
-				aY = originX;
-				bX = targetY;
-				bY = targetX;
+				x =  aY;
+				y =  aX;
 				break;
 			case 2:
-				aX = targetY;
-				aY = originX;
-				bX = originY;
-				bY = targetX;
+				x = -aY;
+				y =  aX;
 				break;
 			case 3:
-				aX = targetX;
-				aY = originY;
-				bX = originX;
-				bY = targetY;
+				x = -aX;
+				y =  aY;
 				break;
 			case 4:
-				aX = targetX;
-				aY = targetY;
-				bX = originX;
-				bY = originY;
+				x = -aX;
+				y = -aY;
 				break;
 			case 5:
-				aX = targetY;
-				aY = targetX;
-				bX = originY;
-				bY = originX;
+				x = -aY;
+				y = -aX;
 				break;
 			case 6:
-				aX = targetY;
-				aY = originX;
-				bX = originY;
-				bY = targetX;
+				x =  aY;
+				y = -aX;
 				break;
 			case 7:
-				aX = originX;
-				aY = targetY;
-				bX = targetX;
-				bY = originY;
+				x =  aX;
+				y = -aY;
 				break;
 			}
 			if (!m_field[y][x]->hasLineOfSight()
@@ -373,52 +354,52 @@ namespace tacticode
 			switch (octant)
 			{
 			case 0:
-				aX = originX;
-				aY = originY;
-				bX = targetX;
-				bY = targetY;
+				aX =  originX;
+				aY =  originY;
+				bX =  targetX;
+				bY =  targetY;
 				break;
 			case 1:
-				aX = originY;
-				aY = originX;
-				bX = targetY;
-				bY = targetX;
+				aX =  originY;
+				aY =  originX;
+				bX =  targetY;
+				bY =  targetX;
 				break;
 			case 2:
-				aX = originY;
-				aY = targetX;
-				bX = targetY;
-				bY = originX;
+				aX = -originY;
+				aY =  originX;
+				bX = -targetY;
+				bY =  targetX;
 				break;
 			case 3:
-				aX = targetX;
-				aY = originY;
-				bX = originX;
-				bY = targetY;
+				aX = -originX;
+				aY =  originY;
+				bX = -targetX;
+				bY =  targetY;
 				break;
 			case 4:
-				aX = targetX;
-				aY = targetY;
-				bX = originX;
-				bY = originY;
+				aX = -originX;
+				aY = -originY;
+				bX = -targetX;
+				bY = -targetY;
 				break;
 			case 5:
-				aX = targetY;
-				aY = targetX;
-				bX = originY;
-				bY = originX;
+				aX = -originY;
+				aY = -originX;
+				bX = -targetY;
+				bY = -targetX;
 				break;
 			case 6:
-				aX = originY;
-				aY = targetX;
-				bX = targetY;
-				bY = originX;
+				aX =  originY;
+				aY = -originX;
+				bX =  targetY;
+				bY = -targetX;
 				break;
 			case 7:
-				aX = originX;
-				aY = targetY;
-				bX = targetX;
-				bY = originY;
+				aX =  originX;
+				aY = -originY;
+				bX =  targetX;
+				bY = -targetY;
 				break;
 			}
 
@@ -435,9 +416,9 @@ namespace tacticode
 			{
 				// x/y on the way
 				if (!hasLineOfSightByOctant(x, y, octant, originHeight))
-					//		{
-					//			return false;
-					//		}
+				{
+					return false;
+				}
 				error = error + deltaError;
 				if (error >= 0.0f)
 				{
