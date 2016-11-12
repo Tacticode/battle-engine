@@ -30,6 +30,9 @@ namespace tacticode
 
 			void deserialize(const file::IValue& json);
 
+			int getOctant(int originX, int originY, int targetX, int targetY) const;
+			bool hasLineOfSightByOctant(int x, int y, int octant, int originHeight) const;
+
 		public:
 			static const int fieldOfViewHeightLimit;
 			static const int moveHeightLimit;
