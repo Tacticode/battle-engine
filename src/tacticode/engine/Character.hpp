@@ -89,6 +89,7 @@ namespace tacticode
 			void applyDamage(int32_t damages);
 			void applyHeal(int32_t heal);
 			void addBuff(std::shared_ptr<spell::ISpell> spell);
+			void removeBuff();
 			void applyBuff();
 			void play(BattleEngineContext& );
 			void executeScript(BattleEngineContext& ); // TODO

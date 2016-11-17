@@ -40,6 +40,8 @@ namespace tacticode
 
 			//traps
 			std::map<std::pair<int,int>, TrapEntity*> m_traps;
+			int getOctant(int originX, int originY, int targetX, int targetY) const;
+			bool hasLineOfSightByOctant(int x, int y, int octant, int originHeight) const;
 
 		public:
 			static const int fieldOfViewHeightLimit;

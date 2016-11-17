@@ -370,6 +370,16 @@ namespace tacticode
 			}
 			auto & spell = getSpellByName(spellName);
 
+			// auto action = utils::Log::Action(m_id, position.x, position.y, "skill");
+			// action.add("skill", spellName);
+			// utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+
+			// if (spell.getLos() && engine.getMap()->hasCellLineOfSightOnCell(getPosition().x, getPosition().y, position.x, position.y))
+			// {
+			// 	action.add("skill", "spell failed (LoS)");
+			// 	return false;
+			// }
+
 			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
 			return true;
 		}
@@ -409,12 +419,25 @@ namespace tacticode
 		{
 			m_buff.push_back(buff);
 		}
-		void Character::applyBuff()
+		void Character::removeBuff()
 		{
 			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
 			{
-
+				//if ((*it)->time <= 0)
+				//{
+					//pop list;
+				//}
 			}
+		}
+		void Character::applyBuff()
+		{
+			// for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
+			// {
+			// 	for (std::list<std::shared_ptr<spell::IEffect>>::const_iterator it2 = (*it)->getEffects().begin(); it2 != (*it)->getEffects().end(); ++it2)
+			// 	{
+
+			// 	}
+			// }
 		}
 	}
 }
