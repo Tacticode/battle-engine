@@ -28,8 +28,8 @@ namespace tacticode
 					"SMASH",2,1,2,1,2,1));
 			registerSpell("BLADESTORM", std::make_shared<Spell>(std::make_shared<CrossAoeEffect>(2, std::make_shared<DamageEffect>()),
 					"BLADESTORM",1,1,1,1,2,1));
-			registerSpell("METEORE", std::make_shared<Spell>(std::make_shared<CrossAoeEffect>(3, std::make_shared<DamageEffect>()),
-					"METEORE",1.5,5,3,1,3,1));
+			registerSpell("METEOR", std::make_shared<Spell>(std::make_shared<CrossAoeEffect>(3, std::make_shared<DamageEffect>()),
+					"METEOR",1.5,5,3,1,3,1));
 			registerSpell("TRAP", std::make_shared<TrapSpell>());
 			registerSpell("SHIELD_BUMP", std::make_shared<Spell>(std::make_shared<BumpEffect>(std::make_shared<DamageEffect>()),
 					"SHIELD_BUMP",1,1,3,1,1,1));
