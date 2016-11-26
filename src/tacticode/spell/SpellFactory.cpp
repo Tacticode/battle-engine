@@ -22,8 +22,8 @@ namespace tacticode
 					"SNIPE",1,7,1,1,1,1));
 			registerSpell("FIRE_TRAP", std::make_shared<Spell>(std::make_shared<TrapEffect>(std::make_shared<DamageEffect>()),
 					"FIRE_TRAP",0.8,5,3,1,1,1));
-			registerSpell("PASS_THROUGH_ARROW", std::make_shared<Spell>(std::make_shared<LineAoeEffect>(5, std::make_shared<DamageEffect>()),
-					"PASS_THROUGH_ARROW",0.8,3,5,1,1,1));
+			registerSpell("GHOST_ARROW", std::make_shared<Spell>(std::make_shared<LineAoeEffect>(5, std::make_shared<DamageEffect>()),
+					"GHOST_ARROW",0.8,3,5,1,1,1));
 			registerSpell("SMASH", std::make_shared<Spell>(std::make_shared<LineAoeEffect>(2, std::make_shared<DamageEffect>()),
 					"SMASH",2,1,2,1,2,1));
 			registerSpell("BLADESTORM", std::make_shared<Spell>(std::make_shared<CrossAoeEffect>(2, std::make_shared<DamageEffect>()),
