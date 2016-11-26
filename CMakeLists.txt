@@ -2,15 +2,15 @@ cmake_minimum_required (VERSION 3.1)
 project(battle-engine)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
-option (TODO 
+option (TODO
   "Enable todo debugging" ON)
 include(cmake/Config.cmake)
-option (V8LINK 
+option (V8LINK
   "Enable v8 compiling" ON)
 
 #TODO handle v8 dependency using cmake
 #include(CMakeLists-ExternalV8.txt)
-			
+
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
 
@@ -63,15 +63,10 @@ if(V8LINK)
 			${CMAKE_CXX_FLAGS_DEBUG} "/DWIN32 /MTd"
 		)
 		#ICU DATA is actually not necessary
-		if(V8_ICUDATA_LIBRARY)
-			file(COPY
-				${V8_ICUDATA_LIBRARY}
-				DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
-		endif(V8_ICUDATA_LIBRARY)
 		target_link_libraries (BattleEngine ${V8_LIBRARY} )
 
 	else(WIN32)
-		SET(LDFLAGS -Wl,--start-group ${V8_LIBRARY} ${V8_ICUDATA_LIBRARY} -Wl,--end-group -lrt -ldl -pthread)
+		SET(LDFLAGS -Wl,--start-group ${V8_LIBRARY} -Wl,--end-group -lrt -ldl -pthread)
 		target_link_libraries (BattleEngine ${LDFLAGS})
 	endif(WIN32)
 
