@@ -136,13 +136,13 @@ namespace tacticode
 
 		void BattleEngine::game()
 		{
-			int i = 0;
-			while (i < 100) { // max turn is 100
-				utils::Singleton<utils::FightLogger>::GetInstance()->addTurn(i);
+			int turn = 1;
+			while (turn < TURN_LIMIT) {
+				utils::Singleton<utils::FightLogger>::GetInstance()->addTurn(turn);
 				if (!round()) {
 					break;
 				}
-				++i;
+				++turn;
 			}
 
 			utils::Singleton<utils::FightLogger>::GetInstance()->setWinner(winnerId > 0 ? winnerId : 0);
