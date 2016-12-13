@@ -31,6 +31,7 @@ namespace script{
 
 			utils::Log err_log;
 			//err_log.add("entity", _engineContext.character->getId());
+			err_log.add("type", "error");
 			err_log.add("error", error);
 			err_log.add("start", stpos);
 			err_log.add("end", edpos);
@@ -62,6 +63,7 @@ namespace script{
 	
 				utils::Log err_log ;
 				err_log.add("entity", _engineContext.character->getId());
+				err_log.add("type", "error");
 				err_log.add("error", error);
 				err_log.add("start", stpos);
 				err_log.add("end", edpos);
