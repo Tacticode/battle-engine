@@ -17,5 +17,11 @@ v8::Handle<v8::String> v8String::fromString(std::string const& str) {
 				v8::NewStringType::kNormal).ToLocalChecked();
 }
 
+std::string v8String::toString(v8::Handle<v8::String> v8str) {
+	v8::String::Utf8Value utf8value(v8str);
+  std::string str(*utf8value);
+  return str;
+}
+
 }//script
 }//tacticode

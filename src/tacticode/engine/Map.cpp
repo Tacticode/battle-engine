@@ -321,8 +321,8 @@ namespace tacticode
 				y =  aX;
 				break;
 			case 2:
-				x = -aY;
-				y =  aX;
+				x =  aY;
+				y = -aX;
 				break;
 			case 3:
 				x = -aX;
@@ -337,8 +337,8 @@ namespace tacticode
 				y = -aX;
 				break;
 			case 6:
-				x =  aY;
-				y = -aX;
+				x = -aY;
+				y =  aX;
 				break;
 			case 7:
 				x =  aX;
@@ -358,6 +358,9 @@ namespace tacticode
 		{
 
 			int octant = getOctant(originX, originY, targetX, targetY);
+
+			int originHeight = m_field[originY][originX]->getHeight();
+			int targetHeight = m_field[targetY][targetX]->getHeight();
 
 			int aX;
 			int bX;
@@ -415,10 +418,6 @@ namespace tacticode
 				bY = -targetY;
 				break;
 			}
-
-
-			int originHeight = m_field[aY][aX]->getHeight();
-			int targetHeight = m_field[bY][bX]->getHeight();
 
 			float deltaX = static_cast<float>(bX - aX);
 			float deltaY = static_cast<float>(bY - aY);
