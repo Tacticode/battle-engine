@@ -184,13 +184,6 @@ namespace tacticode
 			return false;
 		}
 
-		void Character::applyEffects()
-		{
-			for (auto & effect : m_effects)
-			{
-				effect->apply(*this);
-			}
-		}
 
 		bool Character::isDead() const
 		{
@@ -205,7 +198,7 @@ namespace tacticode
 			}
 			m_cooldown.movement = m_currentAttributes->movement;
 			m_cooldown.spell = false;
-			applyEffects();
+			//applyEffects();
 			executeScript(context);
 		}
 
@@ -292,11 +285,6 @@ namespace tacticode
 			}
 		}
 
-		const std::vector<std::unique_ptr<effect::IEffect>>& Character::getEffects() const
-		{
-			return m_effects;
-		}
-
 		bool Character::hasSpell(const std::string & name) const
 		{
 			return m_spells.find(name) != m_spells.end();
@@ -344,10 +332,6 @@ namespace tacticode
 			m_position = position;
 		}
 
-		void Character::addEffect(std::unique_ptr<effect::IEffect> effect)
-		{
-			m_effects.push_back(std::move(effect));
-		}
 
 		bool Character::moveToCell(const Vector2i & position)
 		{
@@ -376,8 +360,8 @@ namespace tacticode
 
 			// if (spell.getLos() && engine.getMap()->hasCellLineOfSightOnCell(getPosition().x, getPosition().y, position.x, position.y))
 			// {
-			// 	action.add("skill", "spell failed (LoS)");
-			// 	return false;
+			//	action.add("skill", "spell failed (LoS)");
+			//	return false;
 			// }
 
 			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
@@ -418,6 +402,10 @@ namespace tacticode
 		void Character::addBuff(std::shared_ptr<spell::ISpell> buff)
 		{
 			m_buff.push_back(buff);
+
+			auto action = utils::Log::Action(m_id, "Buff Added");
+			action.add("Buff_Added", 1000);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 		}
 		void Character::removeBuff()
 		{
@@ -429,15 +417,19 @@ namespace tacticode
 				//}
 			}
 		}
-		void Character::applyBuff()
+		void Character::applyBuff(BattleEngine &engine)
 		{
-			// for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
-			// {
-			// 	for (std::list<std::shared_ptr<spell::IEffect>>::const_iterator it2 = (*it)->getEffects().begin(); it2 != (*it)->getEffects().end(); ++it2)
-			// 	{
 
-			// 	}
-			// }
+			auto action = utils::Log::Action(m_id, "Buff Routine");
+			action.add("Buff_Routine", 1000);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
+			{
+				for (std::list<std::shared_ptr<spell::IEffect>>::const_iterator it2 = (*it)->getEffects().begin(); it2 != (*it)->getEffects().end(); ++it2)
+				{
+					(*it2)->applyBuff(engine.getCharacter(m_id), engine);
+				}
+			}
 		}
 	}
 }

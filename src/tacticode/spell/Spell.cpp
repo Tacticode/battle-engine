@@ -16,21 +16,21 @@ namespace tacticode
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 		}
 
-		Spell::Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los)
-			: ISpell(name), m_power(power), m_range(range), m_cooldown(cooldown), m_isActive(active), m_aoe(aoe), m_los(los)
+		Spell::Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los, size_t nbTurn)
+			: ISpell(name), m_power(power), m_range(range), m_cooldown(cooldown), m_isActive(active), m_aoe(aoe), m_los(los), m_nbTurn(nbTurn)
 		{
 			m_effects.push_back(effect);
 		}
 		// Spell::Spell(const Spell &spell)
 		// {
-		// 	m_name = spell.getName();
-		// 	m_power = spell.getPower();
-		// 	m_range = spell.getRange();
-		// 	m_cooldown = spell.getCooldown();
-		// 	m_isActive = spell.getIsActive();
-		// 	m_aoe = spell.getAoe();
-		// 	m_los = spell.getLos();
-		// 	m_effects = spell.getEffects();
+		//	m_name = spell.getName();
+		//	m_power = spell.getPower();
+		//	m_range = spell.getRange();
+		//	m_cooldown = spell.getCooldown();
+		//	m_isActive = spell.getIsActive();
+		//	m_aoe = spell.getAoe();
+		//	m_los = spell.getLos();
+		//	m_effects = spell.getEffects();
 		// }
 		void Spell::castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine)
 		{
@@ -45,7 +45,7 @@ namespace tacticode
 				for (std::list<std::shared_ptr<IEffect> >::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
 				{
 					(*it)->applyEffect(caster, cell, engine, *this);
-				}				
+				}
 			} else {
 				auto action = utils::Log::Action(casterId, edpos.x, edpos.y, "skill");
 				action.add("skill", m_name);
@@ -77,6 +77,10 @@ namespace tacticode
 		const size_t Spell::getLos() const
 		{
 			return m_los;
+		}
+		const size_t Spell::getNbTurn() const
+		{
+			return m_nbTurn;
 		}
 
 		const std::list<std::shared_ptr<IEffect> > Spell::getEffects() const

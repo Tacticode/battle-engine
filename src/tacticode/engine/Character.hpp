@@ -7,22 +7,20 @@
 
 #include "tacticode/file/IValue.hpp"
 #include "tacticode/spell/Spell.hpp"
-#include "tacticode/effect/IEffect.hpp"
+#include "tacticode/spell/IEffect.hpp"
 #include "ICharacterScript.hpp"
 
 namespace tacticode
 {
-	namespace effect
-	{
-		class IEffect; // buff, debuff, poison (cast a spell), heal (cast a spell) etc...
-	}
 	namespace spell
 	{
 		class ISpell;
+		class IEffect;
 	}
 	namespace engine
 	{
 		class Map;
+		class BattleEngine;
 
 		class Character
 		{
@@ -70,7 +68,6 @@ namespace tacticode
 			std::shared_ptr<Map>			  m_map;
 			Cooldown						  m_cooldown;
 
-			std::vector<std::unique_ptr<effect::IEffect>> m_effects;
 			std::map<std::string, int32_t>				  m_spells;
 			std::shared_ptr<ICharacterScript>			  m_script;
 			std::list< std::shared_ptr<spell::ISpell>>			  m_buff;
@@ -90,7 +87,7 @@ namespace tacticode
 			void applyHeal(int32_t heal);
 			void addBuff(std::shared_ptr<spell::ISpell> spell);
 			void removeBuff();
-			void applyBuff();
+			void applyBuff(BattleEngine &engine);
 			void play(BattleEngineContext& );
 			void executeScript(BattleEngineContext& ); // TODO
 
@@ -114,8 +111,6 @@ namespace tacticode
 
 			void reduceCurrentMovementPoint(int32_t reductor);
 
-			const std::vector<std::unique_ptr<effect::IEffect>> & getEffects() const;
-
 			bool hasSpell(const std::string & name) const;
 			spell::ISpell & getSpellByName(const std::string & spellName);
 			int32_t getSpellCooldown(const std::string & spellName) const;
@@ -126,7 +121,6 @@ namespace tacticode
 			void setPosition(const Vector2i & position);
 
 			void addSpell(const std::string & spellName); // TODO: Wilko
-			void addEffect(std::unique_ptr<effect::IEffect> effect);
 
 			bool moveToCell(const Vector2i & position);
 			bool castSpell(std::string const&, const Vector2i & position, BattleEngine & engine);

@@ -7,6 +7,7 @@
 #include "CrossAoeEffect.hpp"
 #include "TrapSpell.hpp"
 #include "BumpEffect.hpp"
+#include "BuffEffect.hpp"
 
 namespace tacticode
 {
@@ -34,6 +35,8 @@ namespace tacticode
 			registerSpell("SHIELD_BUMP", std::make_shared<Spell>(std::make_shared<BumpEffect>(std::make_shared<DamageEffect>()),
 					"SHIELD_BUMP",1,1,3,1,1,1));
 			registerSpell("SHIELD_BREAK", std::make_shared<Spell>(std::make_shared<CrossAoeEffect>(1, std::make_shared<BumpEffect>(nullptr)),
+					"SHIELD_BREAK",1.5,5,3,1,3,1));
+			registerSpell("CURSE", std::make_shared<Spell>(std::make_shared<BuffEffect>(3, std::make_shared<DamageEffect>()),
 					"SHIELD_BREAK",1.5,5,3,1,3,1));
 			std::cerr << "spell factory initialised" << std::endl;
 		}

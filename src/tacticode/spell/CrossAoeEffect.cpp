@@ -17,24 +17,24 @@ namespace tacticode
 				std::shared_ptr<engine::Map> map = engine.getMap();
 				for (size_t i = 0; i < m_aoe; ++i)
 				{
-					if (map->isCellOnMap(cell->getX() + i, cell->getY()) && engine.getCharacter(map->getCell(cell->getX() + i, cell->getY()).getCharacterId()))
+					if (map->isCellOnMap(cell->getX() + i, cell->getY()) && map->getCell(cell->getX() + i, cell->getY()).getCharacterId() != -1)
 						targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY())));
-					if (map->isCellOnMap(cell->getX() - i, cell->getY()) && engine.getCharacter(map->getCell(cell->getX() - i, cell->getY()).getCharacterId()))
-						targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY())));
-					if (map->isCellOnMap(cell->getX(), cell->getY() + i) && engine.getCharacter(map->getCell(cell->getX(), cell->getY() + i).getCharacterId()))
-						targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY())));
-					if (map->isCellOnMap(cell->getX(), cell->getY() - i) && engine.getCharacter(map->getCell(cell->getX(), cell->getY() - i).getCharacterId()))
-						targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY())));
+					if (map->isCellOnMap(cell->getX() - i, cell->getY()) && map->getCell(cell->getX() - i, cell->getY()).getCharacterId() != -1)
+						targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() - i, cell->getY())));
+					if (map->isCellOnMap(cell->getX(), cell->getY() + i) && map->getCell(cell->getX(), cell->getY() + i).getCharacterId() != -1)
+						targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX(), cell->getY() + i)));
+					if (map->isCellOnMap(cell->getX(), cell->getY() - i) && map->getCell(cell->getX(), cell->getY() - i).getCharacterId() != -1)
+						targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX(), cell->getY() - i)));
 					if (i < m_aoe -1)
 					{
-						if (map->isCellOnMap(cell->getX() + i, cell->getY() + i) && engine.getCharacter(map->getCell(cell->getX() + i , cell->getY() + i).getCharacterId()))
-							targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY())));
-						if (map->isCellOnMap(cell->getX() + i, cell->getY() - i) && engine.getCharacter(map->getCell(cell->getX() + i , cell->getY() - i).getCharacterId()))
-							targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY())));
-						if (map->isCellOnMap(cell->getX() - i, cell->getY() - i) && engine.getCharacter(map->getCell(cell->getX() - i , cell->getY() - i).getCharacterId()))
-							targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY())));
-						if (map->isCellOnMap(cell->getX() - i, cell->getY() + i) && engine.getCharacter(map->getCell(cell->getX() - i , cell->getY() + i).getCharacterId()))
-							targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY())));
+						if (map->isCellOnMap(cell->getX() + i, cell->getY() + i) && map->getCell(cell->getX() + i , cell->getY() + i).getCharacterId() != -1)
+							targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY() + i)));
+						if (map->isCellOnMap(cell->getX() + i, cell->getY() - i) && map->getCell(cell->getX() + i , cell->getY() - i).getCharacterId() != -1)
+							targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() + i, cell->getY() - i)));
+						if (map->isCellOnMap(cell->getX() - i, cell->getY() - i) && map->getCell(cell->getX() - i , cell->getY() - i).getCharacterId() != -1)
+							targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() - i, cell->getY() - i)));
+						if (map->isCellOnMap(cell->getX() - i, cell->getY() + i) && map->getCell(cell->getX() - i , cell->getY() + i).getCharacterId() != -1)
+							targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX() - i, cell->getY() + i)));
 					}
 				}
 

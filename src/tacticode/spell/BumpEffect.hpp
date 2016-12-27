@@ -13,6 +13,7 @@ namespace tacticode
 			BumpEffect(std::shared_ptr<IEffect> effects);
 			virtual ~BumpEffect() = default;
 			virtual void applyEffect(std::shared_ptr<engine::Character> caster, std::shared_ptr<engine::Cell> cell, engine::BattleEngine &engine, Spell spell, int isSecondary = -1);
+			virtual void applyBuff(std::shared_ptr<engine::Character> target, engine::BattleEngine &engine){}
 		};
 	}
 }

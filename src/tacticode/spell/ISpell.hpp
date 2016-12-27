@@ -14,6 +14,7 @@ namespace tacticode
 	}
 	namespace spell
 	{
+		class IEffect;
 		class ISpell
 		{
 		protected:
@@ -24,6 +25,8 @@ namespace tacticode
 			size_t m_cooldown;
 			size_t m_los;
 			size_t m_isActive;
+			size_t m_nbTurn;
+			std::list<std::shared_ptr<IEffect>> m_effects;
 		public:
 			ISpell(std::string const& name) : m_name(name) {};
 			virtual ~ISpell() = default;
@@ -37,6 +40,8 @@ namespace tacticode
 			virtual const size_t getIsActive() const {return m_isActive;}
 			virtual const size_t getAoe() const {return m_aoe;}
 			virtual const size_t getLos() const {return m_los;}
+			virtual const size_t getNbTurn() const {return m_nbTurn;}
+			virtual const std::list<std::shared_ptr<IEffect> > getEffects(){return m_effects;};
 		};
 	}
 }
