@@ -3,6 +3,7 @@
 #include <string>
 #include <list>
 #include <memory>
+#include <iostream>
 
 namespace tacticode
 {
@@ -41,7 +42,7 @@ namespace tacticode
 			virtual const size_t getAoe() const {return m_aoe;}
 			virtual const size_t getLos() const {return m_los;}
 			virtual const size_t getNbTurn() const {return m_nbTurn;}
-			virtual const std::list<std::shared_ptr<IEffect> > getEffects(){return m_effects;};
+			virtual std::list<std::shared_ptr<IEffect> > getEffects(){return m_effects;};
 		};
 	}
 }

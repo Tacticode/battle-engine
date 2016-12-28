@@ -86,8 +86,8 @@
 					"luck": 5000,
 					"movement": 7,
 					"speed": 2,
-				    "spells": ["FIREBALL", "SHIELD_BUMP", "SHIELD_BREAK", "METEOR", "PASS_THROUGH_ARROW"],
-					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('METEOR', 2, 0); }"
+				    "spells": ["FIREBALL", "SHIELD_BUMP", "SHIELD_BREAK", "METEOR", "CURSE"],
+					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('CURSE', 2, 0); }"
 				}
 			]
 		},

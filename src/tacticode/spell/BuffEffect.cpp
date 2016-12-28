@@ -22,18 +22,19 @@ namespace tacticode
 			{
 				std::shared_ptr<engine::Character> target = engine.getCharacter(cell->getCharacterId());
 				if (target)
+				{
 					target->addBuff(std::make_shared<Spell>(spell));
+				}
 			}
 		}
+
 		void	BuffEffect::applyBuff(std::shared_ptr<engine::Character> target, engine::BattleEngine &engine)
 		{
 			std::shared_ptr<engine::Map> map = engine.getMap();
-
 			for (std::list<std::shared_ptr<IEffect>>::iterator it = m_effects.begin(); it != m_effects.end(); ++it)
 			{
 				(*it)->applyEffect(m_caster, std::make_shared<engine::Cell>(map->getCell(target->getPosition())), engine, *m_spell);
 			}
-			m_nbTurn--;
 		}
 	}
 }

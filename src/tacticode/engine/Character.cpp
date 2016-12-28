@@ -198,7 +198,8 @@ namespace tacticode
 			}
 			m_cooldown.movement = m_currentAttributes->movement;
 			m_cooldown.spell = false;
-			//applyEffects();
+			applyBuff(*(context.engine));
+			removeBuff();
 			executeScript(context);
 		}
 
@@ -409,25 +410,27 @@ namespace tacticode
 		}
 		void Character::removeBuff()
 		{
+			auto action = utils::Log::Action(m_id, "Remove Buff");
+			action.add("Remove_Buff", 1000);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
 			{
-				//if ((*it)->time <= 0)
-				//{
-					//pop list;
-				//}
+				m_buff.erase(it++);
 			}
 		}
 		void Character::applyBuff(BattleEngine &engine)
 		{
-
+			int i = 0;
 			auto action = utils::Log::Action(m_id, "Buff Routine");
 			action.add("Buff_Routine", 1000);
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
 			{
-				for (std::list<std::shared_ptr<spell::IEffect>>::const_iterator it2 = (*it)->getEffects().begin(); it2 != (*it)->getEffects().end(); ++it2)
+				std::list<std::shared_ptr<spell::IEffect>> ef = (*it)->getEffects();
+				for (std::list<std::shared_ptr<spell::IEffect>>::iterator it2 = ef.begin(); it2 != ef.end(); ++it2)
 				{
 					(*it2)->applyBuff(engine.getCharacter(m_id), engine);
+					i++;
 				}
 			}
 		}

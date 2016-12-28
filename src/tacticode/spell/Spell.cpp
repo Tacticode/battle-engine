@@ -17,9 +17,16 @@ namespace tacticode
 		}
 
 		Spell::Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los, size_t nbTurn)
-			: ISpell(name), m_power(power), m_range(range), m_cooldown(cooldown), m_isActive(active), m_aoe(aoe), m_los(los), m_nbTurn(nbTurn)
+			: ISpell(name)
 		{
 			m_effects.push_back(effect);
+			m_power = power;
+			m_range = range;
+			m_cooldown = cooldown;
+			m_isActive = active;
+			m_aoe = aoe;
+			m_los = los;
+			m_nbTurn = nbTurn;
 		}
 		// Spell::Spell(const Spell &spell)
 		// {
@@ -83,7 +90,7 @@ namespace tacticode
 			return m_nbTurn;
 		}
 
-		const std::list<std::shared_ptr<IEffect> > Spell::getEffects() const
+		std::list<std::shared_ptr<IEffect> > Spell::getEffects() const
 		{
 			return m_effects;
 		}
