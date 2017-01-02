@@ -468,6 +468,7 @@ namespace tacticode
 		}
 
 		bool Map::reachLineOfSight(Vector2i const& st, Vector2i & ed) const{
+			Vector2i endPos = ed;
 			int aX = std::min(st.x, ed.x);
 			int bX = std::max(st.x, ed.x);
 			int aY = std::min(st.y, ed.y);
@@ -512,6 +513,11 @@ namespace tacticode
 				ed.x = x;
 				ed.y = y;
 			}
+			// no idea what I am doing but we need something working -PM
+			if (ed.x + 1 == endPos.x) ed.x++;
+			if (ed.x - 1 == endPos.x) ed.x--;
+			if (ed.y + 1 == endPos.y) ed.y++;
+			if (ed.y - 1 == endPos.y) ed.y--;
 			return true;
 		}
 	}
