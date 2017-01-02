@@ -291,10 +291,10 @@ namespace tacticode
 			return m_spells.find(name) != m_spells.end();
 		}
 
-		spell::ISpell & Character::getSpellByName(const std::string & spellName)
+		std::shared_ptr<spell::ISpell> Character::getSpellByName(const std::string & spellName)
 		{
 			auto spellFactory = utils::Singleton<spell::SpellFactory>::GetInstance();
-			return *spellFactory->get(spellName);
+			return spellFactory->get(spellName);
 		}
 
 		int32_t Character::getSpellCooldown(const std::string & spellName) const
@@ -353,7 +353,7 @@ namespace tacticode
 			{
 				return false;
 			}
-			auto & spell = getSpellByName(spellName);
+			auto spell = getSpellByName(spellName);
 
 			// auto action = utils::Log::Action(m_id, position.x, position.y, "skill");
 			// action.add("skill", spellName);
@@ -365,7 +365,14 @@ namespace tacticode
 			//	return false;
 			// }
 
-			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
+			if (spell)
+			{
+				spell->castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
+			}
+			else
+			{
+				std::cerr << "Spell " << spellName << " does not exist" << std::endl;
+			}
 			return true;
 		}
 

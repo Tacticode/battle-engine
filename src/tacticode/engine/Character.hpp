@@ -112,7 +112,7 @@ namespace tacticode
 			void reduceCurrentMovementPoint(int32_t reductor);
 
 			bool hasSpell(const std::string & name) const;
-			spell::ISpell & getSpellByName(const std::string & spellName);
+			std::shared_ptr<spell::ISpell> getSpellByName(const std::string & spellName);
 			int32_t getSpellCooldown(const std::string & spellName) const;
 			const std::unique_ptr<std::list<std::string>> getSpells() const;
 
