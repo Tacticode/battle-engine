@@ -16,7 +16,7 @@ namespace tacticode
 		public:
 			TrapSpell();
 			virtual ~TrapSpell() = default;
-			void castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine);
+			bool castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine);
 		};
 
 		

@@ -367,13 +367,13 @@ namespace tacticode
 
 			if (spell)
 			{
-				spell->castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
+				return spell->castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
 			}
 			else
 			{
 				std::cerr << "Spell " << spellName << " does not exist" << std::endl;
+				return false;
 			}
-			return true;
 		}
 
 		//todo : prevoir cas spéciaux si besoin

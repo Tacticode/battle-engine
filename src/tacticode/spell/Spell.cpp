@@ -2,6 +2,7 @@
 #include "tacticode/utils/utils.hpp"
 #include "IEffect.hpp"
 #include "tacticode/engine/BattleEngine.hpp"
+#include <cmath>
 
 using tacticode::utils::Singleton;
 
@@ -16,11 +17,12 @@ namespace tacticode
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 		}
 
-		Spell::Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los, size_t nbTurn)
+		Spell::Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t minRange, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los, size_t nbTurn)
 			: ISpell(name)
 		{
 			m_effects.push_back(effect);
 			m_power = power;
+			m_minRange = minRange;
 			m_range = range;
 			m_cooldown = cooldown;
 			m_isActive = active;
@@ -39,13 +41,16 @@ namespace tacticode
 		//	m_los = spell.getLos();
 		//	m_effects = spell.getEffects();
 		// }
-		void Spell::castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine)
+		bool Spell::castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine)
 		{
 			auto caster = engine.getCharacter(casterId);
 			Vector2i const& stpos = caster->getPosition();
 			Vector2i edpos(cell->getX(), cell->getY());
 			auto map = engine.getMap();
 
+			int distance = std::abs(stpos.x - edpos.x) + std::abs(stpos.y - edpos.y);
+			if (distance < m_minRange || distance > m_range) return false;
+			
 			if (map->reachLineOfSight(stpos, edpos)) {
 				logCast(casterId, edpos.x, edpos.y);
 
@@ -53,11 +58,13 @@ namespace tacticode
 				{
 					(*it)->applyEffect(caster, cell, engine, *this);
 				}
+				return true;
 			} else {
 				auto action = utils::Log::Action(casterId, edpos.x, edpos.y, "skill");
 				action.add("skill", m_name);
 				action.add("blocked", true);
 				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+				return false;
 			}
 		}
 
