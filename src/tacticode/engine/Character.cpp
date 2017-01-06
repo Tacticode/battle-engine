@@ -291,10 +291,10 @@ namespace tacticode
 			return m_spells.find(name) != m_spells.end();
 		}
 
-		spell::ISpell & Character::getSpellByName(const std::string & spellName)
+		std::shared_ptr<spell::ISpell> Character::getSpellByName(const std::string & spellName)
 		{
 			auto spellFactory = utils::Singleton<spell::SpellFactory>::GetInstance();
-			return *spellFactory->get(spellName);
+			return spellFactory->get(spellName);
 		}
 
 		int32_t Character::getSpellCooldown(const std::string & spellName) const
@@ -353,8 +353,7 @@ namespace tacticode
 			{
 				return false;
 			}
-			auto & spell = getSpellByName(spellName);
-
+			auto spell = getSpellByName(spellName);
 			// auto action = utils::Log::Action(m_id, position.x, position.y, "skill");
 			// action.add("skill", spellName);
 			// utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
@@ -365,8 +364,15 @@ namespace tacticode
 			//	return false;
 			// }
 
-			spell.castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
-			return true;
+			if (spell)
+			{
+				return spell->castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
+			}
+			else
+			{
+				std::cerr << "Spell " << spellName << " does not exist" << std::endl;
+				return false;
+			}
 		}
 
 		//todo : prevoir cas spéciaux si besoin
@@ -418,7 +424,7 @@ namespace tacticode
 		{
 			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
 			{
-				if ((*it)->getNbTurn() <= 0)
+				if ((*it)->getNbTurn() <= 0 && false)
 				{
 					m_buff.erase(it++);
 					auto action = utils::Log::Action(m_id, "Remove Buff");

@@ -34,7 +34,7 @@ namespace spell{
 
 		TrapSpell::TrapSpell() : ISpell("TRAP") {}
 
-		void TrapSpell::castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine){
+		bool TrapSpell::castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine){
 			auto caster = engine.getCharacter(casterId);
 			Vector2i pos(cell->getX(), cell->getY());
 
