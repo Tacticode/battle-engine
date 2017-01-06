@@ -42,6 +42,7 @@ namespace tacticode
 			virtual const size_t getAoe() const {return m_aoe;}
 			virtual const size_t getLos() const {return m_los;}
 			virtual const size_t getNbTurn() const {return m_nbTurn;}
+			virtual void setNbTurn(int nb) {m_nbTurn = nb;}
 			virtual std::list<std::shared_ptr<IEffect> > getEffects(){return m_effects;};
 		};
 	}

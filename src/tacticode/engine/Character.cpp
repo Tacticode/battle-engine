@@ -402,20 +402,29 @@ namespace tacticode
 		}
 		void Character::addBuff(std::shared_ptr<spell::ISpell> buff)
 		{
-			m_buff.push_back(buff);
 
+			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
+			{
+				if (buff->getName() == (*it)->getName())
+					m_buff.erase(it++);
+			}
+
+			m_buff.push_back(buff);
 			auto action = utils::Log::Action(m_id, "Buff Added");
 			action.add("Buff_Added", 1000);
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 		}
 		void Character::removeBuff()
 		{
-			auto action = utils::Log::Action(m_id, "Remove Buff");
-			action.add("Remove_Buff", 1000);
-			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
 			{
-				m_buff.erase(it++);
+				if ((*it)->getNbTurn() <= 0)
+				{
+					m_buff.erase(it++);
+					auto action = utils::Log::Action(m_id, "Remove Buff");
+					action.add("Remove_Buff", 1000);
+					utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+				}
 			}
 		}
 		void Character::applyBuff(BattleEngine &engine)
@@ -432,6 +441,7 @@ namespace tacticode
 					(*it2)->applyBuff(engine.getCharacter(m_id), engine);
 					i++;
 				}
+				(*it)->setNbTurn((*it)->getNbTurn() - 1);
 			}
 		}
 	}

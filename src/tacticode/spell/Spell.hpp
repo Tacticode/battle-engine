@@ -10,7 +10,7 @@ namespace tacticode
 		class Spell : public ISpell
 		{
 		public:
-			Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los, size_t nbTurn = 1);
+			Spell(std::list<std::shared_ptr<IEffect> > effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los, size_t nbTurn = 1);
 			//Spell(const Spell &spell);
 			virtual ~Spell() = default;
 			void castSpell(int32_t casterId, std::shared_ptr<engine::Cell> cell, engine::BattleEngine & engine);
@@ -21,6 +21,7 @@ namespace tacticode
 			virtual const size_t getAoe() const;
 			virtual const size_t getLos() const;
 			virtual const size_t getNbTurn() const;
+			virtual void setNbTurn(int nb);
 			virtual std::list<std::shared_ptr<IEffect> > getEffects() const;
 		};
 	}

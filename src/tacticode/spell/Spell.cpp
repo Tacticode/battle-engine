@@ -16,10 +16,11 @@ namespace tacticode
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 		}
 
-		Spell::Spell(std::shared_ptr<IEffect> effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los, size_t nbTurn)
+		Spell::Spell(std::list<std::shared_ptr<IEffect> > effect, std::string const& name, float power, size_t range, size_t cooldown, size_t active, size_t aoe, size_t los, size_t nbTurn)
 			: ISpell(name)
 		{
-			m_effects.push_back(effect);
+
+			m_effects = effect;
 			m_power = power;
 			m_range = range;
 			m_cooldown = cooldown;
@@ -90,6 +91,10 @@ namespace tacticode
 			return m_nbTurn;
 		}
 
+		void Spell::setNbTurn(int nb)
+		{
+			m_nbTurn = nb;
+		}
 		std::list<std::shared_ptr<IEffect> > Spell::getEffects() const
 		{
 			return m_effects;
