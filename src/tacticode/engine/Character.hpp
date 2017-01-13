@@ -67,6 +67,9 @@ namespace tacticode
 			int32_t							  m_teamId;
 			std::shared_ptr<Map>			  m_map;
 			Cooldown						  m_cooldown;
+			bool							  m_isInvisible;
+			bool							  m_isStunned;
+			bool							  m_isSilenced;
 
 			std::map<std::string, int32_t>				  m_spells;
 			std::shared_ptr<ICharacterScript>			  m_script;
@@ -107,6 +110,9 @@ namespace tacticode
 			int32_t				getTeamId()				   const;
 			bool				getCooldownSpell()		   const;
 			int32_t				getCurrentMovementPoints() const;
+			bool				getIsInvisible() const;
+			bool				getIsStuned() const;
+			bool				getIsSilenced() const;
 			bool					isDead()	const;
 
 			void reduceCurrentMovementPoint(int32_t reductor);
@@ -124,6 +130,12 @@ namespace tacticode
 
 			bool moveToCell(const Vector2i & position);
 			bool castSpell(std::string const&, const Vector2i & position, BattleEngine & engine);
+			void becomeInvisible();
+			void becomeVisible();
+			void changeMoveSpeed(int speed);
+			void stunChamp();
+			void silenceChamp();
+			void removeStunAndSilence();
 		};
 
 	}

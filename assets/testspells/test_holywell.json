@@ -71,12 +71,12 @@
 	[
 		{
 			"id": 1, //id team si team fight; id joueur si solo fight
-			"name": "Xx_T0to42_xX",
+			"name": "UnitTestHolywellCaster",
 			"characters":
 			[
 				{
 					"id": 12344,
-					"name": "BoboTheWarrior",
+					"name": "UnitTestHolywellCaster",
 					"breed": "elf",
 					"health": 12,
 					"attack": 5,
@@ -86,19 +86,34 @@
 					"luck": 5000,
 					"movement": 7,
 					"speed": 2,
-				    "spells": ["FIREBALL", "SHIELD_BUMP", "SHIELD_BREAK", "METEOR", "CURSE"],
-					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('SHIELD_BUMP', 2, 0); }"
+				        "spells": [ "HOLY_WELL"],
+				        "script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('HOLY_WELL', 1, 0); }"
+				},
+			    {
+					"id": 12346,
+					"name": "UnitTestHolywellTarget",
+					"breed": "elf",
+					"health": 12,
+					"attack": 5,
+					"power": 5,
+					"defense": 6,
+					"resilience": 1,
+					"luck": 5000,
+					"movement": 7,
+					"speed": 2,
+				        "spells": [],
+					"script": "function onTurn(){ $log(JSON.stringify(getCell(1, 0))); }"
 				}
 			]
 		},
 		{
 			"id": 2,
-			"name": "k1ll3r93",
+			"name": "UnitTestHolywellKiller",
 			"characters":
 			[
 				{
 					"id": 12345,
-					"name": "BibiTheMagus",
+					"name": "UnitTestHolywellKiller",
 					"breed": "goblin",
 					"health": 15,
 					"attack": 5,
@@ -108,8 +123,8 @@
 					"luck": 5000,
 					"movement": 5,
 					"speed": 2,
-					"spells": ["SNIPE", "PASS_THROUGH_ARROW"],
-					"script": "function onTurn(){ $log(JSON.stringify(getCell(1, 0))); }"
+					"spells": ["FIREBALL"],
+					"script": "function onTurn(){ $log(JSON.stringify(getCell(2, 0))); }"
 				}
 			]
 		}

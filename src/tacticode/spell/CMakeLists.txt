@@ -11,6 +11,12 @@ set_target_sources(BattleEngine
 	BuffEffect.hpp
 	Trap.hpp
 	BumpEffect.hpp
+	InvisibleEffect.hpp
+	VisibleEffect.hpp
+	RemoveSpeedEffect.hpp
+	RemoveSpeedEffect.cpp
+	VisibleEffect.cpp
+	InvisibleEffect.cpp
 	BumpEffect.cpp
 	Trap.cpp
 	BuffEffect.cpp

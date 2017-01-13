@@ -71,12 +71,12 @@
 	[
 		{
 			"id": 1, //id team si team fight; id joueur si solo fight
-			"name": "Xx_T0to42_xX",
+			"name": "UnitTestFireballCaster",
 			"characters":
 			[
 				{
 					"id": 12344,
-					"name": "BoboTheWarrior",
+					"name": "UnitTestFireballCaster",
 					"breed": "elf",
 					"health": 12,
 					"attack": 5,
@@ -86,19 +86,19 @@
 					"luck": 5000,
 					"movement": 7,
 					"speed": 2,
-				    "spells": ["FIREBALL", "SHIELD_BUMP", "SHIELD_BREAK", "METEOR", "CURSE"],
-					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('SHIELD_BUMP', 2, 0); }"
+				    "spells": ["FIREBALL"],
+					"script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('FIREBALL', 2, 0); }"
 				}
 			]
 		},
 		{
 			"id": 2,
-			"name": "k1ll3r93",
+			"name": "UnitTestFireballTarget",
 			"characters":
 			[
 				{
 					"id": 12345,
-					"name": "BibiTheMagus",
+					"name": "UnitTestFireballTarget",
 					"breed": "goblin",
 					"health": 15,
 					"attack": 5,
@@ -108,7 +108,7 @@
 					"luck": 5000,
 					"movement": 5,
 					"speed": 2,
-					"spells": ["SNIPE", "PASS_THROUGH_ARROW"],
+					"spells": ["FIREBALL"],
 					"script": "function onTurn(){ $log(JSON.stringify(getCell(1, 0))); }"
 				}
 			]

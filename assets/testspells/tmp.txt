@@ -1,0 +1,346 @@
+{
+    "actions": [
+        {
+            "turn": 1,
+            "type": "newturn"
+        },
+        {
+            "entity": 12344,
+            "skill": "METEOR",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "entity": 12345,
+            "health": 7,
+            "type": "damage"
+        },
+        {
+            "turn": 2,
+            "type": "newturn"
+        },
+        {
+            "entity": 12344,
+            "skill": "METEOR",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "entity": 12345,
+            "health": 7,
+            "type": "damage"
+        },
+        {
+            "turn": 3,
+            "type": "newturn"
+        },
+        {
+            "entity": 12344,
+            "skill": "METEOR",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "entity": 12345,
+            "health": 7,
+            "type": "damage"
+        },
+        {
+            "entity": 12345,
+            "type": "death"
+        }
+    ],
+    "entities": [
+        {
+            "breed": "elf",
+            "health": 12,
+            "id": 12344,
+            "name": "UnitTestMeteorCaster",
+            "team": 1,
+            "x": 1,
+            "y": 0
+        },
+        {
+            "breed": "goblin",
+            "health": 15,
+            "id": 12345,
+            "name": "UnitTestMeteorTarget",
+            "team": 2,
+            "x": 2,
+            "y": 0
+        }
+    ],
+    "fightId": 197,
+    "map": {
+        "cells": [
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 0,
+                "y": 0
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 0,
+                "y": 1
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 0,
+                "y": 2
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 0,
+                "y": 3
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 0,
+                "y": 4
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 1,
+                "y": 0
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 1,
+                "y": 1
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 1,
+                "y": 2
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 1,
+                "y": 3
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 1,
+                "y": 4
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 2,
+                "y": 0
+            },
+            {
+                "accessible": false,
+                "los": false,
+                "tile": "TREE",
+                "x": 2,
+                "y": 1,
+                "z": 1
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 2,
+                "y": 2
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 2,
+                "y": 3
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 2,
+                "y": 4
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 3,
+                "y": 0
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 3,
+                "y": 1
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 3,
+                "y": 2
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 3,
+                "y": 3
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 3,
+                "y": 4
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 4,
+                "y": 0
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 4,
+                "y": 1
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 4,
+                "y": 2
+            },
+            {
+                "accessible": false,
+                "los": false,
+                "tile": "TREE",
+                "x": 4,
+                "y": 3,
+                "z": 1
+            },
+            {
+                "accessible": true,
+                "los": true,
+                "tile": "GROUND",
+                "x": 4,
+                "y": 4
+            }
+        ],
+        "height": 5,
+        "name": "Sample map",
+        "start_positions": [
+            {
+                "x": 1,
+                "y": 0
+            },
+            {
+                "x": 2,
+                "y": 0
+            },
+            {
+                "x": 3,
+                "y": 0
+            },
+            {
+                "x": 4,
+                "y": 0
+            },
+            {
+                "x": 0,
+                "y": 0
+            },
+            {
+                "x": 11,
+                "y": 0
+            },
+            {
+                "x": 0,
+                "y": 11
+            },
+            {
+                "x": 11,
+                "y": 11
+            }
+        ],
+        "style": "basic",
+        "width": 5
+    },
+    "teams": [
+        {
+            "characters": [
+                {
+                    "attack": 5,
+                    "breed": "elf",
+                    "defense": 6,
+                    "health": 12,
+                    "id": 12344,
+                    "luck": 5000,
+                    "movement": 7,
+                    "name": "UnitTestMeteorCaster",
+                    "power": 5,
+                    "resilience": 1,
+                    "script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('METEOR', 3, 1); }",
+                    "speed": 2,
+                    "spells": [
+                        "METEOR"
+                    ]
+                }
+            ],
+            "id": 1,
+            "name": "UnitTestMeteorCaster"
+        },
+        {
+            "characters": [
+                {
+                    "attack": 5,
+                    "breed": "goblin",
+                    "defense": 6,
+                    "health": 15,
+                    "id": 12345,
+                    "luck": 5000,
+                    "movement": 5,
+                    "name": "UnitTestMeteorTarget",
+                    "power": 5,
+                    "resilience": 1,
+                    "script": "function onTurn(){ $log(JSON.stringify(getCell(1, 0))); }",
+                    "speed": 2,
+                    "spells": [
+                        "SNIPE",
+                        "PASS_THROUGH_ARROW"
+                    ]
+                }
+            ],
+            "id": 2,
+            "name": "UnitTestMeteorTarget"
+        }
+    ],
+    "winner": 1
+}

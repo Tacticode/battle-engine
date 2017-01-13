@@ -40,6 +40,7 @@ namespace tacticode
 		Character::Character(const file::IValue& json, std::shared_ptr<Map> map, int32_t teamId)
 			: m_map(map)
 		{
+			m_isInvisible = false;
 			#ifdef V8LINK
 			m_script = utils::Singleton<script::ScriptFactory>::GetInstance()->newCharacterScript();
 			#endif
@@ -201,6 +202,7 @@ namespace tacticode
 			applyBuff(*(context.engine));
 			removeBuff();
 			executeScript(context);
+			removeStunAndSilence();
 		}
 
 		void Character::executeScript(BattleEngineContext& context)
@@ -212,7 +214,6 @@ namespace tacticode
 				script_context->character = context.character;
 				script_context->team = context.team;
 				script_context->engine = context.engine;
-
 				m_script->run();
 			}
 		}
@@ -321,6 +322,18 @@ namespace tacticode
 		{
 			return m_position;
 		}
+		bool Character::getIsInvisible() const
+		{
+			return m_isInvisible;
+		}
+		bool Character::getIsStuned() const
+		{
+			return m_isStunned;
+		}
+		bool Character::getIsSilenced() const
+		{
+			return m_isSilenced;
+		}
 
 		void Character::setPosition(int x, int y)
 		{
@@ -366,6 +379,7 @@ namespace tacticode
 
 			if (spell)
 			{
+				becomeVisible();
 				return spell->castSpell(m_id, m_map->getManagedCell(position.x, position.y), engine);
 			}
 			else
@@ -417,7 +431,7 @@ namespace tacticode
 
 			m_buff.push_back(buff);
 			auto action = utils::Log::Action(m_id, "Buff Added");
-			action.add("Buff_Added", 1000);
+			action.add("Buff_Added", buff->getName());
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 		}
 		void Character::removeBuff()
@@ -426,21 +440,21 @@ namespace tacticode
 			{
 				if ((*it)->getNbTurn() <= 0 && false)
 				{
-					m_buff.erase(it++);
 					auto action = utils::Log::Action(m_id, "Remove Buff");
-					action.add("Remove_Buff", 1000);
+					action.add("Remove_Buff", (*it)->getName());
 					utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+					m_buff.erase(it++);
 				}
 			}
 		}
 		void Character::applyBuff(BattleEngine &engine)
 		{
 			int i = 0;
-			auto action = utils::Log::Action(m_id, "Buff Routine");
-			action.add("Buff_Routine", 1000);
-			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 			for (std::list<std::shared_ptr<spell::ISpell>>::iterator it = m_buff.begin(); it != m_buff.end();++it)
 			{
+				auto action = utils::Log::Action(m_id, "Buff Effective");
+				action.add("Buff_Effective", (*it)->getName());
+				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 				std::list<std::shared_ptr<spell::IEffect>> ef = (*it)->getEffects();
 				for (std::list<std::shared_ptr<spell::IEffect>>::iterator it2 = ef.begin(); it2 != ef.end(); ++it2)
 				{
@@ -448,6 +462,72 @@ namespace tacticode
 					i++;
 				}
 				(*it)->setNbTurn((*it)->getNbTurn() - 1);
+			}
+		}
+		void Character::becomeInvisible(){
+
+			auto action = utils::Log::Action(m_id, "Invisibility Activated");
+			action.add("Invisibility Activated", m_name);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+			m_isInvisible = true;
+		}
+		void Character::becomeVisible(){
+			if (m_isInvisible)
+			{
+				auto action = utils::Log::Action(m_id, "Invisibility Desactivated");
+				action.add("Invisibility Desactivated", m_name);
+				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+				m_isInvisible = false;
+			}
+		}
+
+		void Character::changeMoveSpeed(int speed)
+		{
+
+			auto action = utils::Log::Action(m_id, "Speed changed");
+			if (speed == 0)
+			{
+				action.add("Character root", 0);
+				m_currentAttributes->speed = 0;
+			}
+			else
+			{
+				speed > 0 ? action.add("Character speed lowered", -speed) : action.add("Character speed uped", -speed);
+				m_currentAttributes->speed -= speed;
+			}
+
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+		}
+		void Character::stunChamp()
+		{
+			auto action = utils::Log::Action(m_id, "Character stuned");
+			action.add("Can't play", m_name);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+			m_isStunned = true;
+		}
+		void Character::silenceChamp()
+		{
+			auto action = utils::Log::Action(m_id, "Character silenced");
+			action.add("Can't use spells", m_name);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+			m_isSilenced = true;
+		}
+
+		void Character::removeStunAndSilence()
+		{
+			if (m_isStunned)
+			{
+				auto action = utils::Log::Action(m_id, "Character unstuned");
+				action.add("Can play again", m_name);
+				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+				m_isStunned = false;
+			}
+			if (m_isSilenced)
+			{
+					auto action = utils::Log::Action(m_id, "Character unsilenced");
+					action.add("Can use spells again", m_name);
+					utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+					m_isSilenced = false;
 			}
 		}
 	}

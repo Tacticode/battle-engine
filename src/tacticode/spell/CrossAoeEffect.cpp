@@ -15,12 +15,12 @@ namespace tacticode
 			// {
 				std::list<std::shared_ptr<engine::Cell> > targets;
 				std::shared_ptr<engine::Map> map = engine.getMap();
-				
+
 				// only check the origin cell once -PM
 				if (map->isCellOnMap(cell->getX(), cell->getY()) && map->getCell(cell->getX(), cell->getY()).getCharacterId() != -1) {
 					targets.push_back(std::make_shared<engine::Cell>(map->getCell(cell->getX(), cell->getY())));
 				}
-				
+
 				for (size_t i = 1; i < m_aoe; ++i)
 				{
 					if (map->isCellOnMap(cell->getX() + i, cell->getY()) && map->getCell(cell->getX() + i, cell->getY()).getCharacterId() != -1)
