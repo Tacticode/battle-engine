@@ -46,7 +46,9 @@ namespace spell{
 				action.add("y", pos.y);
 				action.add("caster", casterId);
 				utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+				return true;
 			}
+			return false;
 		}
 }
 }
