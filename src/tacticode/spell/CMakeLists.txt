@@ -16,6 +16,8 @@ set_target_sources(BattleEngine
 	RemoveSpeedEffect.hpp
 	StunEffect.hpp
 	SilenceEffect.hpp
+	RangeEffect.hpp
+	RangeEffect.cpp
 	SilenceEffect.cpp
 	StunEffect.cpp
 	RemoveSpeedEffect.cpp

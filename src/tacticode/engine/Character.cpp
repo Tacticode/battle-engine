@@ -483,7 +483,6 @@ namespace tacticode
 
 		void Character::changeMoveSpeed(int speed)
 		{
-
 			auto action = utils::Log::Action(m_id, "Speed changed");
 			if (speed == 0)
 			{
@@ -498,6 +497,14 @@ namespace tacticode
 
 			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
 		}
+
+		void Character::changeRange(int range)
+		{
+			auto action = utils::Log::Action(m_id, "Range changed");
+			range > 0 ? action.add("Character range lowered", -range) : action.add("Character range uped", -range);
+			utils::Singleton<utils::FightLogger>::GetInstance()->addAction(action);
+		}
+
 		void Character::stunChamp()
 		{
 			auto action = utils::Log::Action(m_id, "Character stuned");

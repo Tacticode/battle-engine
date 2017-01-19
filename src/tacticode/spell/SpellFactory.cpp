@@ -13,6 +13,7 @@
 #include "RemoveSpeedEffect.hpp"
 #include "SilenceEffect.hpp"
 #include "StunEffect.hpp"
+#include "RangeEffect.hpp"
 
 namespace tacticode
 {
@@ -122,6 +123,16 @@ namespace tacticode
 			std::list<std::shared_ptr<IEffect> > dazzlingpoisong(m_dazzlingpoisong, m_dazzlingpoisong+ sizeof(m_dazzlingpoisong) / sizeof(std::shared_ptr<IEffect>));
 			registerSpell("DAZZLING_POISON", std::make_shared<Spell>(dazzlingpoisong,
 					"DAZZLING_POISON",1,5,3,1,3,1,0,3));
+
+			std::shared_ptr<IEffect> m_badeye[] = {std::make_shared<RangeEffect>(2),std::make_shared<DamageEffect>()};
+			std::list<std::shared_ptr<IEffect> > badeye(m_badeye, m_badeye+ sizeof(m_badeye) / sizeof(std::shared_ptr<IEffect>));
+			registerSpell("BAD_EYE", std::make_shared<Spell>(badeye,
+					"BAD_EYE",0.2,5,3,1,3,1,0,3));
+
+			std::shared_ptr<IEffect> m_farsight[] = {std::make_shared<RangeEffect>(-2)};
+			std::list<std::shared_ptr<IEffect> > farsight(m_farsight, m_farsight+ sizeof(m_farsight) / sizeof(std::shared_ptr<IEffect>));
+			registerSpell("FAR_SIGHT", std::make_shared<Spell>(farsight,
+					"FAR_SIGHT",0,5,3,1,3,1,0,3));
 
 			registerSpell("TRAP", std::make_shared<TrapSpell>());
 

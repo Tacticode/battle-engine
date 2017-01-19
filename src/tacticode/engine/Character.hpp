@@ -133,6 +133,7 @@ namespace tacticode
 			void becomeInvisible();
 			void becomeVisible();
 			void changeMoveSpeed(int speed);
+			void changeRange(int range);
 			void stunChamp();
 			void silenceChamp();
 			void removeStunAndSilence();
