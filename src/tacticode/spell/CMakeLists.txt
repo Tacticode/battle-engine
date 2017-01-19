@@ -14,6 +14,10 @@ set_target_sources(BattleEngine
 	InvisibleEffect.hpp
 	VisibleEffect.hpp
 	RemoveSpeedEffect.hpp
+	StunEffect.hpp
+	SilenceEffect.hpp
+	SilenceEffect.cpp
+	StunEffect.cpp
 	RemoveSpeedEffect.cpp
 	VisibleEffect.cpp
 	InvisibleEffect.cpp

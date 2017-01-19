@@ -6,35 +6,59 @@
         },
         {
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
+        },
+        {
+            "Can play again": "UnitTestForesightTarget",
+            "entity": 12345,
+            "type": "Character unstuned"
+        },
+        {
+            "Can use spells again": "UnitTestForesightTarget",
+            "entity": 12345,
+            "type": "Character unsilenced"
         },
         {
             "turn": 2,
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -42,20 +66,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -63,20 +94,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -84,20 +122,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -105,20 +150,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -126,20 +178,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -147,20 +206,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -168,20 +234,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -189,20 +262,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -210,20 +290,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -231,20 +318,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -252,20 +346,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -273,20 +374,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -294,20 +402,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -315,20 +430,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -336,20 +458,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -357,20 +486,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -378,20 +514,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -399,20 +542,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -420,20 +570,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -441,20 +598,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -462,20 +626,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -483,20 +654,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -504,20 +682,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -525,20 +710,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -546,20 +738,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -567,20 +766,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -588,20 +794,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -609,20 +822,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -630,20 +850,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -651,20 +878,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -672,20 +906,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -693,20 +934,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -714,20 +962,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -735,20 +990,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -756,20 +1018,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -777,20 +1046,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -798,20 +1074,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -819,20 +1102,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -840,20 +1130,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -861,20 +1158,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -882,20 +1186,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -903,20 +1214,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -924,20 +1242,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -945,20 +1270,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -966,20 +1298,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -987,20 +1326,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1008,20 +1354,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1029,20 +1382,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1050,20 +1410,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1071,20 +1438,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1092,20 +1466,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1113,20 +1494,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1134,20 +1522,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1155,20 +1550,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1176,20 +1578,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1197,20 +1606,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1218,20 +1634,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1239,20 +1662,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1260,20 +1690,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1281,20 +1718,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1302,20 +1746,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1323,20 +1774,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1344,20 +1802,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1365,20 +1830,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1386,20 +1858,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1407,20 +1886,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1428,20 +1914,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1449,20 +1942,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1470,20 +1970,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1491,20 +1998,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1512,20 +2026,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1533,20 +2054,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1554,20 +2082,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1575,20 +2110,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1596,20 +2138,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1617,20 +2166,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1638,20 +2194,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1659,20 +2222,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1680,20 +2250,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1701,20 +2278,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1722,20 +2306,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1743,20 +2334,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1764,20 +2362,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1785,20 +2390,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1806,20 +2418,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1827,20 +2446,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1848,20 +2474,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1869,20 +2502,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1890,20 +2530,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1911,20 +2558,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1932,20 +2586,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1953,20 +2614,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1974,20 +2642,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -1995,20 +2670,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -2016,20 +2698,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -2037,20 +2726,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         },
         {
@@ -2058,20 +2754,27 @@
             "type": "newturn"
         },
         {
-            "Invisibility Desactivated": "UnitTestShadowstepCaster",
             "entity": 12344,
+            "skill": "FORESIGHT",
+            "type": "skill",
+            "x": 3,
+            "y": 1
+        },
+        {
+            "Invisibility Desactivated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Desactivated"
         },
         {
-            "entity": 12344,
+            "entity": 12345,
             "skill": "SHADOW_STEP",
             "type": "skill",
-            "x": 1,
+            "x": 2,
             "y": 0
         },
         {
-            "Invisibility Activated": "UnitTestShadowstepCaster",
-            "entity": 12344,
+            "Invisibility Activated": "UnitTestForesightTarget",
+            "entity": 12345,
             "type": "Invisibility Activated"
         }
     ],
@@ -2080,7 +2783,7 @@
             "breed": "elf",
             "health": 12,
             "id": 12344,
-            "name": "UnitTestShadowstepCaster",
+            "name": "UnitTestForesightCaster",
             "team": 1,
             "x": 1,
             "y": 0
@@ -2089,7 +2792,7 @@
             "breed": "goblin",
             "health": 15,
             "id": 12345,
-            "name": "UnitTestShadowstepTarget",
+            "name": "UnitTestForesightTarget",
             "team": 2,
             "x": 2,
             "y": 0
@@ -2326,18 +3029,18 @@
                     "id": 12344,
                     "luck": 5000,
                     "movement": 7,
-                    "name": "UnitTestShadowstepCaster",
+                    "name": "UnitTestForesightCaster",
                     "power": 5,
                     "resilience": 1,
-                    "script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('SHADOW_STEP', 1, 0); }",
+                    "script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('FORESIGHT', 3, 1); }",
                     "speed": 2,
                     "spells": [
-                        "SHADOW_STEP"
+                        "FORESIGHT"
                     ]
                 }
             ],
             "id": 1,
-            "name": "UnitTestShadowstepCaster"
+            "name": "UnitTestForesightCaster"
         },
         {
             "characters": [
@@ -2349,18 +3052,18 @@
                     "id": 12345,
                     "luck": 5000,
                     "movement": 5,
-                    "name": "UnitTestShadowstepTarget",
+                    "name": "UnitTestForesightTarget",
                     "power": 5,
                     "resilience": 1,
-                    "script": "function onTurn(){ $log(JSON.stringify(getCell(1, 0))); }",
+                    "script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('SHADOW_STEP', 2, 0); }",
                     "speed": 2,
                     "spells": [
-                        "FIREBALL"
+                        "SHADOW_STEP"
                     ]
                 }
             ],
             "id": 2,
-            "name": "UnitTestShadowstepTarget"
+            "name": "UnitTestForesightTarget"
         }
     ],
     "winner": 0

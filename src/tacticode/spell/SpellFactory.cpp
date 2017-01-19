@@ -11,6 +11,8 @@
 #include "InvisibleEffect.hpp"
 #include "VisibleEffect.hpp"
 #include "RemoveSpeedEffect.hpp"
+#include "SilenceEffect.hpp"
+#include "StunEffect.hpp"
 
 namespace tacticode
 {
@@ -104,12 +106,22 @@ namespace tacticode
 			std::shared_ptr<IEffect> m_coldfeet[] = {std::make_shared<BuffEffect>(1, std::make_shared<RemoveSpeedEffect>(0)), std::make_shared<DamageEffect>()};
 			std::list<std::shared_ptr<IEffect> > coldfeet(m_coldfeet, m_coldfeet + sizeof(m_coldfeet) / sizeof(std::shared_ptr<IEffect>));
 			registerSpell("COLDFEET", std::make_shared<Spell>(coldfeet,
-					"COLDFEET",1.5,5,3,1,3,1,0,3));
+					"COLDFEET",0.3,5,3,1,3,1,0,3));
 
 			std::shared_ptr<IEffect> m_heavypoison[] = {std::make_shared<BuffEffect>(2, std::make_shared<RemoveSpeedEffect>(3)), std::make_shared<DamageEffect>()};
 			std::list<std::shared_ptr<IEffect> > heavypoison(m_heavypoison, m_heavypoison + sizeof(m_heavypoison) / sizeof(std::shared_ptr<IEffect>));
 			registerSpell("HEAVY_POISON", std::make_shared<Spell>(heavypoison,
-					"HEAVY_POISON",1.5,5,3,1,3,1,0,3));
+					"HEAVY_POISON",0.5,5,3,1,3,1,0,3));
+
+			std::shared_ptr<IEffect> m_dazzle[] = {std::make_shared<StunEffect>(),std::make_shared<DamageEffect>()};
+			std::list<std::shared_ptr<IEffect> > dazzle(m_dazzle, m_dazzle+ sizeof(m_dazzle) / sizeof(std::shared_ptr<IEffect>));
+			registerSpell("DAZZLE", std::make_shared<Spell>(dazzle,
+					"DAZZLE",0.8,5,3,1,3,1,0,3));
+
+			std::shared_ptr<IEffect> m_dazzlingpoisong[] = {std::make_shared<SilenceEffect>(),std::make_shared<DamageEffect>()};
+			std::list<std::shared_ptr<IEffect> > dazzlingpoisong(m_dazzlingpoisong, m_dazzlingpoisong+ sizeof(m_dazzlingpoisong) / sizeof(std::shared_ptr<IEffect>));
+			registerSpell("DAZZLING_POISON", std::make_shared<Spell>(dazzlingpoisong,
+					"DAZZLING_POISON",1,5,3,1,3,1,0,3));
 
 			registerSpell("TRAP", std::make_shared<TrapSpell>());
 

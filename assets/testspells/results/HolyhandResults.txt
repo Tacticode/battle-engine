@@ -5,10 +5,10 @@
             "type": "newturn"
         },
         {
-            "entity": 12344,
-            "skill": "BLADESTORM",
+            "entity": 12345,
+            "skill": "FIREBALL",
             "type": "skill",
-            "x": 0,
+            "x": 1,
             "y": 0
         },
         {
@@ -21,10 +21,10 @@
             "type": "newturn"
         },
         {
-            "entity": 12344,
-            "skill": "BLADESTORM",
+            "entity": 12345,
+            "skill": "FIREBALL",
             "type": "skill",
-            "x": 0,
+            "x": 1,
             "y": 0
         },
         {
@@ -37,10 +37,10 @@
             "type": "newturn"
         },
         {
-            "entity": 12344,
-            "skill": "BLADESTORM",
+            "entity": 12345,
+            "skill": "FIREBALL",
             "type": "skill",
-            "x": 0,
+            "x": 1,
             "y": 0
         },
         {
@@ -58,7 +58,7 @@
             "breed": "elf",
             "health": 12,
             "id": 12344,
-            "name": "UnitTestBladestormCaster",
+            "name": "UnitTestHolyhandCaster",
             "team": 1,
             "x": 1,
             "y": 0
@@ -67,7 +67,7 @@
             "breed": "goblin",
             "health": 15,
             "id": 12345,
-            "name": "UnitTestBladestormTarget",
+            "name": "UnitTestHolyhandTarget",
             "team": 2,
             "x": 2,
             "y": 0
@@ -304,18 +304,18 @@
                     "id": 12344,
                     "luck": 5000,
                     "movement": 7,
-                    "name": "UnitTestBladestormCaster",
+                    "name": "UnitTestHolyhandCaster",
                     "power": 5,
                     "resilience": 1,
-                    "script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('BLADESTORM', 0, 0); }",
+                    "script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('HOLY_HAND', 1, 0); }",
                     "speed": 2,
                     "spells": [
-                        "BLADESTORM"
+                        "HOLY_HAND"
                     ]
                 }
             ],
             "id": 1,
-            "name": "UnitTestBladestormCaster"
+            "name": "UnitTestHolyhandCaster"
         },
         {
             "characters": [
@@ -327,16 +327,18 @@
                     "id": 12345,
                     "luck": 5000,
                     "movement": 5,
-                    "name": "UnitTestBladestormTarget",
+                    "name": "UnitTestHolyhandTarget",
                     "power": 5,
                     "resilience": 1,
-                    "script": "function onTurn(){ $log(JSON.stringify(getCell(1, 0))); }",
+                    "script": "function onTurn() { $log(JSON.stringify(getEntities())); cast('FIREBALL', 1, 0); }",
                     "speed": 2,
-                    "spells": []
+                    "spells": [
+                        "FIREBALL"
+                    ]
                 }
             ],
             "id": 2,
-            "name": "UnitTestBladestormTarget"
+            "name": "UnitTestHolyhandTarget"
         }
     ],
     "winner": 2

@@ -16,3 +16,5 @@ mkdir results
 ../../build/BattleEngine < test_holywell.json |python -m json.tool > results/HolywellResults.txt
 ../../build/BattleEngine < test_coldfeet.json |python -m json.tool > results/ColdfeetResults.txt
 ../../build/BattleEngine < test_heavypoison.json |python -m json.tool > results/HeavypoisonResults.txt
+../../build/BattleEngine < test_dazzle.json |python -m json.tool > results/DazzleResults.txt
+../../build/BattleEngine < test_dazzlingpoison.json |python -m json.tool > results/DazzlingpoisonResults.txt
